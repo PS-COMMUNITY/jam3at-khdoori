@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تحضير نصفي التمديدات — محمد العقيلي</title>
+<style>
+  :root{
+    --ph:#8b4513; --ph-bg:#fff3e6; --n:#1565c0; --n-bg:#e8f2ff;
+    --pe:#2e7d32; --pe-bg:#e9f5ea; --ink:#1f2937; --bg:#f6f7f9;
+    --card:#ffffff; --accent:#b45309; --line:#e5e7eb;
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent}
+  body{margin:0; font-family:'Segoe UI',Tahoma,'Noto Kufi Arabic',sans-serif; background:var(--bg); color:var(--ink); line-height:1.75}
+  header{background:linear-gradient(135deg,#7c2d12,#b45309); color:#fff; padding:22px 16px 18px; text-align:center}
+  header h1{margin:0 0 6px; font-size:1.45rem}
+  header p{margin:2px 0; opacity:.92; font-size:.95rem}
+  .badge{display:inline-block; background:rgba(255,255,255,.18); border:1px solid rgba(255,255,255,.4); border-radius:999px; padding:3px 14px; font-size:.85rem; margin-top:8px}
+  main{max-width:860px; margin:0 auto; padding:14px}
+  nav{position:sticky; top:0; z-index:50; background:#ffffffee; backdrop-filter:blur(6px); border-bottom:1px solid var(--line); display:flex; gap:6px; overflow-x:auto; padding:8px 10px}
+  nav a{white-space:nowrap; text-decoration:none; color:var(--accent); font-weight:700; font-size:.85rem; padding:6px 12px; border-radius:999px; background:#fff7ed; border:1px solid #fed7aa}
+  section{background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 16px; margin:14px 0; box-shadow:0 1px 3px rgba(0,0,0,.05)}
+  h2{font-size:1.2rem; margin:0 0 12px; color:#7c2d12; border-bottom:2px solid #fed7aa; padding-bottom:8px}
+  h3{font-size:1.02rem; margin:16px 0 8px; color:#92400e}
+  .rule{display:flex; gap:10px; align-items:flex-start; background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:10px 12px; margin:8px 0; font-size:.95rem}
+  .rule b.num{flex:0 0 28px; height:28px; background:#b45309; color:#fff; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:.9rem}
+  .steps{background:#f8fafc; border:1px dashed #cbd5e1; border-radius:10px; padding:12px 14px; margin:10px 0; font-size:.93rem; white-space:pre-line}
+  table{width:100%; border-collapse:collapse; margin:10px 0; font-size:.9rem}
+  th{background:#7c2d12; color:#fff; padding:8px 6px; font-size:.85rem}
+  td{border:1px solid var(--line); padding:7px 6px; text-align:center; background:#fff}
+  tr:nth-child(even) td{background:#fafaf9}
+  .box{border-radius:10px; padding:10px 12px; margin:10px 0; font-size:.92rem}
+  .box.gold{background:#fffbeb; border:1px solid #fcd34d}
+  .box.red{background:#fef2f2; border:1px solid #fecaca}
+  .box.green{background:#f0fdf4; border:1px solid #bbf7d0}
+  .wire{display:inline-block; width:14px; height:14px; border-radius:4px; vertical-align:-2px; margin-left:4px}
+  .w-ph{background:var(--ph)} .w-n{background:var(--n)} .w-pe{background:var(--pe)}
+  .diagram{background:#fffdf8; border:1px solid var(--line); border-radius:12px; padding:10px; margin:12px 0; overflow-x:auto}
+  .diagram .cap{text-align:center; font-size:.85rem; color:#57534e; margin-top:6px}
+  details{border:1px solid var(--line); border-radius:10px; margin:8px 0; background:#fff; overflow:hidden}
+  summary{padding:11px 14px; cursor:pointer; font-weight:700; font-size:.93rem; color:#1e3a5f; background:#f8fafc; list-style:none; display:flex; gap:8px; align-items:center}
+  summary::before{content:'❓'; font-size:1rem}
+  details[open] summary::before{content:'✅'}
+  details .ans{padding:12px 16px; font-size:.92rem; border-top:1px dashed var(--line); background:#fffdf5}
+  .plan{display:grid; grid-template-columns:86px 1fr; gap:8px; font-size:.92rem}
+  .plan .t{background:#7c2d12; color:#fff; border-radius:8px; text-align:center; padding:4px 2px; font-size:.82rem; font-weight:700; align-self:start}
+  .plan .d{background:#f8fafc; border:1px solid var(--line); border-radius:8px; padding:6px 10px}
+  .cards{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:10px}
+  .flash{background:linear-gradient(135deg,#1c1917,#44403c); color:#fef3c7; border-radius:12px; padding:14px; font-size:.95rem; font-weight:600; text-align:center; min-height:74px; display:flex; align-items:center; justify-content:center}
+  footer{background:#1c1917; color:#d6d3d1; text-align:center; padding:16px; font-size:.82rem; margin-top:18px}
+  @media print{ nav{display:none} section{box-shadow:none; page-break-inside:avoid} details{display:block} details .ans{display:block!important} summary::before{content:'✅'} }
+</style>
+</head>
+<body>
+<header>
+  <h1>⚡ تحضير الامتحان النصفي — مشغل التمديدات</h1>
+  <p>أ. علي محمد • الاثنين 26/10/2026</p>
+  <p style="font-size:.85rem">محمد عادل العقيلي — 202610414</p>
+  <div class="badge">الأحد 25/10 = يوم المذاكرة الذهبي 🫒</div>
+</header>
+
+<nav>
+  <a href="#rules">القواعد الذهبية</a>
+  <a href="#wiring">التوصيلات الخمس</a>
+  <a href="#calc">الحسابات</a>
+  <a href="#theory">النظري</a>
+  <a href="#safety">السلامة</a>
+  <a href="#plan">خطة الأحد</a>
+  <a href="#bank">بنك الأسئلة</a>
+  <a href="#flash">بطاقات التسمير</a>
+</nav>
+
+<main>
+
+<!-- ================= القواعد ================= -->
+<section id="rules">
+  <h2>🥇 القواعد الذهبية السبع — احفظها بصوت عالي</h2>
+  <div class="rule"><b class="num">1</b><div><b>الطور</b> <span class="wire w-ph"></span>يمر <b>عبر المفتاح أولاً</b> — المفتاح يقطع ويربط الطور فقط.</div></div>
+  <div class="rule"><b class="num">2</b><div><b>النيوترال</b> <span class="wire w-n"></span>يوصل <b>مباشرة (Direct)</b> للمصباح <b>بدون مفتاح</b>.</div></div>
+  <div class="rule"><b class="num">3</b><div>المصابيح <b>دائماً على التوازي</b> — كل لمبة تاخد 230V كاملة وتشتغل مستقلة.</div></div>
+  <div class="rule"><b class="num">4</b><div><b>الألوان:</b> بني = طور • أزرق = نيوترال • أخضر/أصفر = أرضي (للمجسمات المعدنية).</div></div>
+  <div class="rule"><b class="num">5</b><div>سلك الإنارة = <b>1.5mm² نحاس</b> (يتحمل ~13-16A) ونحميه بقاطع <b>10A</b>.</div></div>
+  <div class="rule"><b class="num">6</b><div>كل الوصلات داخل <b>بئر توصيل</b> (صندوق وصلات) — لا أسلاك معلقة بالهواء.</div></div>
+  <div class="rule"><b class="num">7</b><div>أقصى حمل آمن للدائرة: <b>P = V × I = 230 × 10 = 2300 واط</b>.</div></div>
+</section>
+
+<!-- ================= التوصيلات ================= -->
+<section id="wiring">
+  <h2>🔌 التوصيلات الخمس — تسلسل الحفظ</h2>
+
+  <h3>① مفتاح مزدوج (مفتاحين بقطعة واحدة) — أي مفتاح يشعل اللمبة</h3>
+  <div class="steps">طور ← مشترك المفتاح 1 ← <b>جسر</b> ← مشترك المفتاح 2
+خرج 1 + خرج 2 ← <b>جسر خرج مشترك</b> ← طرف اللمبة الأول
+نيوترال ← <b>مباشر</b> ← الطرف الثاني لللمبة</div>
+  <div class="diagram">
+    <svg viewBox="0 0 820 250" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <defs><marker id="a" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6z" fill="#555"/></marker></defs>
+      <text x="410" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#7c2d12">مفتاح مزدوج لمبة واحدة</text>
+      <rect x="20" y="95" width="58" height="46" rx="6" fill="#fff3e6" stroke="#8b4513" stroke-width="2"/>
+      <text x="49" y="124" text-anchor="middle" font-size="14" fill="#7c2d12">قاطع10A</text>
+      <line x1="78" y1="118" x2="200" y2="118" stroke="#8b4513" stroke-width="3.5"/>
+      <text x="135" y="106" text-anchor="middle" font-size="12" fill="#8b4513">طور بني</text>
+      <rect x="200" y="60" width="130" height="45" rx="6" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="265" y="88" text-anchor="middle" font-size="13">مفتاح 1</text>
+      <circle cx="200" cy="82" r="4" fill="#8b4513"/><circle cx="330" cy="82" r="4" fill="#8b4513"/>
+      <rect x="200" y="140" width="130" height="45" rx="6" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="265" y="168" text-anchor="middle" font-size="13">مفتاح 2</text>
+      <circle cx="200" cy="162" r="4" fill="#8b4513"/><circle cx="330" cy="162" r="4" fill="#8b4513"/>
+      <path d="M200 82 V162" stroke="#8b4513" stroke-width="3" fill="none"/>
+      <path d="M330 82 C370 82 370 162 330 162" stroke="#8b4513" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/>
+      <text x="405" y="128" font-size="12" fill="#92400e">جسر</text>
+      <path d="M330 82 C420 82 420 118 470 118" stroke="#8b4513" stroke-width="3" fill="none"/>
+      <path d="M330 162 C420 162 420 118 470 118" stroke="#8b4513" stroke-width="3" fill="none"/>
+      <circle cx="580" cy="80" r="26" fill="#fef9c3" stroke="#ca8a04" stroke-width="3"/>
+      <circle cx="580" cy="80" r="10" fill="#fde047" stroke="#a16207" stroke-width="2"/>
+      <text x="580" y="40" text-anchor="middle" font-size="13">لمبة</text>
+      <line x1="470" y1="118" x2="470" y2="80" stroke="#8b4513" stroke-width="3"/><line x1="470" y1="80" x2="554" y2="80" stroke="#8b4513" stroke-width="3"/>
+      <line x1="606" y1="80" x2="700" y2="80" stroke="#1565c0" stroke-width="3.5"/>
+      <text x="655" y="66" text-anchor="middle" font-size="12" fill="#1565c0">نيوترال مباشر</text>
+      <line x1="700" y1="40" x2="700" y2="180" stroke="#94a3b8" stroke-width="2.5"/>
+      <text x="740" y="115" font-size="13" fill="#475569">N</text>
+      <text x="410" y="228" text-anchor="middle" font-size="13" fill="#15803d">أي مفتاح من الاثنين يضيء اللمبة ✔</text>
+    </svg>
+  </div>
+
+  <h3>② مفتاح ثنائي لمبتين — كل مفتاح لمبته</h3>
+  <div class="steps">طور ← مشترك 1 ← <b>جسر</b> ← مشترك 2
+خرج المفتاح 1 ← لمبة H1 &nbsp;|&nbsp; خرج المفتاح 2 ← لمبة H2
+نيوترال ← <b>مباشر لللمبتين معاً</b> (توازي)</div>
+  <div class="diagram">
+    <svg viewBox="0 0 820 240" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="410" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#7c2d12">مفتاح ثنائي لمبتين (توازي)</text>
+      <line x1="30" y1="130" x2="170" y2="130" stroke="#8b4513" stroke-width="3.5"/>
+      <text x="95" y="118" text-anchor="middle" font-size="12" fill="#8b4513">طور بني</text>
+      <rect x="170" y="60" width="120" height="42" rx="6" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="230" y="86" text-anchor="middle" font-size="13">مفتاح 1</text>
+      <rect x="170" y="150" width="120" height="42" rx="6" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="230" y="176" text-anchor="middle" font-size="13">مفتاح 2</text>
+      <path d="M170 130 V81" stroke="#8b4513" stroke-width="3"/><path d="M170 130 V171" stroke="#8b4513" stroke-width="3"/>
+      <path d="M290 81 C340 81 340 171 290 171" stroke="#8b4513" stroke-width="2.5" fill="none" stroke-dasharray="6 4"/>
+      <text x="352" y="132" font-size="12" fill="#92400e">جسر</text>
+      <line x1="290" y1="81" x2="440" y2="81" stroke="#8b4513" stroke-width="3"/>
+      <line x1="290" y1="171" x2="440" y2="171" stroke="#8b4513" stroke-width="3"/>
+      <circle cx="500" cy="81" r="24" fill="#fef9c3" stroke="#ca8a04" stroke-width="3"/>
+      <circle cx="500" cy="171" r="24" fill="#fef9c3" stroke="#ca8a04" stroke-width="3"/>
+      <text x="548" y="86" font-size="13">H1</text><text x="548" y="176" font-size="13">H2</text>
+      <line x1="524" y1="81" x2="660" y2="81" stroke="#1565c0" stroke-width="3"/>
+      <line x1="524" y1="171" x2="660" y2="171" stroke="#1565c0" stroke-width="3"/>
+      <path d="M660 81 V171" stroke="#1565c0" stroke-width="3"/>
+      <line x1="660" y1="126" x2="740" y2="126" stroke="#1565c0" stroke-width="3.5"/>
+      <text x="700" y="114" text-anchor="middle" font-size="12" fill="#1565c0">N مباشر للاثنين</text>
+      <text x="410" y="222" text-anchor="middle" font-size="13" fill="#15803d">كل لمبة بتاخد 230V كاملة وتشتغل مستقلة ✔</text>
+    </svg>
+  </div>
+
+  <h3>③ لمبة سلم/ممر من مكانين — مفتاحان مقلوبان</h3>
+  <div class="steps">طور ← <b>المشترك C</b> للمقلوب S1
+طرفا S1 (1,2) ← <b>سلكان = البهارات</b> ← طرفا S2 (1,2)
+المشترك C لـ S2 ← اللمبة ، نيوترال ← مباشر</div>
+  <div class="diagram">
+    <svg viewBox="0 0 820 240" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="410" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#7c2d12">مقلوبان — إضاءة من مكانين</text>
+      <line x1="20" y1="120" x2="130" y2="120" stroke="#8b4513" stroke-width="3.5"/>
+      <text x="70" y="108" text-anchor="middle" font-size="12" fill="#8b4513">طور</text>
+      <rect x="130" y="70" width="120" height="100" rx="8" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="190" y="60" text-anchor="middle" font-size="13">مقلوب S1 (3 أطراف)</text>
+      <circle cx="130" cy="120" r="4" fill="#8b4513"/><circle cx="250" cy="88" r="4" fill="#8b4513"/><circle cx="250" cy="152" r="4" fill="#8b4513"/>
+      <text x="118" y="140" text-anchor="middle" font-size="11">C</text><text x="266" y="92" font-size="11">1</text><text x="266" y="156" font-size="11">2</text>
+      <line x1="250" y1="88" x2="450" y2="88" stroke="#8b4513" stroke-width="3"/>
+      <line x1="250" y1="152" x2="450" y2="152" stroke="#8b4513" stroke-width="3"/>
+      <text x="350" y="76" text-anchor="middle" font-size="12" fill="#92400e">سلكا الربط (البهارات)</text>
+      <rect x="450" y="70" width="120" height="100" rx="8" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="510" y="60" text-anchor="middle" font-size="13">مقلوب S2 (3 أطراف)</text>
+      <circle cx="450" cy="88" r="4" fill="#8b4513"/><circle cx="450" cy="152" r="4" fill="#8b4513"/><circle cx="570" cy="120" r="4" fill="#8b4513"/>
+      <text x="434" y="92" font-size="11">1</text><text x="434" y="156" font-size="11">2</text><text x="584" y="140" text-anchor="middle" font-size="11">C</text>
+      <line x1="570" y1="120" x2="660" y2="120" stroke="#8b4513" stroke-width="3"/>
+      <circle cx="686" cy="120" r="24" fill="#fef9c3" stroke="#ca8a04" stroke-width="3"/>
+      <line x1="710" y1="120" x2="780" y2="120" stroke="#1565c0" stroke-width="3.5"/>
+      <text x="748" y="108" text-anchor="middle" font-size="12" fill="#1565c0">N</text>
+      <text x="410" y="222" text-anchor="middle" font-size="13" fill="#15803d">تشعل من تحت السلم وتطفي من فوق — كل ضغطة تعكس الحالة ✔</text>
+    </svg>
+  </div>
+  <div class="box gold"><b>جدول الحالات الأربع (بيجي بالامتحان):</b> مضيئة (1،1) • مطفأة (1،2) • مطفأة (2،1) • مضيئة (2،2) — <b>المسار موصول = نور</b></div>
+
+  <h3>④ من ثلاثة أماكن — مقلوبان + مفتاح وسط (4 أطراف) بينهما</h3>
+  <div class="steps">طور ← C للمقلوب 1
+طرفا المقلوب 1 (1,2) ← طرفي <b>دخول</b> الوسط (1,2)
+طرفي <b>خروج</b> الوسط (3,4) ← طرفا المقلوب 2 (1,2)
+C للمقلوب 2 ← اللمبة ، نيوترال ← مباشر</div>
+  <div class="diagram">
+    <svg viewBox="0 0 840 240" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="420" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#7c2d12">مقلوب + مفتاح وسط + مقلوب — إضاءة من 3 أماكن</text>
+      <line x1="16" y1="120" x2="90" y2="120" stroke="#8b4513" stroke-width="3.5"/>
+      <text x="50" y="108" text-anchor="middle" font-size="12" fill="#8b4513">طور</text>
+      <rect x="90" y="70" width="105" height="100" rx="8" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="142" y="60" text-anchor="middle" font-size="13">مقلوب S1</text>
+      <circle cx="90" cy="120" r="4" fill="#8b4513"/><circle cx="195" cy="88" r="4" fill="#8b4513"/><circle cx="195" cy="152" r="4" fill="#8b4513"/>
+      <text x="80" y="140" text-anchor="middle" font-size="11">C</text><text x="210" y="92" font-size="11">1</text><text x="210" y="156" font-size="11">2</text>
+      <line x1="195" y1="88" x2="320" y2="88" stroke="#8b4513" stroke-width="3"/>
+      <line x1="195" y1="152" x2="320" y2="152" stroke="#8b4513" stroke-width="3"/>
+      <rect x="320" y="60" width="170" height="120" rx="8" fill="#fff" stroke="#b45309" stroke-width="2.5"/>
+      <text x="405" y="50" text-anchor="middle" font-size="13">مفتاح وسط (4 أطراف)</text>
+      <circle cx="320" cy="88" r="4" fill="#8b4513"/><circle cx="320" cy="152" r="4" fill="#8b4513"/>
+      <circle cx="490" cy="88" r="4" fill="#8b4513"/><circle cx="490" cy="152" r="4" fill="#8b4513"/>
+      <text x="304" y="92" text-anchor="end" font-size="11">1</text><text x="304" y="156" text-anchor="end" font-size="11">2</text>
+      <text x="506" y="92" font-size="11">3</text><text x="506" y="156" font-size="11">4</text>
+      <path d="M320 88 H400 M400 88 V152 M400 152 H320" stroke="#cbd5e1" stroke-width="1.5" fill="none" stroke-dasharray="3 3"/>
+      <text x="405" y="126" text-anchor="middle" font-size="11" fill="#64748b">داخله يبدّل متقاطع</text>
+      <line x1="490" y1="88" x2="600" y2="88" stroke="#8b4513" stroke-width="3"/>
+      <line x1="490" y1="152" x2="600" y2="152" stroke="#8b4513" stroke-width="3"/>
+      <rect x="600" y="70" width="105" height="100" rx="8" fill="#fff" stroke="#374151" stroke-width="2"/>
+      <text x="652" y="60" text-anchor="middle" font-size="13">مقلوب S2</text>
+      <circle cx="600" cy="88" r="4" fill="#8b4513"/><circle cx="600" cy="152" r="4" fill="#8b4513"/><circle cx="705" cy="120" r="4" fill="#8b4513"/>
+      <text x="586" y="92" font-size="11">1</text><text x="586" y="156" font-size="11">2</text><text x="718" y="140" text-anchor="middle" font-size="11">C</text>
+      <circle cx="760" cy="120" r="22" fill="#fef9c3" stroke="#ca8a04" stroke-width="3"/>
+      <line x1="705" y1="120" x2="738" y2="120" stroke="#8b4513" stroke-width="3"/>
+      <text x="420" y="222" text-anchor="middle" font-size="13" fill="#15803d">8 حالات — القاعدة: زوجي معكوس = نور ، فردي = طفي ✔</text>
+    </svg>
+  </div>
+  <div class="box gold"><b>القاعدة السحرية (توفر عليك حفظ 8 حالات):</b> اللمبة مضيئة لما عدد المفاتيح المقلوبة الوضع يكون <b>زوجي</b> (0 أو 2) — مطفأة لو <b>فردي</b> (1 أو 3). أي ضغطة وحدة دايماً تعكس النتيجة.</div>
+
+  <h3>⑤ مصابيح توازي + الحسابات (P = V×I)</h3>
+  <p style="font-size:.93rem; margin:4px 0">الرسمة نفسها <b>رسمة ②</b> — الجديد فيها هو الحسابات اللي تحت 👇</p>
+</section>
+
+<!-- ================= الحسابات ================= -->
+<section id="calc">
+  <h2>🧮 جدول الحسابات — بيجي منه نص الامتحان</h2>
+  <table>
+    <tr><th>الحالة</th><th>P</th><th>I = P ÷ 230</th><th>السلك</th><th>القاطع</th></tr>
+    <tr><td>لمبة 100W</td><td>100W</td><td><b>0.435A ≈ 0.44A</b></td><td>1.5mm²</td><td>10A</td></tr>
+    <tr><td>لمبتان توازي</td><td>200W</td><td><b>0.87A</b></td><td>1.5mm²</td><td>10A</td></tr>
+    <tr><td>3 لمبات توازي</td><td>300W</td><td><b>1.3A</b></td><td>1.5mm²</td><td>10A</td></tr>
+    <tr><td>أقصى حمل للدائرة</td><td><b>2300W</b></td><td>10A</td><td>1.5mm²</td><td>10A</td></tr>
+  </table>
+  <div class="steps">القوانين الأربعة:
+I = P ÷ V        (تيار)          100÷230 = 0.435A
+P = V × I        (قدرة)          230 × 0.87 = 200W ✔ (تحقق)
+R = V² ÷ P       (مقاومة اللمبة الساخنة)   52900÷100 = 529Ω
+E = P × t        (طاقة/استهلاك)  200W × 5h = 1000Wh = 1 kWh</div>
+  <div class="box green"><b>قاعدة اختيار القاطع:</b> أعلى قليلاً من تيار الحمل (قياسي: 6 / 10 / 16 / 20 / 25 / 32A) — والسلك لازم يتحمل تيار القاطع: 1.5mm²→10A • 2.5mm²→16A • 4mm²→25A</div>
+  <h3>تدريبات نمط «حمل/قاطع/كابل» (نمط الامتحان الموثق)</h3>
+  <table>
+    <tr><th>الجهاز</th><th>القدرة</th><th>التيار I=P/V</th><th>القاطع</th><th>السلك</th></tr>
+    <tr><td>سخان</td><td>2000W</td><td>8.7A</td><td>10A</td><td>1.5mm²</td></tr>
+    <tr><td>مكواة</td><td>1500W</td><td>6.5A</td><td>10A</td><td>1.5mm²</td></tr>
+    <tr><td>ثلاجة</td><td>400W</td><td>1.74A</td><td>6A</td><td>1.5mm²</td></tr>
+  </table>
+  <div class="box gold"><b>سؤال «كم لمبة أقصى؟»:</b> قاطع 10A ⇒ 2300W ⇒ 2300÷100 = <b>23 لمبة</b> 100W<br>
+  <b>سؤال الاستهلاك:</b> 5 لمبات 100W × 6 ساعات = 500×6 = 3000Wh = <b>3 kWh</b></div>
+</section>
+
+<!-- ================= النظري ================= -->
+<section id="theory">
+  <h2>📖 النظري الثلاثي (أسئلة الوظيفة 1 — بيحب يعيدها)</h2>
+  <h3>ليش المنازل توازي مش توالي؟</h3>
+  <p style="font-size:.93rem; margin:4px 0"><b>توازي:</b> كل لمبة 230V كاملة تضيء بكامل قوتها • كل لمبة مستقلة (اطفي واحدة والباقي شغال) • لو احترقت واحدة الباقي شغال • التيارات تتجمع = نحسبها للسلك والقاطع.<br>
+  <b>توالي:</b> الجهد يتوزع (كل لمبة جزء = ضوء خفيف) • مسار واحد — احتراق لمبة يطفئ الكل. يستخدم نادراً (زينة صغيرة).</p>
+  <h3>أهمية الفيوز/القاطع</h3>
+  <p style="font-size:.93rem; margin:4px 0">يحمي من <b>فائض التيار Overcurrent</b> (حمل زائد أو قصر Short): يسخن سلك الفيوز ويذوب فيقطع الدائرة <b>قبل</b> تسخن أسلاك البيت وتسبب حريق. يُختار أعلى قليلاً من تيار الحمل. لو انصهر: <b>أصلح السبب واستبدله — التجاوز (Bypass) ممنوع أبداً</b>.</p>
+  <h3>الأفوميتر الرقمي (Digital Multimeter)</h3>
+  <table>
+    <tr><th>القياس</th><th>كيف؟</th><th>شرط</th></tr>
+    <tr><td>جهد V</td><td>على <b>التوازي</b> مع العنصر</td><td>بدون فصل الدائرة</td></tr>
+    <tr><td>تيار A</td><td>على <b>التوالي</b> داخل المسار</td><td>بعد فصل الدائرة</td></tr>
+    <tr><td>مقاومة Ω / استمرارية</td><td>فحص الأسلاك (الصافرة = سليمة)</td><td><b>بعد قطع التغذية تماماً</b></td></tr>
+  </table>
+  <p style="font-size:.93rem; margin:4px 0">خطوات: وظيفة صحيحة من القرص ⭢ مدى مناسب (أو Auto Range) ⭢ أسود بـ COM وأحمر بـ V/Ω أو A ⭢ افحص المجسات من التلف ⭢ ابدأ بالمدى الأكبر لو غير متأكد.</p>
+  <h3>دائرة 3 لمبات بمفاتيح (S1,S2,S3) على التوازي</h3>
+  <div class="diagram">
+    <svg viewBox="0 0 820 190" width="100%" xmlns="http://www.w3.org/2000/svg">
+      <text x="410" y="22" text-anchor="middle" font-size="16" font-weight="bold" fill="#7c2d12">3 لمبات توازي — مفتاح لكل لمبة على الطور</text>
+      <line x1="20" y1="40" x2="740" y2="40" stroke="#8b4513" stroke-width="3.5"/>
+      <text x="60" y="30" font-size="12" fill="#8b4513">طور</text>
+      <line x1="20" y1="160" x2="740" y2="160" stroke="#1565c0" stroke-width="3.5"/>
+      <text x="60" y="180" font-size="12" fill="#1565c0">نيوترال N مباشر للجميع</text>
+      <g><line x1="160" y1="40" x2="160" y2="62" stroke="#8b4513" stroke-width="2.5"/>
+         <rect x="135" y="62" width="50" height="24" rx="4" fill="#fff" stroke="#374151" stroke-width="2"/><text x="160" y="79" text-anchor="middle" font-size="11">S1</text>
+         <line x1="160" y1="86" x2="160" y2="104" stroke="#8b4513" stroke-width="2.5"/>
+         <circle cx="160" cy="122" r="18" fill="#fef9c3" stroke="#ca8a04" stroke-width="2.5"/>
+         <line x1="160" y1="140" x2="160" y2="160" stroke="#1565c0" stroke-width="2.5"/></g>
+      <g><line x1="400" y1="40" x2="400" y2="62" stroke="#8b4513" stroke-width="2.5"/>
+         <rect x="375" y="62" width="50" height="24" rx="4" fill="#fff" stroke="#374151" stroke-width="2"/><text x="400" y="79" text-anchor="middle" font-size="11">S2</text>
+         <line x1="400" y1="86" x2="400" y2="104" stroke="#8b4513" stroke-width="2.5"/>
+         <circle cx="400" cy="122" r="18" fill="#fef9c3" stroke="#ca8a04" stroke-width="2.5"/>
+         <line x1="400" y1="140" x2="400" y2="160" stroke="#1565c0" stroke-width="2.5"/></g>
+      <g><line x1="640" y1="40" x2="640" y2="62" stroke="#8b4513" stroke-width="2.5"/>
+         <rect x="615" y="62" width="50" height="24" rx="4" fill="#fff" stroke="#374151" stroke-width="2"/><text x="640" y="79" text-anchor="middle" font-size="11">S3</text>
+         <line x1="640" y1="86" x2="640" y2="104" stroke="#8b4513" stroke-width="2.5"/>
+         <circle cx="640" cy="122" r="18" fill="#fef9c3" stroke="#ca8a04" stroke-width="2.5"/>
+         <line x1="640" y1="140" x2="640" y2="160" stroke="#1565c0" stroke-width="2.5"/></g>
+      <text x="410" y="185" text-anchor="middle" font-size="12" fill="#15803d">S1 ⇒ 0.435A | +S2 ⇒ 0.87A | +S3 ⇒ 1.3A</text>
+    </svg>
+  </div>
+</section>
+
+<!-- ================= السلامة ================= -->
+<section id="safety">
+  <h2>🛡️ السلامة (درجات مجانية لو ذكرتها)</h2>
+  <div class="rule"><b class="num">1</b><div>قبل أي عمل: <b>فصل القاطع العام + فحص بعدم وجود جهد</b> بالأفوميتر — خطوتان إلزاميتان.</div></div>
+  <div class="rule"><b class="num">2</b><div>المفتاح على <b>الطور</b> — لو وصلت النيوترال بالمفتاح: اللمبة مطفأة لكن <b>مكهربة = صعقة عند الصيانة</b>.</div></div>
+  <div class="rule"><b class="num">3</b><div><b>الأرضي</b> يحمي الإنسان من الصعقة على المجسمات المعدنية — <b>القاطع</b> يحمي الكابل. كلاهما إلزامي.</div></div>
+  <div class="rule"><b class="num">4</b><div>افحص <b>استمرارية وجهد</b> قبل التشغيل الأول.</div></div>
+  <div class="rule"><b class="num">5</b><div>وصلات محكمة داخل بئر توصيل — لا أسلاك مكشوفة — أدوات معزولة المقابض.</div></div>
+</section>
+
+<!-- ================= الخطة ================= -->
+<section id="plan">
+  <h2>🗓️ خطة الأحد 25/10 (يوم الزيتون العطلة)</h2>
+  <div class="plan">
+    <div class="t">9:00-9:30</div><div class="d">القواعد الذهبية السبع — حفظ بصوت عالٍ 🔁</div>
+    <div class="t">9:30-10:30</div><div class="d">توصيلة ① و ② — ارسم كل واحدة بخط يدك <b>3 مرات</b> مع تسمية الألوان</div>
+    <div class="t">10:30-11:00</div><div class="d">استراحة ☕</div>
+    <div class="t">11:00-12:00</div><div class="d">توصيلة ③ المقلوبين + جدول الحالات الأربع — افهم «المسار موصول = نور»</div>
+    <div class="t">12:00-1:00</div><div class="d">غدا وراحة</div>
+    <div class="t">1:00-2:00</div><div class="d">توصيلة ④ المفتاح الوسط — احفظ <b>القاعدة الزوجية/الفردية</b> بدل جدول الـ 8 حالات</div>
+    <div class="t">2:00-4:00</div><div class="d">راحة عائلية / زيتون 🫒 (العطلة لها حق)</div>
+    <div class="t">4:00-5:00</div><div class="d">الحسابات — أعد بناء جدول الحسابات <b>بنفسك من الصفر</b> ثم قارن</div>
+    <div class="t">5:30-6:30</div><div class="d">النظري: توازي/توالي + الفيوز + الأفوميتر — اكتب كل إجابة بـ 3-4 أسطر</div>
+    <div class="t">6:30-7:30</div><div class="d"><b>اختبار ذاتي كامل</b>: بنك الأسئلة تحت بدون نظرة، وصحح بعدها</div>
+    <div class="t">قبل النوم</div><div class="d">بطاقات التسمير 10 دقائق — آخر شي بتتسمّر ⚡</div>
+  </div>
+</section>
+
+<!-- ================= بنك الأسئلة ================= -->
+<section id="bank">
+  <h2>❓ بنك الأسئلة المتوقعة — اضغط على السؤال يظهر الجواب</h2>
+  <details><summary>1) ارسم مفتاح مزدوج لمبة واحدة مع تسمية ألوان الأسلاك</summary><div class="ans">طور بني ← مشترك المفتاح 1 ← جسر ← مشترك المفتاح 2. خرجا المفتاحين ← جسر خرج مشترك ← طرف اللمبة الأول. نيوترال أزرق ← مباشر ← الطرف الثاني. الأرضي للمجسمات المعدنية. (الرسمة فوق)</div></details>
+  <details><summary>2) مفتاح ثنائي لمبتين 100W — ارسم + احسب تيار الدائرة</summary><div class="ans">طور ← مشترك 1 ← جسر ← مشترك 2؛ خرج 1←H1 وخرج 2←H2؛ N مباشر للاثنين. تيار كل لمبة I=100÷230=0.435A — الكلي (توازي) = 200÷230 = <b>0.87A</b>.</div></details>
+  <details><summary>3) لمبة سلم من مكانين — نوع المفاتيح وعدد الأطراف + الرسم</summary><div class="ans">مفتاحان <b>مقلوبان</b>، كل واحد <b>3 أطراف</b> (مشترك C + طرفان). الطور←C الأول، سلكا الربط (البهارات) بين طرفي الأول وطرفي الثاني، C الثاني←اللمبة، N مباشر.</div></details>
+  <details><summary>4) جدول حالات المقلوبين — متى تضيء اللمبة؟</summary><div class="ans">مضيئة (1،1) و(2،2) — المسار موصول. مطفأة (1،2) و(2،1) — المسار مقطوع. <b>القاعدة: المسار موصول = نور.</b></div></details>
+  <details><summary>5) نفس اللمبة من 3 أماكن — شو ينضاف؟</summary><div class="ans"><b>مفتاح وسط رباعي الأطراف (1,2,3,4)</b> بين المقلوبين: طرفا المقلوب الأول ← دخول الوسط (1,2)، خروج الوسط (3,4) ← طرفا المقلوب الثاني.</div></details>
+  <details><summary>6) اشرح القاعدة الزوجية/الفردية</summary><div class="ans">اللمبة مضيئة لما عدد المفاتيح المقلوبة الوضع يكون <b>زوجي</b> (0 أو 2)، ومطفأة لو <b>فردي</b> (1 أو 3) — لهذا أي ضغطة على أي مفتاح تعكس حالة اللمبة.</div></details>
+  <details><summary>7) احسب تيار لمبة 100W على 230V</summary><div class="ans">I = P ÷ V = 100 ÷ 230 = <b>0.435A ≈ 0.44A</b></div></details>
+  <details><summary>8) لمبتان 100W توازي — التيار الكلي والقدرة؟</summary><div class="ans">I = 200 ÷ 230 = <b>0.87A</b> • P الكلية = 100+100 = <b>200W</b> — تحقق: P=V×I=230×0.87≈200W ✔</div></details>
+  <details><summary>9) مقاومة لمبة 100W وهي مضيئة؟</summary><div class="ans">R = V² ÷ P = (230×230) ÷ 100 = 52900 ÷ 100 = <b>529Ω</b></div></details>
+  <details><summary>10) لمبتان 100W شغالان 5 ساعات — الاستهلاك؟</summary><div class="ans">E = P×t = 200W×5h = 1000Wh = <b>1 kWh</b> (وحدة كهرباء وحدة)</div></details>
+  <details><summary>11) ليش المنازل توازي مش توالي؟ (3 أسباب)</summary><div class="ans">① كل لمبة تاخد 230V كاملة فتضيء بكامل قوتها ② كل لمبة مستقلة — تشغل/تطفي بدون تأثير على الباقي ③ احتراق لمبة ما يطفئ الباقي + التيارات تتجمع لنحسب السلك والقاطع.</div></details>
+  <details><summary>12) الفرق بين حماية القاطع وحماية الأرضي؟</summary><div class="ans"><b>القاطع/الفيوز يحمي الكابل والدائرة</b> من فائض التيار • <b>الأرضي يحمي الإنسان</b> من الصعقة — يوصل المجسمات المعدنية فإذا تسرب التيار يمر بالأرضي ويقطع القاطع التفاضلي.</div></details>
+  <details><summary>13) أهمية الفيوز + شو منعمل لو انصهر؟</summary><div class="ans">يقطع الدائرة عند فائض التيار (حمل زائد/قصر) قبل احتراق الأسلاك — يذوب بسرعة. لو انصهر: <b>أصلح سبب القصر ثم استبدل</b> — التجاوز (Bypass) ممنوع أبداً.</div></details>
+  <details><summary>14) كيف تقيس جهد/تيار/مقاومة بالأفوميتر؟</summary><div class="ans">جهد V: على <b>التوازي</b> بدون فصل. تيار A: على <b>التوالي</b> بعد فصل الدائرة. مقاومة Ω واستمرارية: <b>فقط بعد قطع التغذية تماماً</b> (الصافرة = وصلة سليمة).</div></details>
+  <details><summary>15) شو بيصير لو وصلت النيوترال عبر المفتاح؟</summary><div class="ans">اللمبة تشتغل وتنطفي طبيعي، لكن حتى وهي مطفأة <b>تبقى مكهربة</b> (الطور واصل للقاعدة) = خطر صعقة عند أي صيانة أو تغيير لمبة. المفتاح دايماً على الطور.</div></details>
+  <details><summary>16) شو بيصير لو وصلنا اللمبتين على التوالي؟</summary><div class="ans">كل وحدة تاخد 115V بس ⇒ ضوء خفيف جداً • مسار واحد ⇒ لو احترقت وحدة انطفأت الثانية كمان. لهذا الإنارة دايماً توازي.</div></details>
+  <details><summary>17) سخان 2000W — تياره وأي قاطع وسلك؟</summary><div class="ans">I = 2000÷230 = <b>8.7A</b> ⇒ قاطع <b>10A</b> (أعلى قليلاً) وسلك <b>1.5mm²</b> (يتحمل 13-16A) ✔</div></details>
+  <details><summary>18) كم لمبة 100W أقصى على دائرة قاطعها 10A؟</summary><div class="ans">أقصى حمل = 230×10 = 2300W ⇒ 2300÷100 = <b>23 لمبة</b> (على التوازي)</div></details>
+  <details><summary>19) خطوتا السلامة قبل أي توصيل؟</summary><div class="ans">① <b>فصل القاطع العام</b> ② <b>فحص بعدم وجود جهد</b> بالأفوميتر — ولمس بدون فحص ممنوع، 220V ما تعطي فرصة ثانية.</div></details>
+  <details><summary>20) سلك الإنارة: مقطعه؟ يتحمل قد إيش؟ ليش؟</summary><div class="ans"><b>1.5mm² نحاس</b> — يتحمل تقريباً <b>13-16A</b> — عملياً نحميه بقاطع 10A حتى لا يسخن. المقاومة تتناسب عكسياً مع المقطع (قانون من الدوائر).</div></details>
+  <details><summary>21) 3 لمبات توازي — أغلق S1 ثم S2 ثم S3: التيار بعد كل خطوة؟</summary><div class="ans">S1 ⇒ <b>0.435A</b> • +S2 ⇒ <b>0.87A</b> • +S3 ⇒ <b>1.3A</b> — فتح أي مفتاح يطفئ لمبته فقط لأن المسارات مستقلة.</div></details>
+  <details><summary>22) وين لازم تكون كل وصلات الأسلاك؟</summary><div class="ans">داخل <b>بئر توصيل (صندوق وصلات)</b> — وصلات محكمة بدون أسلاك مكشوفة — لا وصلات معلقة بالهواء.</div></details>
+  <details><summary>23) ليش نفحص الاستمرارية قبل التغذية الأولى؟</summary><div class="ans">نكتشف أي <b>قصور أو خطأ توصيل قبل</b> ما نشغل — تشغيل دائرة فيها قصر يحرق الكابل ويخرب القاطع. الفحص يسبق التشغيل دايماً.</div></details>
+  <details><summary>24) ارسم 3 لمبات توازي بمفاتيحها والنيوترال مشترك</summary><div class="ans">طور واحد يفرع لثلاثة مفاتيح (S1,S2,S3) على الطور، خرج كل مفتاح لمبته، ونيوترال مشترك واحد مباشر لطرف الثاني للثلاثة. (الرسمة بقسم النظري فوق)</div></details>
+  <details><summary>25) ألوان الأسلاك الثلاثة ودور كل واحد؟</summary><div class="ans"><b>بني = الطور</b> (يمر عبر المفتاح) • <b>أزرق = النيوترال</b> (مباشر للمصباح) • <b>أخضر/أصفر = الأرضي</b> (يحمي الإنسان على المجسمات المعدنية).</div></details>
+</section>
+
+<!-- ================= البطاقات ================= -->
+<section id="flash">
+  <h2>⚡ بطاقات التسمير — قبل الامتحان بساعة</h2>
+  <div class="cards">
+    <div class="flash">بني = طور (عبر المفتاح)<br>أزرق = نيوترال (مباشر)<br>أخضر/أصفر = أرضي</div>
+    <div class="flash">I = P ÷ 230<br>100W→0.44A | 200W→0.87A<br>300W→1.3A | 2300W→10A</div>
+    <div class="flash">R = V² ÷ P → 529Ω<br>E = P × t → kWh<br>أقصى حمل: 230×10 = 2300W</div>
+    <div class="flash">سلك إنارة 1.5mm² + قاطع 10A<br>قاطع أعلى قليلاً من الحمل<br>السلك يتحمل تيار القاطع</div>
+    <div class="flash">مقلوب = 3 أطراف (C + 2)<br>وسط = 4 أطراف<br>الوسط بين مقلوبين دايماً</div>
+    <div class="flash">زوجي = نور<br>فردي = طفي<br>(قاعدة المفتاح الوسط)</div>
+    <div class="flash">المصابيح توازي دايماً<br>الفيوز: ممنوع التجاوز<br>افصل + افحص قبل أي شغل</div>
+    <div class="flash">جهد = توازي<br>تيار = توالي بعد الفصل<br>مقاومة = بعد قطع التغذية</div>
+  </div>
+  <div class="box red"><b>يوم الامتحان:</b> اسمك على كل ورقة • لو عملي: قطع التغذية أولاً وذكر بصوت مسموع (درجات سلامة) • لو نظري: الحسابات أولاً والقانون←عوض←نتيجة مؤطرة • <b>الصياغة نصف الدرجة</b> — ورقة نظيفة بدون شطب.</div>
+</section>
+
+</main>
+<footer>
+  أُعدّ للمذاكرة • محمد عادل العقيلي (202610414) — مشغل التمديدات الكهربائية 40889 • أ. علي محمد<br>
+  مذاكرة وثيقة للمستودع: 3081105-مشغل التمديدات الكهربائية/تحضير-الامتحان-النصفي • بالتوفيق الاثنين يا بطل 💪
+</footer>
+</body>
+</html>
