@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>حل واجب الرياضيات — حل المعادلة خطوة بخطوة</title>
+<style>
+  @page { size: 720px 1020px; margin: 0; }
+  :root {
+    --c-primary: #0f766e;
+    --c-primary-dark: #134e4a;
+    --c-accent: #b45309;
+    --c-text: #1c1917;
+    --c-muted: #57534e;
+    --c-panel: #f0fdfa;
+    --c-panel-amber: #fffbeb;
+  }
+  html, body {
+    margin: 0; padding: 0; width: 720px;
+    background: #ffffff;
+    color: var(--c-text);
+    font-family: 'Cairo', 'Noto Naskh Arabic', sans-serif;
+    line-break: strict; word-break: normal;
+  }
+  @media screen {
+    html { height: auto; display: flex; justify-content: center; background: #e7e5e4; }
+    body { margin: 20px auto; box-shadow: 0 4px 24px rgba(0,0,0,.15); }
+  }
+  p, td, li, div { overflow-wrap: break-word; }
+
+  .main-content { padding: 46px 56px 40px 56px; }
+
+  /* ===== Header band ===== */
+  .head { background: var(--c-primary-dark); color: #ffffff; border-radius: 16px; padding: 22px 26px 18px; }
+  .head .kicker { font-size: 13px; letter-spacing: .5px; color: #99f6e4; font-weight: 700; margin-bottom: 6px; }
+  .head h1 { margin: 0 0 4px; font-size: 30px; line-height: 1.35; font-weight: 800; }
+  .head .sub { font-size: 15px; color: #d1faf3; }
+  .meta-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; max-width: 100%; }
+  .meta-chip { flex: 0 1 auto; min-width: 60px; max-width: 100%; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 3px 14px; font-size: 12.5px; font-weight: 600; color: #ecfdf5; overflow-wrap: break-word; }
+
+  /* ===== Chapter headers ===== */
+  .chapter-header { break-after: avoid; break-inside: avoid; margin-top: 22px; }
+  .section-tag { display: inline-block; background: var(--c-primary); color: #fff; border-radius: 8px; padding: 2px 14px; font-size: 12.5px; font-weight: 700; letter-spacing: .3px; }
+  .section-title { font-size: 21px; font-weight: 800; color: var(--c-primary-dark); margin: 8px 0 2px; }
+  .divider { height: 3px; width: 64px; background: var(--c-primary); border-radius: 2px; margin-bottom: 10px; }
+  .body-text { font-size: 14.5px; line-height: 1.8; color: var(--c-text); margin: 7px 0; text-align: justify; }
+  .body-text b { color: var(--c-primary-dark); }
+
+  /* ===== Equation display ===== */
+  .eq-box { break-inside: avoid; background: var(--c-panel); border: 1.5px solid #99f6e4; border-radius: 14px; padding: 14px 18px; margin: 10px 0; text-align: center; }
+  .eq-box .label { font-size: 12.5px; font-weight: 700; color: var(--c-muted); margin-bottom: 8px; }
+  .eq { direction: rtl; font-size: 24px; font-weight: 800; color: var(--c-primary-dark); letter-spacing: .5px; }
+  .eq sup { font-size: 60%; }
+  .eq .hl { color: var(--c-accent); }
+  .frac { display: inline-flex; flex-direction: column; vertical-align: middle; margin: 0 4px; line-height: 1.15; }
+  .frac .num { border-bottom: 2px solid currentColor; padding: 0 6px; }
+  .frac .den { padding: 0 6px; }
+
+  /* ===== Cards & notes ===== */
+  .card { break-inside: avoid; border: 1px solid #e7e5e4; border-radius: 14px; padding: 13px 18px; margin-bottom: 12px; background: #ffffff; }
+  .card .step-tag { display: inline-block; background: var(--c-primary-dark); color: #fff; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 2px 14px; margin-bottom: 6px; }
+  .card h3 { margin: 0 0 6px; font-size: 16.5px; color: var(--c-primary-dark); font-weight: 800; }
+  .card p { margin: 4px 0; font-size: 14px; line-height: 1.75; }
+  .note { break-inside: avoid; background: var(--c-panel-amber); border: 1px solid #fde68a; border-right: 5px solid #f59e0b; border-radius: 10px; padding: 11px 15px; margin: 10px 0; font-size: 13px; line-height: 1.75; color: #78350f; }
+  .answer { break-inside: avoid; background: var(--c-panel-amber); border: 2.5px solid var(--c-accent); border-radius: 14px; padding: 13px 18px; margin: 10px 0; text-align: center; }
+  .answer .lbl { font-size: 12.5px; font-weight: 800; color: var(--c-accent); letter-spacing: .4px; margin-bottom: 6px; }
+  .answer .eq { font-size: 30px; }
+
+  /* ===== Table ===== */
+  table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 14px; break-inside: avoid; }
+  th, td { border: 1px solid #d6d3d1; padding: 7px 9px; text-align: center; overflow-wrap: break-word; }
+  th { background: var(--c-panel); color: var(--c-primary-dark); font-weight: 800; }
+  tr:nth-child(even) td { background: #fafaf9; }
+
+  /* ===== Steps grid (golden rule) ===== */
+  .rule-row { display: flex; flex-wrap: wrap; gap: 10px; max-width: 100%; margin: 10px 0; }
+  .rule { flex: 1 1 100%; min-width: 200px; max-width: 100%; border: 1px solid #e7e5e4; border-radius: 12px; padding: 9px 14px; break-inside: avoid; }
+  .rule .n { display: inline-block; width: 26px; height: 26px; line-height: 26px; text-align: center; background: var(--c-primary); color: #fff; border-radius: 50%; font-weight: 800; font-size: 13px; margin-left: 8px; }
+  .rule .t { font-weight: 800; color: var(--c-primary-dark); font-size: 14.5px; }
+  .rule .d { font-size: 13px; color: var(--c-muted); line-height: 1.7; margin-top: 2px; }
+
+  ul.clean { margin: 6px 0; padding-inline-start: 22px; }
+  ul.clean li { font-size: 14px; line-height: 1.75; margin-bottom: 3px; }
+
+  .foot { margin-top: 24px; border-top: 2px solid var(--c-primary); padding-top: 10px; font-size: 12.5px; color: var(--c-muted); text-align: center; }
+</style>
+</head>
+<body>
+
+<div class="main-content">
+
+  <!-- ================= HEADER ================= -->
+  <div class="head">
+    <div class="kicker">الرياضيات التقنية — الوحدة الأولى: الأعداد المركبة</div>
+    <h1>حل واجب «حل المعادلة» — شرح تفصيلي خطوة بخطوة</h1>
+    <div class="sub">حل كامل للمعادلة مع التحقق منها، والقاعدة الذهبية التي تحل أي معادلة مشابهة</div>
+    <div class="meta-row">
+      <span class="meta-chip">الطالب: محمد</span>
+      <span class="meta-chip">أ. نداء محمد سعيد حمدان</span>
+      <span class="meta-chip">المرجع: مثال (1) و (2) — ص 9-10 كتاب الوحدة الأولى</span>
+    </div>
+  </div>
+
+  <!-- ================= المطلوب ================= -->
+  <div class="chapter-header">
+    <span class="section-tag">أولاً</span>
+    <div class="section-title">ما هي المعادلة المطلوبة؟</div>
+    <div class="divider"></div>
+  </div>
+  <p class="body-text">
+    المعادلة وردت بخط اليد في ورقة الواجب، وهي معادلة من الدرجة الأولى بعد التبسيط، لكنها مكتوبة بشكل موسّع يشمل حدوداً تُلغي بعضها.
+    الفكرة الأساسية في هذا النوع من المعادلات هي <b>التبسيط أولاً</b> ثم <b>عزل المجهول</b>، وسيأتي الحل خطوة بخطوة بالتفصيل.
+    وهذه هي المعادلة كما ظهرت في الصورة:
+  </p>
+  <div class="eq-box">
+    <div class="label">المعادلة كما وردت في الواجب</div>
+    <div class="eq">س<sup>٢</sup> + ٤س + ٤ − س<sup>٢</sup> − ٢س − ٤ = ١</div>
+  </div>
+  <div class="note">
+    <b>ملاحظة أمانة علمية:</b> الورقة مكتوبة بخط يد سريع، والقراءة الأرجح للحدود بعد علامة الطرح هي: − س<sup>٢</sup> − ٢س − ٤.
+    وتوجد قراءة بديلة واحدة فقط تختلف في الرقم الأخير (− ٢ بدل − ٤)، وقد حُلّت القراءتان معاً في هذا الملف.
+    <b>الطريقة واحدة بالضبط في الحالتين</b> — تعلّم الطريقة وستحل أي نسخة من هذه المعادلة بسهولة.
+  </div>
+
+  <!-- ================= الحل ================= -->
+  <div class="chapter-header">
+    <span class="section-tag">ثانياً</span>
+    <div class="section-title">الحل خطوة بخطوة (القراءة الأرجح)</div>
+    <div class="divider"></div>
+  </div>
+
+  <div class="card">
+    <span class="step-tag">الخطوة 0</span>
+    <h3>افهم أولاً: ماذا يعني «حل المعادلة»؟</h3>
+    <p>المعادلة هي جملة رياضية فيها مجهول اسمه <b>س</b>. وحل المعادلة يعني إيجاد قيمة س التي تجعل الطرفين متساويين فعلاً.</p>
+    <p>تخيّل المعادلة <b>ميزاناً</b>: الكفة اليسرى والكفة اليمنى يجب أن يوازن أحدهما الآخر. نحن ندور على القيمة التي تحقق هذا التوازن بالضبط — وهي القيمة الوحيدة التي تجعل الجملة صحيحة.</p>
+  </div>
+
+  <div class="card">
+    <span class="step-tag">الخطوة 1</span>
+    <h3>اجمع الحدود المتشابهة في الطرف الأيسر</h3>
+    <p>«الحدود المتشابهة» هي الحدود التي تحتوي نفس الشيء: المربعات مع المربعات، والخطية مع الخطية، والأرقام الصرفة مع بعضها. نرتب حدود الطرف الأيسر في ثلاث مجموعات:</p>
+    <table>
+      <tr><th>المجموعة</th><th>العملية</th><th>النتيجة</th></tr>
+      <tr><td>المربعات</td><td>+ س<sup>٢</sup> − س<sup>٢</sup></td><td><b>صفر</b> (يلغيان بعضهما — نفس الشيء مرة موجبة ومرة سالبة)</td></tr>
+      <tr><td>الحدود الخطية</td><td>+ ٤س − ٢س</td><td><b>٢س</b> (مثل: 4 تفاحات ناقص 2 تفاحات = 2 تفاحات)</td></tr>
+      <tr><td>الأرقام الصرفة</td><td>+ ٤ − ٤</td><td><b>صفر</b></td></tr>
+    </table>
+    <p>فيصبح الطرف الأيسر بعد الجمع: <b>صفر + ٢س + صفر = ٢س</b> — وهذا هو جوهر التبسيط: معادلة تبدو طويلة تنكمش إلى حد واحد!</p>
+  </div>
+
+  <div class="card">
+    <span class="step-tag">الخطوة 2</span>
+    <h3>المعادلة صارت أبسط بكثير</h3>
+    <p>بعد جمع الحدود المتشابهة في الطرف الأيسر، تصبح المعادلة كلها على الشكل التالي، وهي الآن معادلة من الدرجة الأولى واضحة المعالم:</p>
+    <div class="eq-box" style="margin:10px 0 2px;">
+      <div class="eq">٢س = ١</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="step-tag">الخطوة 3</span>
+    <h3>اعزل المجهول س (نقل الحدود)</h3>
+    <p><b>القاعدة الذهبية:</b> أي شيء ينتقل من طرف إلى الطرف الآخر <b>يقلب علامته</b> — الجمع يصبح طرحاً، والضرب يصبح قسماً. وهذا ما يسمى «نقل الحدود».</p>
+    <p>هنا الرقم ٢ (المضروب بـ س) ينتقل إلى الطرف الآخر، فيقلب من ضرب إلى <b>قسمة</b>، فيصبح:</p>
+    <div class="eq-box" style="margin:10px 0 2px;">
+      <div class="eq">س = <span class="frac"><span class="num">١</span><span class="den">٢</span></span></div>
+    </div>
+  </div>
+
+  <div class="answer">
+    <div class="lbl">الخطوة 4: الحل النهائي</div>
+    <div class="eq">س = <span class="frac"><span class="num">١</span><span class="den">٢</span></span> = 0.5</div>
+  </div>
+
+  <div class="card">
+    <span class="step-tag">الخطوة 5</span>
+    <h3>تحقق من الحل (لا تسلّم أبداً بدون تحقق)</h3>
+    <p>نعوّض قيمة س = ١/٢ في المعادلة الأصلية ونرى هل يتحقق التوازن:</p>
+    <ul class="clean">
+      <li>س<sup>٢</sup> = (١/٢)<sup>٢</sup> = ١/٤</li>
+      <li>٤س = ٤ × ١/٢ = ٢</li>
+      <li>٢س = ٢ × ١/٢ = ١</li>
+    </ul>
+    <p>الطرف الأيسر: ١/٤ + ٢ + ٤ − ١/٤ − ١ − ٤ = (١/٤ − ١/٤) + (٢ + ٤ − ١ − ٤) = 0 + 1 = <b>1</b> ✓</p>
+    <p>والطرف الأيمن = 1 ✓ — <b>الميزان متوازن، الحل صحيح ومضمون.</b></p>
+  </div>
+
+  <!-- ================= القراءة البديلة ================= -->
+  <div class="chapter-header">
+    <span class="section-tag">ثالثاً</span>
+    <div class="section-title">لو كانت القراءة البديلة (− ٢ بدل − ٤)</div>
+    <div class="divider"></div>
+  </div>
+  <p class="body-text">
+    في حال كان الرقم الأخير في الورقة هو ٢ وليس ٤، فإن المعادلة تصبح: س<sup>٢</sup> + ٤س + ٤ − س<sup>٢</sup> − ٢س − ٢ = ١،
+    والخطوات <b>نفسها بالضبط</b> مع تغيّر نتيجة جمع الأرقام الصرفة فقط:
+  </p>
+  <ul class="clean">
+    <li>س<sup>٢</sup> − س<sup>٢</sup> = 0 (المربعات تُلغي بعضها كما سبق)</li>
+    <li>٤س − ٢س = ٢س (الحدود الخطية كما سبق)</li>
+    <li>٤ − ٢ = <b>2</b> (هنا الفرق الوحيد: تبقى + ٢ زائدة)</li>
+  </ul>
+  <div class="eq-box">
+    <div class="eq" style="font-size:21px;">٢س + ٢ = ١ &nbsp;←&nbsp; ٢س = ١ − ٢ = −١ &nbsp;←&nbsp; س = <span class="hl">− ١/٢</span></div>
+    <div class="eq" style="font-size:19px; margin-top:6px;">أي أن: <span class="hl">س = − 0.5</span></div>
+  </div>
+  <p class="body-text">
+    <b>التحقق:</b> ١/٤ + (−٢) + ٤ − ١/٤ − (−١) − ٢ = (١/٤ − ١/٤) + (−٢ + ٤ + ١ − ٢) = 1 ✓ — الحل صحيح أيضاً.
+    لاحظ كيف أن فهم الطريقة يجعل أي نسخة من المعادلة سؤالاً سهلاً.
+  </p>
+
+  <!-- ================= القاعدة الذهبية ================= -->
+  <div class="chapter-header">
+    <span class="section-tag">رابعاً</span>
+    <div class="section-title">القاعدة الذهبية: أي معادلة من هذا النوع في 5 خطوات</div>
+    <div class="divider"></div>
+  </div>
+  <div class="rule-row">
+    <div class="rule"><span class="n">1</span><span class="t">بسّط كل طرف لوحده</span><div class="d">اجمع الحدود المتشابهة: س² مع س²، وس مع س، والأرقام الصرفة مع بعضها.</div></div>
+    <div class="rule"><span class="n">2</span><span class="t">انقل الحدود</span><div class="d">اجعل كل ما فيه س في طرف واحد، والأرقام الصرفة في الطرف الآخر — وكل حد منقول يقلب علامته.</div></div>
+    <div class="rule"><span class="n">3</span><span class="t">اجمع كل طرف</span><div class="d">بعد النقل، اجمع حدود كل طرف لتصل إلى معادلة قصيرة واضحة.</div></div>
+    <div class="rule"><span class="n">4</span><span class="t">اعزل المجهول</span><div class="d">اقسم الطرفين على معامل س (الرقم اللاصق بـ س) ليصبح س وحده في طرف.</div></div>
+    <div class="rule"><span class="n">5</span><span class="t">تحقق دائماً</span><div class="d">عوّض الحل في المعادلة الأصلية وتأكد أن الطرفين متساويان — الدقائق تحافظ على العلامات الكاملة.</div></div>
+  </div>
+
+  <!-- ================= ربط بالمنهج ================= -->
+  <div class="chapter-header">
+    <span class="section-tag">خامساً</span>
+    <div class="section-title">ليش هذا الواجب مهم؟ (ربط بالمنهج)</div>
+    <div class="divider"></div>
+  </div>
+  <p class="body-text">
+    كتاب الوحدة الأولى (ص 9-10) يشرح <b>حل المعادلات التربيعية في مجموعة الأعداد المركبة</b> بأربع طرق متدرجة، وواجبك هذا هو البوابة الأولى لها:
+  </p>
+  <ul class="clean">
+    <li><b>أخذ العامل المشترك</b> — مثل: س² + ٣س = 0</li>
+    <li><b>التحليل إلى العوامل الأولية</b></li>
+    <li><b>القانون العام</b>: س = (−ب ± √(ب² − ٤أج)) ÷ (٢أ)</li>
+    <li><b>إكمال المربع</b> — وأجمل نقطة: لاحظ أن س² + ٤س + ٤ = (س + ٢)² وهو «المربع الكامل» نفسه الذي يظهر في مثال (3) بالكتاب عند حل (س + ١)² = س.</li>
+  </ul>
+  <p class="body-text">
+    فالواجب ليس مجرد معادلة عابرة: هو يدرّب يدك على التبسيط ونقل الحدود، ويهيّئ عقلك لفهم إكمال المربع والقانون العام اللذين سيأتيان في المحاضرات القادمة.
+    من يحل هذا النوع بسرعة وثقة س يجد الوحدة الأولى كلها أسهل بكثير.
+  </p>
+
+  <!-- ================= تمارين ================= -->
+  <div class="chapter-header">
+    <span class="section-tag">سادساً</span>
+    <div class="section-title">تمارين تدريب سريعة (نفس الطريقة بالضبط)</div>
+    <div class="divider"></div>
+  </div>
+  <p class="body-text">حلها بنظام الخطوات الخمس بنفسك، ثم راجع جوابك مع الأجوبة أدناه:</p>
+  <table>
+    <tr><th>التمرين</th><th>بعد التبسيط</th><th>الجواب</th></tr>
+    <tr><td>س<sup>٢</sup> + ٦س + ٥ − س<sup>٢</sup> − ٤س − ٣ = ٢</td><td>٢س + ٢ = ٢</td><td><b>س = 0</b></td></tr>
+    <tr><td>س<sup>٢</sup> + ٥س + ٦ − س<sup>٢</sup> − ٣س − ٤ = ١</td><td>٢س + ٢ = ١</td><td><b>س = − 1/2</b></td></tr>
+    <tr><td>٢س<sup>٢</sup> + ٨س + ٨ − ٢س<sup>٢</sup> − ٤س − ٦ = ٢</td><td>٤س + ٢ = ٢</td><td><b>س = 0</b></td></tr>
+  </table>
+
+  <div class="foot">
+    الرياضيات التقنية (41870) — الوحدة الأولى: الأعداد المركبة — حل واجب «حل المعادلة» · ادرس الخطوات الخمس واحفظ التحقق النهائي فهو ضمان علامتك الكاملة
+  </div>
+
+</div>
+
+</body>
+</html>
