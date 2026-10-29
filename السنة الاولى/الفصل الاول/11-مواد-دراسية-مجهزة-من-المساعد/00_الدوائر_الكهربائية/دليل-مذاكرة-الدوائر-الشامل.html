@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>📘 دليل مذاكرة الدوائر الكهربائية — الشامل</title>
+<style>
+:root{
+  --bg:#f6f7fb; --card:#ffffff; --ink:#1f2430; --mut:#6b7280;
+  --brand:#0e7a5f; --brand2:#14866d; --warn:#b45309; --warnbg:#fef3c7;
+  --okbg:#e8f5ee; --okline:#0e7a5f; --danger:#b91c1c; --dangerbg:#fee2e2;
+  --q:#f0fdf4; --border:#e5e7eb; --dark:#111827;
+}
+*{box-sizing:border-box; margin:0; padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Segoe UI",Tahoma,Arial,sans-serif; background:var(--bg); color:var(--ink); line-height:1.75; font-size:16px}
+.wrap{max-width:860px; margin:0 auto; padding:14px 14px 60px}
+header{background:linear-gradient(135deg,#0e7a5f,#14866d 55%,#1a9d7c); color:#fff; border-radius:0 0 22px 22px; padding:26px 18px 20px; text-align:center}
+header h1{font-size:1.45rem; margin-bottom:6px}
+header p{opacity:.93; font-size:.92rem}
+.badge{display:inline-block; background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.35); border-radius:99px; padding:2px 12px; font-size:.8rem; margin-top:8px}
+nav{position:sticky; top:0; z-index:50; background:#ffffffee; backdrop-filter:blur(8px); border-bottom:1px solid var(--border); padding:8px 10px; display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch}
+nav a{white-space:nowrap; text-decoration:none; color:var(--brand); background:var(--okbg); border:1px solid #cdeadd; padding:6px 12px; border-radius:99px; font-size:.82rem; font-weight:600}
+nav a:active{transform:scale(.96)}
+section{margin-top:22px}
+details{background:var(--card); border:1px solid var(--border); border-radius:16px; margin-bottom:12px; overflow:hidden; box-shadow:0 1px 3px rgba(16,24,40,.05)}
+summary{cursor:pointer; padding:14px 16px; font-weight:800; font-size:1.02rem; color:var(--ink); display:flex; align-items:center; gap:10px; user-select:none; list-style:none}
+summary::-webkit-details-marker{display:none}
+summary .num{background:var(--brand); color:#fff; min-width:34px; height:34px; border-radius:10px; display:grid; place-items:center; font-size:.9rem; flex-shrink:0}
+summary .chev{margin-inline-start:auto; color:var(--mut); transition:.25s}
+details[open] summary .chev{transform:rotate(180deg)}
+details[open] summary{border-bottom:1px dashed var(--border); background:#fbfdfc}
+.body{padding:14px 16px 18px}
+h2{font-size:1.15rem; color:var(--brand); margin:18px 0 8px; border-inline-start:4px solid var(--brand); padding-inline-start:10px}
+h3{font-size:1rem; margin:14px 0 6px; color:#333}
+p{margin:8px 0}
+ul,ol{margin:8px 24px 8px 0}
+li{margin:4px 0}
+table{width:100%; border-collapse:collapse; margin:10px 0; font-size:.88rem; background:#fff}
+th{background:var(--brand); color:#fff; padding:8px 6px; font-weight:700}
+td{border:1px solid var(--border); padding:7px 6px; text-align:center}
+tr:nth-child(even) td{background:#f9fbfa}
+.law{background:var(--okbg); border:2px solid var(--okline); border-radius:14px; padding:12px 14px; margin:12px 0; text-align:center}
+.law .f{font-size:1.25rem; font-weight:800; direction:ltr; unicode-bidi:isolate; font-family:"Cambria Math",Georgia,serif}
+.law .t{font-size:.82rem; color:#3f6b5c; margin-top:4px}
+.warn{background:var(--warnbg); border-inline-start:5px solid var(--warn); border-radius:10px; padding:10px 12px; margin:10px 0; font-size:.92rem}
+.danger{background:var(--dangerbg); border-inline-start:5px solid var(--danger); border-radius:10px; padding:10px 12px; margin:10px 0; font-size:.92rem}
+.tip{background:#eef6ff; border-inline-start:5px solid #2563eb22; border-inline-color:#3b82f6; border-radius:10px; padding:10px 12px; margin:10px 0; font-size:.92rem}
+.ex{background:#fffdf5; border:1px dashed #d4b106; border-radius:14px; padding:12px 14px; margin:12px 0}
+.ex .ttl{font-weight:800; color:#8a6d00; margin-bottom:6px}
+.ex pre{background:#1f2430; color:#d7f5e9; border-radius:10px; padding:12px; direction:ltr; text-align:left; font-size:.85rem; overflow-x:auto; line-height:1.6; font-family:Consolas,Menlo,monospace}
+.f{direction:ltr; unicode-bidi:isolate; display:inline-block; font-family:"Cambria Math",Georgia,serif; font-weight:700}
+.sw{display:inline-block; width:34px; height:18px; border-radius:4px; vertical-align:middle; border:1px solid #999; margin-inline-end:6px}
+.q{background:var(--q); border:1px solid #bbf7d0; border-radius:12px; margin:8px 0; padding:10px 12px}
+.q summary{font-weight:700; font-size:.92rem; padding:2px 0; list-style:none; cursor:pointer}
+.q summary::-webkit-details-marker{display:none}
+.q .a{margin-top:8px; padding-top:8px; border-top:1px dashed #86efac; font-size:.9rem}
+.flash{background:var(--dark); color:#e5e7eb; border-radius:12px; padding:12px 14px; margin:8px 0}
+.flash .front{font-weight:800; color:#fde68a}
+.flash .back{margin-top:8px; padding-top:8px; border-top:1px dashed #374151; color:#a7f3d0; font-size:.92rem}
+.pill{display:inline-block; background:#eef2f7; border-radius:99px; padding:2px 10px; font-size:.78rem; margin:2px; color:#374151}
+footer{margin-top:30px; text-align:center; color:var(--mut); font-size:.8rem; padding:16px; border-top:1px solid var(--border)}
+@media print{
+  nav{display:none} details{break-inside:avoid} details:not([open]){border-color:#ccc}
+  body{background:#fff} .ex pre{background:#f3f4f6; color:#111}
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>📘 دليل مذاكرة الدوائر الكهربائية — الشامل</h1>
+  <p>كل الأساسيات من المحاضرات الـ12 + حلول السبورة — جاهز للنصفي (نافذة 1–5/11)</p>
+  <span class="badge">اضغط على أي وحدة لفتحها • المحاضرة الأخيرة = أول المُمتَح</span>
+</header>
+
+<nav>
+  <a href="#u1">وحدات SI</a><a href="#u2">العناصر</a><a href="#u3">المقاومة</a><a href="#u4">القدرة</a><a href="#u5">توالي/توازي ⭐</a><a href="#u6">المصادر</a><a href="#u7">كيرشوف ⭐</a><a href="#u8">ثيفنين/نورتون ⭐</a><a href="#rev">ورقة مراجعة</a><a href="#qz">أسئلة متوقعة</a><a href="#cards">بطاقات</a>
+</nav>
+
+<div class="wrap">
+
+<section>
+<details open id="u1"><summary><span class="num">1</span> نظام الوحدات الدولي SI — المحاضرة 1 <span class="chev">▾</span></summary>
+<div class="body">
+<h2>الوحدات الأساسية السبع</h2>
+<table><tr><th>الكمية</th><th>الوحدة</th><th>الرمز</th></tr>
+<tr><td>الكتلة</td><td>كيلوجرام</td><td>kg</td></tr>
+<tr><td>الطول</td><td>متر</td><td>m</td></tr>
+<tr><td>الزمن</td><td>ثانية</td><td>s</td></tr>
+<tr><td><b>التيار</b></td><td><b>أمبير</b></td><td><b>A</b></td></tr>
+<tr><td>درجة الحرارة</td><td>كلفن</td><td>K</td></tr>
+<tr><td>مقدار المادة</td><td>مول</td><td>mol</td></tr>
+<tr><td>شدة الإضاءة</td><td>كانديلا</td><td>cd</td></tr></table>
+
+<h2>البادئات المهمة</h2>
+<table><tr><th>البادئة</th><th>الرمز</th><th>القيمة</th></tr>
+<tr><td>جيجا</td><td>G</td><td>10⁹</td></tr>
+<tr><td>ميجا</td><td>M</td><td>10⁶</td></tr>
+<tr><td>كيلو</td><td>k</td><td>10³</td></tr>
+<tr><td>ملي</td><td>m</td><td>10⁻³</td></tr>
+<tr><td>مايكرو</td><td>µ</td><td>10⁻⁶</td></tr>
+<tr><td>نانو</td><td>n</td><td>10⁻⁹</td></tr>
+<tr><td>بيكو</td><td>p</td><td>10⁻¹²</td></tr></table>
+<div class="warn">⚠️ <b>فخ:</b> m ملي (صغيرة) ≠ M ميجا (كبيرة) — فرق 10⁹ ضعف!</div>
+
+<h2>الوحدات الكهربائية السبع</h2>
+<p><span class="pill">كولوم C = شحنة</span><span class="pill">أمبير A = تيار</span><span class="pill">فولت V = جهد</span><span class="pill">أوم Ω = مقاومة</span><span class="pill">واط W = قدرة</span><span class="pill">جول J = طاقة</span><span class="pill">kWh = وحدة تجارية</span></p>
+<div class="law"><div class="f">1 kWh = 1000 × 3600 = 3.6 × 10⁶ J</div><div class="t">سلسلة التحويل — جت نصاً بالشرائح</div></div>
+
+<div class="ex"><div class="ttl">✏️ مثال محلول — جمع بقيم مختلفة (مثال 2)</div>
+<pre>I = 25 mA + 6000 µA
+  = 25 mA + 6 mA        ← وحّد الوحدة أولاً
+  = 31 mA
+
+R = 400 kΩ + 4.5 MΩ
+  = 0.4 MΩ + 4.5 MΩ
+  = 4.9 MΩ</pre></div>
+</div></details>
+
+<details id="u2"><summary><span class="num">2</span> عناصر الدائرة والمفاهيم — محاضرتا 2-3 <span class="chev">▾</span></summary>
+<div class="body">
+<h2>المواد الثلاثة</h2>
+<table><tr><th>النوع</th><th>الإلكترونات الحرة</th><th>أمثلة</th></tr>
+<tr><td>موصلات</td><td>كثيرة جداً</td><td>نحاس، فضة، ألمنيوم</td></tr>
+<tr><td>عوازل</td><td>معدومة تقريباً</td><td>زجاج، بلاستيك، مطاط</td></tr>
+<tr><td>أشباه موصلات</td><td>متوسطة</td><td>سيليكون، جيرمانيوم</td></tr></table>
+
+<div class="law"><div class="f">I = Q / t</div><div class="t">التيار = الشحنة ÷ الزمن (كولوم/ثانية)</div></div>
+<div class="law"><div class="f">V = W / Q</div><div class="t">فرق الجهد = الشغل لنقل 1 كولوم بين نقطتين</div></div>
+<p><b>emf</b> = الطاقة الممنوحة للشحنة داخل المصدر (بالفولت أيضاً).</p>
+<div class="tip">💡 التيار الاصطلاحي ينساب من (+) إلى (−) خارج المصدر، والإلكترونات الحقيقية بالعكس.</div>
+
+<h2>العناصر</h2>
+<table><tr><th>النوع</th><th>التعريف</th><th>أمثلة</th></tr>
+<tr><td>فعالة Active</td><td>تسلّم الطاقة</td><td>مصادر جهد/تيار، بطارية</td></tr>
+<tr><td>غير فعالة Passive</td><td>تستهلك الطاقة</td><td>مقاومات، مكثفات، ملفات، مصابيح</td></tr></table>
+</div></details>
+
+<details id="u3"><summary><span class="num">3</span> المقاومة + الحرارة + كود الألوان — محاضرتا 3-4 <span class="chev">▾</span></summary>
+<div class="body">
+<div class="law"><div class="f">V = I · R</div><div class="t">قانون أوم — القانون رقم 1 بالمادة (صيغه: I=V/R و R=V/I)</div></div>
+
+<h2>المقاومة النوعية</h2>
+<div class="law"><div class="f">R = ρ · l / A</div><div class="t">طردية مع الطول • عكسية مع المقطع • ρ خاصية للمادة (Ω·m)</div></div>
+<table><tr><th>المادة</th><th>ρ (Ω·m)</th><th>المادة</th><th>ρ (Ω·m)</th></tr>
+<tr><td>فضة</td><td>1.59×10⁻⁸</td><td>تنغستن</td><td>5.9×10⁻⁸</td></tr>
+<tr><td><b>نحاس</b></td><td><b>1.6×10⁻⁸</b></td><td>حديد</td><td>10×10⁻⁸</td></tr>
+<tr><td>ذهب</td><td>2.44×10⁻⁸</td><td>نيكلكروم</td><td>22×10⁻⁸</td></tr>
+<tr><td>ألمنيوم</td><td>2.82×10⁻⁸</td><td colspan="2">النيكلكروم للتسخين!</td></tr></table>
+
+<div class="ex"><div class="ttl">✏️ مثال — قطر سلك نحاسي (مثال 2 من المحاضرة 4)</div>
+<pre>A = ρ·l / R = (2×10⁻⁸ × 1000) / 100 = 2×10⁻⁷ m²
+d = √(4A/π) = 5×10⁻⁴ m = 0.5 mm</pre></div>
+
+<h2>تأثير الحرارة</h2>
+<div class="law"><div class="f">R₁ = R₀ [ 1 + α (T₁ − T₀) ]</div><div class="t">α موجب للمعادن • سالب لأشباه الموصلات • للنحاس α = 1/234.5</div></div>
+<div class="ex"><div class="ttl">⭐ المثال الذهبي — جاء بالواجب وبالسبورة! (مصباح 100W/220V عند 2000°C)</div>
+<pre>R₁ = V²/P = 484 Ω                    (ساخن)
+484 = R₀[1 + 5×10⁻³ × (2000−15)]
+R₀ = 484 / 10.925 = 44.32 Ω          (بارد)
+I₀ = 220 / 44.32 = 4.96 A            تيار لحظة التشغيل!</pre></div>
+
+<h2>كود الألوان (4 أشرطة)</h2>
+<table>
+<tr><th>اللون</th><th>القيمة</th><th>اللون</th><th>القيمة</th></tr>
+<tr><td><span class="sw" style="background:#111"></span>أسود</td><td>0</td><td><span class="sw" style="background:#2563eb"></span>أزرق</td><td>6</td></tr>
+<tr><td><span class="sw" style="background:#7c4a12"></span>بني</td><td>1</td><td><span class="sw" style="background:#7c3aed"></span>بنفسجي</td><td>7</td></tr>
+<tr><td><span class="sw" style="background:#dc2626"></span>أحمر</td><td>2</td><td><span class="sw" style="background:#9ca3af"></span>رمادي</td><td>8</td></tr>
+<tr><td><span class="sw" style="background:#ea580c"></span>برتقالي</td><td>3</td><td><span class="sw" style="background:#f9fafb"></span>أبيض</td><td>9</td></tr>
+<tr><td><span class="sw" style="background:#facc15"></span>أصفر</td><td>4</td><td><span class="sw" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)"></span>ذهبي</td><td>±5%</td></tr>
+<tr><td><span class="sw" style="background:#16a34a"></span>أخضر</td><td>5</td><td><span class="sw" style="background:linear-gradient(135deg,#cbd5e1,#e2e8f0)"></span>فضي</td><td>±10%</td></tr>
+</table>
+<p><b>القراءة:</b> 1️⃣ الأقرب للحافة = رقم أول • 2️⃣ الثاني = رقم ثاني • 3️⃣ الثالث = <b>عدد الأصفار</b> • 4️⃣ الرابع = نسبة الخطأ</p>
+<div class="ex"><div class="ttl">✏️ أمثلة المحاضرة</div>
+<pre>أصفر، بنفسجي، أسود، ذهبي → 47 × 10⁰ = 47 Ω ± 5%
+بني، أسود، برتقالي، فضي → 10 × 10³ = 10 kΩ ± 10%
+أحمر، برتقالي، أخضر، ذهبي → 23 × 10⁵ = 23 MΩ ± 5%</pre></div>
+<div class="warn">⚠️ الشريط الثالث أصفار مو رقم — أصفر-بنفسجي-بني = 470Ω (مو 471!)</div>
+</div></details>
+
+<details id="u4"><summary><span class="num">4</span> القدرة والطاقة — محاضرة 5 <span class="chev">▾</span></summary>
+<div class="body">
+<div class="law"><div class="f">P = W/t = V·I = I²·R = V²/R</div><div class="t">أربع صيغ — اختر حسب المعطيات</div></div>
+<table><tr><th>الصيغة</th><th>متى؟</th></tr>
+<tr><td>P = I²R</td><td>توالي (التيار واحد)</td></tr>
+<tr><td>P = V²/R</td><td>توازي (الجهد واحد)</td></tr>
+<tr><td>P = VI</td><td>عندك الاثنان</td></tr></table>
+<div class="law"><div class="f">H = I²Rt / 4.2  (kcal)</div><div class="t">تأثير جول الحراري — 1 kcal = 4186 J</div></div>
+
+<div class="ex"><div class="ttl">⭐ مثال الفاتورة (نمط شبه مضمون)</div>
+<pre>10 مصابيح × 100W + تلفاز 1200W على 220V، سعر 40 فلس/kWh:
+Pt = 1000 + 1200 = 2200 W
+I  = 2200 / 220 = 10 A
+W  = 2200 × 10h = 22000 Wh = 22 kWh
+الفاتورة = 22 × 40 = 880 فلس = 0.88 دينار</pre></div>
+
+<h2>حالات الدائرة</h2>
+<table><tr><th>الحالة</th><th>التيار</th></tr>
+<tr><td>مغلقة Closed</td><td>طبيعي ✓</td></tr>
+<tr><td>مفتوحة Open</td><td><b>صفر</b></td></tr>
+<tr><td>قصر Short</td><td><b>عظيم — خطر!</b></td></tr></table>
+</div></details>
+
+<details id="u5"><summary><span class="num">5</span> ⭐ التوالي والتوازي والمركب — محاضرات 6-7-8 (قلب الامتحان) <span class="chev">▾</span></summary>
+<div class="body">
+<h2>التوالي — التيار واحد، الجهود تتوزع</h2>
+<div class="law"><div class="f">Req = R₁ + R₂ + ... + Rₙ</div><div class="t">أكبر دائماً من أكبر مقاومة</div></div>
+<div class="law"><div class="f">V₁ = E · R₁ / (R₁+R₂)</div><div class="t">مقسم الجهد — طردية مع المقاومة! (جهد أكبر للمقاومة الأكبر)</div></div>
+<div class="ex"><div class="ttl">✏️ مثال</div><pre>5V مع 2kΩ و 8kΩ توالي — جهد 8kΩ:
+Vo = 5 × 8/10 = 4 V</pre></div>
+
+<h2>التوازي — الجهد واحد، التيارات تتوزع</h2>
+<div class="law"><div class="f">1/Req = 1/R₁ + 1/R₂ + ...</div><div class="t">أصغر دائماً من أصغر مقاومة • مقاومتان: R₁R₂/(R₁+R₂) • n متساوية: R/n</div></div>
+<div class="law"><div class="f">I₁ = I · R₂ / (R₁+R₂)</div><div class="t">مقسم التيار — عكسية! لاحظ R₂ فوق في صيغة I₁</div></div>
+<div class="danger">🚨 أكبر فخ بالامتحان: الجهد يتبع المقاومة، والتيار يهرب منها (المقاومة الصغيرة تجرّ تياراً أكبر).</div>
+<div class="ex"><div class="ttl">✏️ مثال</div><pre>150mA يفرع لـ 100Ω و 50Ω:
+I₁(100Ω) = 150 × 50/150 = 50 mA
+I₂(50Ω)  = 150 × 100/150 = 100 mA ← الصغيرة أخذت الأكبر ✓</pre></div>
+
+<h2>المركب — ابدأ من الداخل للخارج</h2>
+<div class="ex"><div class="ttl">⭐ المثال الكبير (مثال 6): 36V مع R₁=120Ω ثم 3 فروع</div>
+<pre>1) علوي: 100+300 = 400 Ω
+2) التوازي: 400∥100 = 80 Ω
+3) Req = 120+80 = 200 Ω
+4) I₁ = 36/200 = 0.18 A
+5) فرع 400: I₂=I₃ = 0.18×100/500 = 36 mA
+   فرع 100: I₆ = 144 mA
+6) الجهود: V₁=21.6V، V₂=3.6، V₃=10.8، V₆=11.52
+✓ تحقق: 21.6 + 3.6 + 10.8 = 36 V ✓</pre></div>
+<div class="ex"><div class="ttl">✏️ القدرة (أمثلة 9-11)</div>
+<pre>توالي 10V/50Ω:   Pt = V²/Req = 100/50 = 2 W
+توازي 3A/16.36Ω: Pt = I²Req = 9×16.36 = 147.3 W
+مركب 14V/140Ω:   I=0.1A → Pt = 1.4 W
+✓ قانون المحافظة: قدرة المصدر = مجموع قدرات المقاومات دائماً</pre></div>
+</div></details>
+
+<details id="u6"><summary><span class="num">6</span> مصادر الجهد والتيار وتحويلهما — محاضرتا 9-10 <span class="chev">▾</span></summary>
+<div class="body">
+<table><tr><th></th><th>مصدر الجهد</th><th>مصدر التيار</th></tr>
+<tr><td>مثالي</td><td>ri = 0</td><td>ri = ∞</td></tr>
+<tr><td>حقيقي</td><td>E + ri <b>توالي</b></td><td>Is + ri <b>توازي</b></td></tr>
+<tr><td>قاعدته</td><td>مقسم جهد</td><td>مقسم تيار</td></tr></table>
+<div class="law"><div class="f">Iₛ = E / rᵢ ⟺ E = Iₛ · rᵢ</div><div class="t">التحويل: نفس ri — توالي مع الجهد، توازي مع التيار • السهم نحو الطرف الموجب</div></div>
+<div class="ex"><div class="ttl">✏️ تحويلان</div>
+<pre>100V توالي 10Ω → Is = 100/10 = 10 A (ri=10Ω توازي)
+10mA توازي 10kΩ → E = 10mA×10kΩ = 100 V (ri توالي)</pre></div>
+<h2>جمع المصادر</h2>
+<p>جهود توالي: تُجمع جبرياً (نفس اتجاه +، معاكس −): 9+6+3=18V • 18−6=12V<br>
+تيارات توازي: تُجمع جبرياً: 1+2+3=6A • 3+2−1=4A • 30+20=50mA</p>
+<div class="warn">⚠️ مصادر جهد مختلفة لا توصل توازي، وتيارات مختلفة لا توصل توالي.</div>
+<div class="tip">💡 الاستنتاج الامتحاني: مصدر حقيقي 100V/10Ω مع حمل 1kΩ يعطي 99V — كلما كبر الحمل اقترب من المثالي.</div>
+</div></details>
+
+<details id="u7"><summary><span class="num">7</span> ⭐ قوانين كيرشوف — محاضرة 11 <span class="chev">▾</span></summary>
+<div class="body">
+<div class="law"><div class="f">KCL: ΣI داخلة = ΣI خارجة</div><div class="t">العقدة — لأن الشحنة لا تتراكم (حفظ الشحنة)</div></div>
+<div class="law"><div class="f">KVL: Σ emf = Σ I·R</div><div class="t">الحلقة المغلقة — لأن الطاقة محفوظة (حفظ الطاقة)</div></div>
+<h2>قواعد الإشارات</h2>
+<table><tr><th>تعبر</th><th>العلامة</th></tr>
+<tr><td>مصدر من − إلى +</td><td>+emf</td></tr>
+<tr><td>مصدر من + إلى −</td><td>−emf</td></tr>
+<tr><td>مقاومة مع التيار</td><td>−IR هبوط</td></tr>
+<tr><td>مقاومة عكس التيار</td><td>+IR صعود</td></tr></table>
+<h2>منهجية الحل (5 خطوات)</h2>
+<ol><li>ارسم أسهم التيارات (أي اتجاه — الغلط يعطي سالبة بس القيمة صح)</li>
+<li>KCL عند العقد (عددها = عقد − 1)</li><li>KVL للحلقات المستقلة</li>
+<li>حل النظام (تعويض/حذف)</li><li>تحقق بحلقة لم تستخدمها!</li></ol>
+
+<div class="ex"><div class="ttl">⭐ المثال الذهبي (مثال 1): مصدران 16V و20V مع 10Ω و12Ω و20Ω وسطية</div>
+<pre>KCL عند A:    I₃ = I₁ + I₂
+حلقة يسار:   16 − 10I₁ − 20(I₁+I₂) = 0
+              → 30I₁ + 20I₂ = 16   (9)
+حلقة يمين:   20 − 12I₂ − 20(I₁+I₂) = 0
+              → 20I₁ + 32I₂ = 20   (10)
+(9)×1.6 − (10): 28I₁ = 5.6 → I₁ = 0.2 A
+من (9): 20I₂ = 10 → I₂ = 0.5 A
+I₃ = 0.7 A
+✓ تحقق: 20 − 12(0.5) − 20(0.7) = 0 ✓</pre></div>
+<div class="tip">💡 مثال 2 (إيجاد E): نفس المنهجية بالعكس — أعطوك تيار فرع (1A في 8Ω) وطلبوا E → جوابها 69.5V</div>
+</div></details>
+
+<details id="u8"><summary><span class="num">8</span> ⭐ التراكب + ثيفنين + نورتون — محاضرة 12 والسبورة <span class="chev">▾</span></summary>
+<div class="body">
+<h2>التراكب Superposition</h2>
+<p><b>الفكرة:</b> عدة مصادر؟ ادرس كل مصدر وحده ثم اجمع جبرياً.</p>
+<div class="law"><div class="f">إطفاء المصادر: جهد ← قصر (سلك) • تيار ← فتح (قطع)</div><div class="t">لا تنسَ بقاء المقاومات الداخلية ri</div></div>
+<div class="ex"><div class="ttl">⭐ مثال المحلول (6V مع 0.5Ω + 12V مع 1Ω)</div>
+<pre>6V وحده:  R'=5Ω → I'₁=1.2A → I'(6Ω) = 1.2×3/9 = 0.4A
+12V وحده: R''=5Ω → I''₂=2.4A → I''(6Ω) = 0.8A
+الجمع: I = 0.4 + 0.8 = 1.2 A → V = 7.2 V</pre></div>
+<div class="danger">🚨 القدرة لا تُتراكب (P تربيعية) — تراكب التيارات والجهود فقط!</div>
+
+<h2>ثيفنين Thevenin</h2>
+<p>أي شبكة عند طرفين ≡ <b>Vth توالي Rth</b></p>
+<table><tr><th>العنصر</th><th>كيف؟</th></tr>
+<tr><td><b>Vth</b></td><td>الجهد المفتوح بين الطرفين (ارفع الحل)</td></tr>
+<tr><td><b>Rth</b></td><td>أطفئ المصادر (جهد→قصر، تيار→فتح) واحسب المكافئ</td></tr></table>
+<div class="law"><div class="f">I = Vth / (Rth + R_L)</div><div class="t">مثال السبورة: Vth=16V ، Rth=3∥6=2Ω</div></div>
+
+<h2>نورتون Norton — بالسبورة فقط! 🚨</h2>
+<p>أي شبكة عند طرفين ≡ <b>IN توازي RN</b></p>
+<table><tr><th>العنصر</th><th>كيف؟</th></tr>
+<tr><td><b>IN</b></td><td>تيار القصر بين الطرفين (وصل بسلك)</td></tr>
+<tr><td><b>RN</b></td><td>نفسها Rth بالضبط!</td></tr></table>
+<div class="law"><div class="f">I = IN · RN / (RN + R_L)</div><div class="t">مثال السبورة: IN=0.2A ، RN=50Ω</div></div>
+<div class="law"><div class="f">RN = Rth • IN = Vth/Rth • Vth = IN·RN</div><div class="t">تحويل مجاني بين النظريتين — سؤال كلاسيكي!</div></div>
+
+<h2>جدول القرار</h2>
+<table><tr><th>المسألة</th><th>الطريقة</th></tr>
+<tr><td>مصدران+ وأريد تيار فرع</td><td>التراكب</td></tr>
+<tr><td>حمل واحد وسط شبكة ضخمة</td><td>ثيفنين/نورتون</td></tr>
+<tr><td>أغيّر الحمل كثيراً</td><td>ثيفنين (تحسب مرة!)</td></tr></table>
+</div></details>
+
+<section>
+<details open id="rev"><summary><span class="num">9</span> 📋 ورقة المراجعة النهائية <span class="chev">▾</span></summary>
+<div class="body">
+<table>
+<tr><th>القانون</th><th>الصيغة</th><th>ملاحظة قاتلة</th></tr>
+<tr><td>أوم</td><td class="f">V=IR</td><td>3 صيغ</td></tr>
+<tr><td>التوالي</td><td class="f">Req=ΣR</td><td>تيار واحد</td></tr>
+<tr><td>التوازي</td><td class="f">1/Req=Σ1/R</td><td>جهد واحد</td></tr>
+<tr><td>مقسم الجهد</td><td class="f">V₁=E·R₁/(R₁+R₂)</td><td>طردية</td></tr>
+<tr><td>مقسم التيار</td><td class="f">I₁=I·R₂/(R₁+R₂)</td><td>عكسية ⚠️</td></tr>
+<tr><td>القدرة</td><td class="f">P=VI=I²R=V²/R</td><td>اختر حسب التوصيل</td></tr>
+<tr><td>الحرارة</td><td class="f">R₁=R₀[1+αΔT]</td><td>α موجب للمعادن</td></tr>
+<tr><td>النوعية</td><td class="f">R=ρl/A</td><td>طردية مع l</td></tr>
+<tr><td>كيرشوف 1</td><td class="f">ΣI=0</td><td>عقدة</td></tr>
+<tr><td>كيرشوف 2</td><td class="f">Σemf=ΣIR</td><td>حلقة</td></tr>
+<tr><td>التحويل</td><td class="f">Is=E/ri</td><td>ri: توالي/توازي</td></tr>
+<tr><td>ثيفنين</td><td class="f">I=Vth/(Rth+RL)</td><td>Vth مفتوح، Rth مطفأ</td></tr>
+<tr><td>نورتون</td><td class="f">I=IN·RN/(RN+RL)</td><td>IN قصر، RN=Rth</td></tr>
+<tr><td>الطاقة</td><td class="f">1kWh=3.6×10⁶J</td><td>الفاتورة</td></tr>
+</table>
+<h2>الأخطاء السبعة القاتلة</h2>
+<div class="danger">
+1️⃣ خلط مقسّمي الجهد والتيار (طردية/عكسية) • 2️⃣ عدم توحيد الوحدات قبل الجمع • 3️⃣ إشارات كيرشوف المتلخبطة • 4️⃣ إطفاء المصادر بالمقلوب (جهد=قصر!) • 5️⃣ تراكب القدرات • 6️⃣ كود ألوان معكوس • 7️⃣ Req توازي أكبر من مقاوماته (مستحيل — تحقق فوري!)
+</div>
+</div></details>
+
+<details id="qz"><summary><span class="num">10</span> 🎯 20 سؤالاً متوقعاً — اضغط السؤال يطلع الجواب <span class="chev">▾</span></summary>
+<div class="body">
+<details class="q"><summary>1. عرّف: الإلكترون الحر، التيار، emf، المقاومة النوعية</summary><div class="a">الإلكترون الحر: إلكترون خارجي ضعيف الارتباط ينتقل بين الذرات. التيار: جريان شحنات عبر مقطع موصل بالثانية (I=Q/t). emf: الطاقة الممنوحة لكل كولوم داخل المصدر. المقاومة النوعية ρ: مقاومة موصل طوله 1م ومقطعه 1م² من مادة معينة (Ω·m).</div></details>
+<details class="q"><summary>2. كم عدد الوحدات الأساسية بالـ SI؟ اذكر 4</summary><div class="a">7: كيلوجرام، متر، ثانية، أمبير، كلفن، مول، كانديلا.</div></details>
+<details class="q"><summary>3. قارن الموصلات والعوازل وأشباه الموصلات</summary><div class="a">حسب عدد الإلكترونات الحرة: موصلات كثيرة (نحاس)، عوازل معدومة (بلاستيك)، أشباه موصلات متوسطة (سيليكون).</div></details>
+<details class="q"><summary>4. فرق البوتنشيو ميتر عن الريوستات؟</summary><div class="a">البوتنشيو ميتر: 3 أطراف — مقسم جهد. الريوستات: طرفان — تحكم بالتيار.</div></details>
+<details class="q"><summary>5. مقاومة خطية وغير خطية + أمثلة</summary><div class="a">خطية: V∝I خط مستقيم (مقاومات عادية). غير خطية: منحنى (ثنائيات، ترانزستورات، لمبة تنغستن).</div></details>
+<details class="q"><summary>6. لماذا مقاومة المعدن تزيد مع الحرارة؟</summary><div class="a">الحرارة تهز الذرات فتزداد التصادمات مع الإلكترونات الحرة → يصعب انسيابها → α موجب. (أشباه الموصلات العكس: حرارة تحرر إلكترونات أكثر)</div></details>
+<details class="q"><summary>7. نص قانوني كيرشوف وسبب صحتهما</summary><div class="a">KCL: مجموع الداخل=الخارج عند العقدة (حفظ الشحنة — لا تراكم). KVL: مجموع المصادر=مجموع الهبوطات بالحلقة (حفظ الطاقة).</div></details>
+<details class="q"><summary>8. متى يتصرف مصدر الجهد الحقيقي كمثالي؟</summary><div class="a">عندما تكون مقاومة الحمل كبيرة مقارنة بـ ri — مثال: 100V/10Ω مع حمل 1kΩ يعطي 99V.</div></details>
+<details class="q"><summary>9. حوّل: 4.6µA=??nA • 1600kΩ=??MΩ • 54.6MV=??kV</summary><div class="a">4600 nA • 1.6 MΩ • 54600 kV</div></details>
+<details class="q"><summary>10. مقاومة أشرطتها: بني، أسود، أحمر، ذهبي</summary><div class="a">(1,0) × 10² = 1000 Ω = 1 kΩ ± 5%</div></details>
+<details class="q"><summary>11. احسب 1 kWh بالجول</summary><div class="a">1000W × 3600s = 3.6×10⁶ J</div></details>
+<details class="q"><summary>12. سلك نحاسي l=100m و A=2mm² — كم R؟</summary><div class="a">R = ρl/A = 1.6×10⁻⁸ × 100 / (2×10⁻⁶) = 0.8 Ω</div></details>
+<details class="q"><summary>13. مصباح 100W/220V: التيار والمقاومة؟</summary><div class="a">I = P/V = 0.454 A • R = V²/P = 484 Ω</div></details>
+<details class="q"><summary>14. نفس المصباح: تيار لحظة التشغيل (α=5×10⁻³، T=2000°C، T₀=15°C)</summary><div class="a">R₀ = 484/10.925 = 44.32 Ω → I₀ = 220/44.32 = 4.96 A (أكثر من 10× التيار الطبيعي!)</div></details>
+<details class="q"><summary>15. منزل 10 لمبات 100W + تلفاز 1200W على 220V — التيار؟</summary><div class="a">Pt = 2200W → I = 10 A</div></details>
+<details class="q"><summary>16. توالي: E=12V مع 2Ω و4Ω و6Ω — I و V على 4Ω؟</summary><div class="a">Req=12Ω → I=1A → V₄ = 12×4/12 = 4V</div></details>
+<details class="q"><summary>17. توازي: 3Ω و6Ω توازي — Req؟ ولو I كلي=3A فما تيار 3Ω؟</summary><div class="a">Req = 18/9 = 2Ω • I₃Ω = 3×6/9 = 2A (الأصغر أخذت الأكبر)</div></details>
+<details class="q"><summary>18. كيرشوف: مصدران 16V/20V مع 10/12/20Ω — التيارات؟</summary><div class="a">I₁=0.2A ، I₂=0.5A ، I₃=0.7A (المثال الذهبي بالمحتوى)</div></details>
+<details class="q"><summary>19. ثيفنين: Vth وRth لشبكة، ثم I بحمل 4Ω إذا Vth=16V وRth=2Ω</summary><div class="a">I = 16/(2+4) = 2.67 A</div></details>
+<details class="q"><summary>20. حوّل ثيفنين (Vth=16V، Rth=2Ω) إلى نورتون</summary><div class="a">RN = 2Ω • IN = 16/2 = 8 A توازي</div></details>
+</div></details>
+
+<details id="cards"><summary><span class="num">11</span> ⚡ بطاقات التسمير السريع <span class="chev">▾</span></summary>
+<div class="body">
+<div class="flash"><div class="front">المقاومة الصغيرة بالتوازي تاخذ…</div><div class="back">التيار الأكبر (مقسم التيار عكسية) — I₁ = I·R₂/(R₁+R₂)</div></div>
+<div class="flash"><div class="front">أطفئ مصدر الجهد / مصدر التيار</div><div class="back">الجهد ← قصر بسلك • التيار ← فتح بقطع</div></div>
+<div class="flash"><div class="front">ri موقعها مع…</div><div class="back">مصدر جهد: توالي • مصدر تيار: توازي — نفس القيمة بالتحويل</div></div>
+<div class="flash"><div class="front">1 kWh = ?</div><div class="back">3.6×10⁶ J = 860 kcal</div></div>
+<div class="flash"><div class="front">BBROYGBVGW</div><div class="back">أسود بني أحمر برتقالي أصفر أخضر أزرق بنفسجي رمادي أبيض = 0-9</div></div>
+<div class="flash"><div class="front">Norton = Thevenin + ?</div><div class="back">نفس RN=Rth، وIN = Vth/Rth (تحويل مصدر بسيط)</div></div>
+<div class="flash"><div class="front">القدرة تتزاحم وين؟</div><div class="back">بتتوزع: توالي P=I²R (الأكبر R ياخذ أكبر قدرة) • توازي P=V²/R (الأصغر R ياخذ أكبر قدرة!)</div></div>
+<div class="flash"><div class="front">تحقق فوري لجواب Req</div><div class="back">توالي > أكبر مقاومة • توازي < أصغر مقاومة — لو عكس = غلط مضمون</div></div>
+</div></details>
+</section>
+
+<footer>
+📘 أُعدّ من 88 شريحة + 18 صورة سبورة — الخميس 29/10/2026<br>
+النسخة النصية الكاملة: الملف-الشامل-شرح-كل-شي-الدوائر-الكهربائية.md بالمستودع الدائم
+</footer>
+</div>
+</body>
+</html>
