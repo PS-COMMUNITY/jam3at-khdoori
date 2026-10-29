@@ -1,0 +1,1994 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>دفتر الصور والتدريب — الدوائر الكهربائية</title>
+<style>
+/* ============ الخطوط ============ */
+@font-face { font-family:'Cairo'; src:url('fonts/cairo-var.ttf') format('truetype'); font-weight:200 1000; font-display:swap; }
+@font-face { font-family:'Tajawal'; src:url('fonts/tajawal-400.ttf') format('truetype'); font-weight:400; font-display:swap; }
+@font-face { font-family:'Tajawal'; src:url('fonts/tajawal-500.ttf') format('truetype'); font-weight:500; font-display:swap; }
+@font-face { font-family:'Tajawal'; src:url('fonts/tajawal-700.ttf') format('truetype'); font-weight:700; font-display:swap; }
+@font-face { font-family:'Tajawal'; src:url('fonts/tajawal-800.ttf') format('truetype'); font-weight:800; font-display:swap; }
+
+/* ============ الصفحة ============ */
+@page { size: 794px 1123px; margin: 0; }
+:root{
+  --bg:#FAF6EF; --ink:#29241E; --muted:#7A7266;
+  --amber:#B45309; --amber-dark:#8A3E06; --amber-bg:#FDF2E3; --amber-line:#EFD3A9;
+  --teal:#0E6E64; --teal-bg:#E9F5F2; --teal-line:#BBDCD4;
+  --red:#B03434; --red-bg:#FBECEC;
+  --dark:#1C1917; --card:#FFFFFF; --line:#E8DFD2;
+}
+html,body{ margin:0; padding:0; width:794px; background:var(--bg); color:var(--ink);
+  font-family:'Tajawal','Cairo','DejaVu Sans',sans-serif; font-size:13.5px; line-height:1.8; }
+*{ box-sizing:border-box; }
+p{ margin:0 0 7px; text-align:right; }
+@media screen{
+  html{ height:auto; display:flex; justify-content:center; background:#26221E; }
+  body{ margin:20px auto; box-shadow:0 10px 60px rgba(0,0,0,.5); }
+}
+
+/* ============ الغلاف ============ */
+.cover{ width:794px; height:1123px; background:var(--dark); color:#F5EFE4; break-after:page;
+  overflow:hidden; position:relative; display:flex; flex-direction:column; justify-content:center;
+  padding:80px 74px; }
+.cover .frame{ position:absolute; inset:22px; border:2px solid rgba(180,83,9,.55); }
+.cover .deco-circle{ position:absolute; width:190px; height:190px; border-radius:50%;
+  border:1.5px solid rgba(180,83,9,.35); top:-75px; left:-75px; }
+.cover-badge{ display:inline-block; width:fit-content; background:var(--amber); color:#FFF8EC;
+  font-weight:800; font-size:14px; padding:6px 18px; border-radius:999px; letter-spacing:.5px; margin-bottom:26px; }
+.cover h1{ font-family:'Cairo','Tajawal',sans-serif; font-weight:900; font-size:64px; line-height:1.15;
+  margin:0 0 10px; color:#FDF6EA; }
+.cover h1 .hl{ color:#E8933A; }
+.cover .sub{ font-size:19px; font-weight:500; color:#D8CCB8; line-height:1.9; margin-bottom:34px; max-width:600px; }
+.cover .stats{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:40px; max-width:640px; }
+.cover .stat{ flex:1 1 auto; min-width:120px; max-width:100%; background:rgba(180,83,9,.14);
+  border:1px solid rgba(180,83,9,.45); border-radius:14px; padding:14px 10px; text-align:center; }
+.cover .stat b{ display:block; font-family:'Cairo',sans-serif; font-weight:900; font-size:30px; color:#E8933A; line-height:1.1; }
+.cover .stat span{ font-size:12.5px; color:#C9BBA3; }
+.cover .for{ border-right:4px solid var(--amber); padding-right:16px; margin-bottom:0; }
+.cover .for b{ font-size:17px; color:#F5EFE4; display:block; }
+.cover .for span{ font-size:13px; color:#B7A98F; }
+.cover .edition{ position:absolute; bottom:74px; right:74px; left:74px; display:flex;
+  justify-content:space-between; font-size:12.5px; color:#A79877; border-top:1px solid rgba(180,83,9,.35); padding-top:14px; }
+
+/* ============ جسم المستند ============ */
+.main-content{ background:var(--bg); padding:52px 54px 44px; }
+
+/* ترويسة الصفحة التمهيدية */
+.opening-title{ font-family:'Cairo',sans-serif; font-weight:900; font-size:30px; margin:0 0 6px; color:var(--ink); }
+.opening-kick{ color:var(--amber); font-weight:800; font-size:13px; letter-spacing:1px; margin-bottom:20px; }
+.howto{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:14px; break-inside:avoid; }
+.howto h3{ font-family:'Cairo',sans-serif; font-size:16px; font-weight:800; margin:0 0 8px; color:var(--amber-dark); }
+.howto ol{ margin:0; padding-right:20px; }
+.howto li{ margin-bottom:4px; }
+
+/* فهرس */
+.toc{ margin-top:16px; }
+.toc-row{ display:flex; align-items:baseline; gap:10px; background:var(--card); border:1px solid var(--line);
+  border-radius:10px; padding:8px 14px; margin-bottom:7px; break-inside:avoid; }
+.toc-num{ font-family:'Cairo',sans-serif; font-weight:900; color:#FFF3E2; background:var(--amber);
+  min-width:34px; text-align:center; border-radius:8px; font-size:13px; padding:2px 0; flex-shrink:0; }
+.toc-title{ font-weight:800; font-size:13.5px; }
+.toc-imgs{ color:var(--muted); font-size:11.5px; margin-right:auto; direction:ltr; }
+
+/* ============ الفصول ============ */
+.chapter-header{ break-after:avoid; break-inside:avoid; margin-top:26px; margin-bottom:12px; }
+.ch-band{ display:flex; align-items:center; gap:14px; }
+.ch-medal{ width:54px; height:54px; border-radius:16px; background:var(--dark); color:#E8933A;
+  font-family:'Cairo',sans-serif; font-weight:900; font-size:24px; display:flex; align-items:center;
+  justify-content:center; flex-shrink:0; }
+.ch-titles{ flex:1 1 auto; min-width:0; }
+.ch-kick{ color:var(--amber); font-weight:800; font-size:11.5px; letter-spacing:.6px; }
+.ch-title{ font-family:'Cairo',sans-serif; font-weight:900; font-size:23px; line-height:1.3; }
+.ch-line{ height:4px; background:linear-gradient(to left,var(--amber) 0 90px, var(--amber-line) 90px 100%); border-radius:99px; margin-top:8px; }
+.ch-intro{ color:#4A443B; margin:10px 0 4px; }
+
+/* ============ البطاقات ============ */
+.card{ background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 18px 14px; margin-bottom:14px; }
+.card.compact{ padding:12px 16px 10px; }
+.card-head{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; break-after:avoid; }
+.img-badge{ background:var(--dark); color:#F5E8D3; font-weight:800; font-size:12px;
+  border-radius:8px; padding:3px 12px; flex-shrink:0; }
+.chip{ font-size:10.5px; font-weight:800; border-radius:999px; padding:2px 10px; flex-shrink:0; }
+.chip-solved{ background:var(--teal-bg); color:var(--teal); border:1px solid var(--teal-line); }
+.chip-law{ background:var(--amber-bg); color:var(--amber-dark); border:1px solid var(--amber-line); }
+.chip-board{ background:#F1EDE6; color:#6B6156; border:1px solid var(--line); }
+.chip-exam{ background:var(--red-bg); color:var(--red); border:1px solid #EAC3C3; }
+.card-title{ font-family:'Cairo',sans-serif; font-weight:800; font-size:15.5px; flex:1 1 100%; margin-top:2px; }
+
+.photo-block{ break-inside:avoid; background:#F4EFE7; border:1px solid var(--line); border-radius:10px;
+  padding:10px; margin-bottom:10px; }
+.photo-block img{ display:block; max-width:100%; max-height:330px; height:auto; margin:0 auto;
+  border-radius:6px; object-fit:contain; }
+.compact .photo-block img{ max-height:245px; }
+.photo-cap{ text-align:center; font-size:11px; color:var(--muted); margin-top:6px; }
+
+.sec{ margin-bottom:9px; break-inside:avoid; }
+.sec-label{ display:inline-block; font-weight:800; font-size:11.5px; color:var(--amber-dark);
+  background:var(--amber-bg); border:1px solid var(--amber-line); border-radius:7px; padding:1px 10px; margin-bottom:6px; }
+.sec-label.teal{ color:var(--teal); background:var(--teal-bg); border-color:var(--teal-line); }
+.sec-label.red{ color:var(--red); background:var(--red-bg); border-color:#EAC3C3; }
+
+.lawbox{ background:#FBF7EF; border:1px solid var(--amber-line); border-radius:10px; padding:8px 12px; }
+.law{ direction:ltr; unicode-bidi:isolate; text-align:center; font-weight:700; font-size:14.5px;
+  font-family:'Tajawal','DejaVu Sans',sans-serif; padding:3px 0; border-bottom:1px dashed var(--amber-line); }
+.law:last-child{ border-bottom:none; }
+.law-note{ font-size:11.5px; color:var(--muted); text-align:center; }
+
+.fx{ direction:ltr; unicode-bidi:isolate; display:inline-block; font-weight:700; }
+
+.drill{ border:2px dashed var(--amber); background:var(--amber-bg); border-radius:10px;
+  padding:10px 14px; margin-bottom:9px; break-inside:avoid; }
+.drill b{ color:var(--amber-dark); }
+.answer{ background:var(--teal-bg); border:1px solid var(--teal-line); border-right:5px solid var(--teal);
+  border-radius:10px; padding:10px 14px; margin-bottom:9px; break-inside:avoid; }
+.steps{ padding-right:16px; margin:2px 0; }
+.steps li{ margin-bottom:3px; }
+.final{ display:inline-block; background:var(--teal); color:#EFFBF8; font-weight:800;
+  border-radius:8px; padding:2px 14px; margin-top:4px; }
+.trap{ background:var(--red-bg); border:1px solid #EAC3C3; border-right:5px solid var(--red);
+  border-radius:10px; padding:10px 14px; margin-bottom:10px; break-inside:avoid; }
+.trap b{ color:var(--red); }
+.tip{ background:#F0F7F4; border:1px solid var(--teal-line); border-radius:10px; padding:9px 14px;
+  margin-bottom:10px; break-inside:avoid; font-size:12.5px; }
+.tip b{ color:var(--teal); }
+.mini-note{ font-size:11.5px; color:var(--muted); }
+
+/* ============ ورقة القوانين ============ */
+.gold-wrap{ break-inside:avoid; margin-bottom:12px; }
+.gold-grid{ display:flex; flex-wrap:wrap; gap:10px; }
+.gold-col{ flex:1 1 320px; min-width:300px; max-width:100%; background:var(--card); border:1.5px solid var(--amber-line);
+  border-radius:12px; padding:12px 14px; }
+.gold-col h4{ font-family:'Cairo',sans-serif; font-size:13.5px; font-weight:800; color:var(--amber-dark);
+  margin:0 0 6px; border-bottom:2px solid var(--amber-line); padding-bottom:4px; }
+.gold-col .law{ font-size:13px; }
+
+/* ============ الخاتمة ============ */
+.ending{ width:794px; height:1123px; background:var(--dark); color:#EFE6D6; break-before:page;
+  overflow:hidden; display:flex; flex-direction:column; justify-content:center; padding:70px 60px; position:relative; }
+.ending .big{ font-family:'Cairo',sans-serif; font-weight:900; font-size:40px; line-height:1.5; margin-bottom:24px; }
+.ending .big .hl{ color:#E8933A; }
+.ending p{ color:#C9BBA3; font-size:15px; max-width:560px; }
+.ending .frame{ position:absolute; inset:26px; border:2px solid rgba(180,83,9,.5); }
+.ending .sig{ margin-top:34px; border-right:4px solid var(--amber); padding-right:16px; }
+.ending .sig b{ color:#F5EFE4; font-size:16px; display:block; }
+.ending .sig span{ font-size:13px; color:#A79877; }
+</style>
+</head>
+<body>
+
+<!-- ==================== الغلاف ==================== -->
+<div class="cover">
+  <div class="deco-circle"></div>
+  <div class="deco-circle c2"></div>
+  <div class="frame"></div>
+  <div class="cover-badge">مادة الامتحان حصرياً • 3081071 دوائر كهربائية</div>
+  <h1>الدوائر <span class="hl">الكهربائية</span></h1>
+  <div class="sub">دفتر الصور والتدريب الشامل — كل صورة من صور الدكتور الستين مع شرحها الكامل،
+  وأمثلة تدريب بحلول مفصّلة خطوة بخطوة، من أول المادة لآخر موضوع.</div>
+  <div class="stats">
+    <div class="stat"><b>60</b><span>صورة مُحلَّلة بصرياً</span></div>
+    <div class="stat"><b>19</b><span>فصلاً تدريبياً</span></div>
+    <div class="stat"><b>+20</b><span>تدريباً بحل كامل</span></div>
+    <div class="stat"><b>40</b><span>قانوناً وجدولاً</span></div>
+  </div>
+  <div class="for">
+    <b>إعداد خاص لـ: محمد عادل محمد العقيلي (202610414)</b>
+    <span>جامعة خضوري — السنة الأولى / الفصل الأول • مع تحيات مساعدك الذكي</span>
+  </div>
+  <div class="edition">
+    <span>الإصدار الثاني — تصميم جديد كلياً • نوفمبر 2026</span>
+    <span>نصفي الدوائر: نافذة 1 – 5 / 11 — الله معك</span>
+  </div>
+</div>
+
+<!-- ==================== المحتوى ==================== -->
+<div class="main-content">
+
+  <div class="opening-title">كيف تستخدم هذا الدفتر؟</div>
+  <div class="opening-kick">اقرأ هذا الصندوق دقيقة واحدة قبل ما تبدأ</div>
+  <div class="howto">
+    <h3>الطريقة المجرّبة للتغلب على المادة</h3>
+    <ol>
+      <li><b>كل فصل = موضوع واحد</b> من مواضيع الامتحان، وكل بطاقة فيها <b>صورة حقيقية من الدكتور</b> + شرحها.</li>
+      <li>اقرأ الشرح، ثم <b>غطِّ صندوق الحل</b> وحاول حل التدريب بنفسك على ورقة — هذا أهم سطر في الدفتر كله.</li>
+      <li>افتح الحل وقارن خطوة بخطوة. غلطة واحدة؟ أعد المحاولة بعد ساعة.</li>
+      <li>الفصول المعلَّمة بـ<span class="chip chip-exam">⭐ سؤال امتحاني</span> هي التي الدكتور نفسه لمّح أنها تأتي بالامتحان — <b>ابدأ فيها</b>.</li>
+      <li>قبل النوم في ليلة الامتحان: راجع <b>ورقة القوانين الذهبية</b> و<b>الأخطاء التي تكلّف درجات</b> في آخر الدفتر.</li>
+    </ol>
+  </div>
+  <p class="mini-note">المصادر المعتمدة في هذا الدفتر: صور الدكتور الستون (نطاق الامتحان) — ومُطابقة ومُراجَعة مع المصادر الثانوية كلها: حلول السبورة اليدوية (11 و13 و14 أكتوبر)، شرائح المحاضرات، الدليل الشامل السابق، وملفات المودل (الواجب الأول وتسليماته). كل رقم في أمثلة التدريب تحقّقنا حسابياً منه قبل ما ينزل بالملف.</p>
+
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">ف</div>
+      <div class="ch-titles">
+        <div class="ch-kick">خريطة الدفتر</div>
+        <div class="ch-title">فهرس الفصول التسعة عشر</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+  </div>
+  <div class="toc">
+    <div class="toc-row"><div class="toc-num">1</div><div class="toc-title">بادئات الوحدات — Tera إلى pico</div><div class="toc-imgs">img 01</div></div>
+    <div class="toc-row"><div class="toc-num">2</div><div class="toc-title">القدرة والطاقة وتحويل الوحدات</div><div class="toc-imgs">img 02–04</div></div>
+    <div class="toc-row"><div class="toc-num">3</div><div class="toc-title">قانون أوم والشحنة الكهربائية</div><div class="toc-imgs">img 05–08</div></div>
+    <div class="toc-row"><div class="toc-num">4</div><div class="toc-title">مسألة السخان — تيار البدء <b style="color:var(--red)">⭐</b></div><div class="toc-imgs">img 09,10,12,13</div></div>
+    <div class="toc-row"><div class="toc-num">5</div><div class="toc-title">التوالي وقسمة الجهد</div><div class="toc-imgs">img 11,15,16</div></div>
+    <div class="toc-row"><div class="toc-num">6</div><div class="toc-title">التوازي وقسمة التيار</div><div class="toc-imgs">img 14,17–22</div></div>
+    <div class="toc-row"><div class="toc-num">7</div><div class="toc-title">المسألة الكبرى: مصدران 20V و10V <b style="color:var(--red)">⭐⭐</b></div><div class="toc-imgs">img 23–29,31,33</div></div>
+    <div class="toc-row"><div class="toc-num">8</div><div class="toc-title">المصدران مع المقاومة الداخلية (25V/5V)</div><div class="toc-imgs">img 30,32,34,35</div></div>
+    <div class="toc-row"><div class="toc-num">9</div><div class="toc-title">قوانين كيرشوف وتحليل المسارات</div><div class="toc-imgs">img 43</div></div>
+    <div class="toc-row"><div class="toc-num">10</div><div class="toc-title">نظرية ثيفنين Thevenin</div><div class="toc-imgs">img 41,42,44,45,52,54</div></div>
+    <div class="toc-row"><div class="toc-num">11</div><div class="toc-title">نظرية نورتن Norton</div><div class="toc-imgs">img 47</div></div>
+    <div class="toc-row"><div class="toc-num">12</div><div class="toc-title">نظرية ميلمان Millman</div><div class="toc-imgs">img 51</div></div>
+    <div class="toc-row"><div class="toc-num">13</div><div class="toc-title">نظرية التراكب Superposition</div><div class="toc-imgs">img 36,37,46</div></div>
+    <div class="toc-row"><div class="toc-num">14</div><div class="toc-title">تحليل العقد والعقدة الفائقة</div><div class="toc-imgs">img 55–57</div></div>
+    <div class="toc-row"><div class="toc-num">15</div><div class="toc-title">قاعدة كرامر Cramer</div><div class="toc-imgs">img 58–60</div></div>
+    <div class="toc-row"><div class="toc-num">16</div><div class="toc-title">مصدر تيار + مصدر جهد معاً</div><div class="toc-imgs">img 38–40</div></div>
+    <div class="toc-row"><div class="toc-num">17</div><div class="toc-title">تحويل دلتا ↔ نجمة + جسر ويتستون</div><div class="toc-imgs">img 49,50</div></div>
+    <div class="toc-row"><div class="toc-num">18</div><div class="toc-title">ورقة الامتحان النموذجية والمقاومة الداخلية</div><div class="toc-imgs">img 48,53</div></div>
+    <div class="toc-row"><div class="toc-num">19</div><div class="toc-title">ورقة القوانين الذهبية + أخطاء تكلّف درجات + خطة الليالي</div><div class="toc-imgs">ملحق</div></div>
+  </div>
+
+  <!-- ============ ف1 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">1</div>
+      <div class="ch-titles">
+        <div class="ch-kick">البداية من الصفر</div>
+        <div class="ch-title">بادئات الوحدات — لغة كل مسألة بالامتحان</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">أول صورة بالسبورة ما فيها أي قانون دوائر — فيها <b>البادئات</b>. أي مسألة امتحان ما رح تُحل صح إذا غلطت بتحويل milli وmicro وkilo. اجعل هذه الصورة أول شي تحفظه.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 01</div>
+      <span class="chip chip-law">قوانين وتعريفات</span>
+      <div class="card-title">جدول البادئات على سبورة الدكتور</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_01.jpg" alt="سبورة بادئات الوحدات">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — سبورة «كهربائيات: بادئات النظام الدولي SI»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>البادئة = معامل ضرب نلصقه بالوحدة كي نتعامل مع أرقام صغيرة أو كبيرة بسهولة. الدكتور رتّبها <b>من الأكبر للأصغر</b>: Tera ثم Giga ثم Mega ثم Kilo ثم Hecto ثم Deka، وفي الجهة الثانية للوحدات الأصغر: deci وسنتي و<b>milli (10<sup>-3</sup>)</b> و<b>micro (10<sup>-6</sup>)</b> و<b>nano (10<sup>-9</sup>)</b> و<b>pico (10<sup>-12</sup>)</b>. لاحظ بالصورة إن الدكتور كتب <span class="fx">Gega</span> — الإملاء الصحيح Giga بس المهم القيمة: <span class="fx">10<sup>9</sup></span>.</p>
+      <p>أهم استخدام عملي: التيار يقاس عادة بـmilliamp أو microamp، والمقاومة بكيلو أوم أو ميغا أوم. قبل أي حساب في أي مسألة، <b>حوّل كل الأرقام لوحدتها الأساسية</b> (أمبير، أوم، فولت) — هذه الخطوة اللي بتفصل بين علامة كاملة وعلامة ناقصة.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القوانين المستخرجة</span>
+      <div class="lawbox">
+        <div class="law">Tera = 10<sup>12</sup> &nbsp;•&nbsp; Giga = 10<sup>9</sup> &nbsp;•&nbsp; Mega = 10<sup>6</sup> &nbsp;•&nbsp; Kilo = 10<sup>3</sup></div>
+        <div class="law">milli = 10<sup>-3</sup> &nbsp;•&nbsp; micro = 10<sup>-6</sup> &nbsp;•&nbsp; nano = 10<sup>-9</sup> &nbsp;•&nbsp; pico = 10<sup>-12</sup></div>
+        <div class="law">1 kΩ = 1000 Ω &nbsp;•&nbsp; 1 MΩ = 1000 kΩ &nbsp;•&nbsp; 1 mA = 0.001 A</div>
+      </div>
+    </div>
+    <div class="drill"><b>تدريب 1 —</b> حوّل: (أ) 47 MΩ إلى أوم (ب) 330 µA إلى mA (ج) 2.2 kΩ إلى أوم (د) 0.47 nF إلى pF.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li>(أ) <span class="fx">47 × 10<sup>6</sup> = 47,000,000 Ω</span></li>
+        <li>(ب) <span class="fx">330 µA = 330 × 10<sup>-6</sup> A = 0.33 mA</span></li>
+        <li>(ج) <span class="fx">2.2 × 1000 = 2200 Ω</span></li>
+        <li>(د) <span class="fx">0.47 × 10<sup>-9</sup> F = 470 × 10<sup>-12</sup> F = 470 pF</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ============ ف2 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">2</div>
+      <div class="ch-titles">
+        <div class="ch-kick">الطاقة والقدرة</div>
+        <div class="ch-title">الواط والجول وكيلوواط-ساعة — وكيف تحوّل بينهم</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">ثلاث صور متتالية (02–04) لنفس الصفحة تقريباً: الدكتور يبني من الصفر مفهوم <b>الشغل = قوة × مسافة</b>، وصولاً لاشتقاق <span class="fx">1 kWh = 3600 kJ</span> — وهو تحويل يتكرر بالامتحانات كثيراً.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 02</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <span class="chip chip-law">قوانين</span>
+      <div class="card-title">قانون الواط — الطاقة والقدرة وجمع تيارين بوحدات مختلفة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_02a.jpg" alt="قانون الواط - الجزء الأول">
+      <img src="images-web/img_02b.jpg" alt="قانون الواط - الجزء الثاني" style="margin-top:8px;">
+      <div class="photo-cap">صفحة المذكرات — قانون الواط وتحويلات الوحدات (صورة طويلة قُسّمت لجزأين للوضوح)</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>الصفحة تبدأ بمثال سريع على جمع تيارين بوحدات مختلفة: <span class="fx">50 µA + 10 mA</span>. القاعدة: وحّد الوحدة أولاً. <span class="fx">50 µA = 0.05 mA</span> فالناتج <span class="fx">10.05 mA = 0.01005 A</span>. بعدها يشرح الدكتور «قانون الواط»: الشغل <span class="fx">W = F·d</span> بوحدة الجول، والقدرة = الطاقة ÷ الزمن، فتصير الطاقة <span class="fx">E = P·t</span> وفي الدوائر <span class="fx">E = I²R·t</span>.</p>
+      <p>ثم التحويلات الحرارية والعملية: <span class="fx">1 cal = 4.18 J</span>، ووحدة فاتورة الكهرباء <b>kWh</b> (كيلوواط-ساعة) تساوي <span class="fx">3600 kJ</span> ≈ <span class="fx">860 kcal</span>.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القوانين المستخرجة</span>
+      <div class="lawbox">
+        <div class="law">E = P · t &nbsp;•&nbsp; E = I<sup>2</sup>R · t &nbsp;•&nbsp; P = V · I = I<sup>2</sup>R = V<sup>2</sup>/R</div>
+        <div class="law">W = F · d &nbsp;•&nbsp; J = N·m = W·s &nbsp;•&nbsp; 1 cal = 4.18 J</div>
+        <div class="law">1 kWh = 1000 W × 3600 s = 3600 kJ ≈ 860 kcal</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 03</div>
+      <span class="chip chip-law">اشتقاق</span>
+      <div class="card-title">اشتقاق kWh → kJ خطوة خطوة + دائرة توالي توضيحية</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_03.jpg" alt="اشتقاق كيلوواط ساعة">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — اشتقاق التحويل داخل إطار + دائرة E و R توالياً</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف هذه اللقطة؟</span>
+      <p>الاشتقاق مكتوب بالكامل: <span class="fx">kWh = 1000 W × 3600 s = 1000 J × 3600 = 3600 kJ</span>. احفظ المنطق: «كيلو» تعني ×1000، و«ساعة» تعني 3600 ثانية. الدائرة المرسومة أسفل اليمين (مصدر E مع مقاومة R على التوالي) هي التطبيق: الطاقة المتبددة بالمقاومة = <span class="fx">I²R</span> لكل ثانية.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 04</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">نفس الصفحة من زاوية أدق — عناوين «قدرة، طاقة، وحدات»</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_04.jpg" alt="قدرة وطاقة ووحدات">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — لقطة ثانية لنفس الاشتقاق</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>لا جديد حسابياً — لكنها أوضح لقطة لعناوين الصفحة بالعربي (قدرة / طاقة / وحدات) ولعلاقة <span class="fx">E = I²R</span> بوحدة <span class="fx">W·s</span>. استخدمها للمراجعة السريعة: إذا فهمت هذه الصفحة، فص2 وص3 وص4 انتهت كلها.</p>
+    </div>
+    <div class="drill"><b>تدريب 2 —</b> سخان قدرته 2000W يعمل 3 ساعات: (أ) كم يستهلك من kWh؟ (ب) كم بالكيلوجول؟ + اجمع <span class="fx">25 µA + 5 mA</span>.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li>(أ) <span class="fx">E = P·t = 2000 W × 3 h = 6000 Wh = 6 kWh</span></li>
+        <li>(ب) <span class="fx">6 × 3600 = 21,600 kJ</span></li>
+        <li>الجمع: <span class="fx">25 µA = 0.025 mA</span> ← <span class="fx">5 + 0.025 = 5.025 mA</span></li>
+      </ul>
+      <span class="final">6 kWh = 21600 kJ — والتيار 5.025 mA</span>
+    </div>
+  </div>
+
+  <!-- ============ ف3 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">3</div>
+      <div class="ch-titles">
+        <div class="ch-kick">القانون الأساسي الأول</div>
+        <div class="ch-title">قانون أوم والشحنة الكهربائية</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">أربعة صور (05–08): قانون أوم بصيغه وشرطه، مثلث الحفظ، تعريف الكولوم، علاقة الشحنة بعدد الإلكترونات، وعوامل المقاومة. كلها أساس أي مسألة قادمة.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 05</div>
+      <span class="chip chip-law">قوانين وتعريفات</span>
+      <div class="card-title">قانون أوم V = IR — مثلث الحفظ والقياس بالأميتر والفولتميتر</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_05.jpg" alt="قانون أوم">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — «القوانين الأساسية: قانون أوم» + دائرة القياس</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>القانون: <span class="fx">V = I × R</span> بشرط مكتوب على السبورة بحروف واضحة: <b>«إذا ثابتة درجة الحرارة»</b> — لأن المقاومة تتغير مع الحرارة (سنتكلم عنها في ف4). الرسم البياني V ضد I خط مستقيم ميله <span class="fx">tan α = V/I = R</span>: يعني المقاومة هي ميل الخط.</p>
+      <p>مثلث الحفظ: V فوق، I وR تحت — غطّ المطلوب يظهر لك القانون. ثم تعريف الكولوم: <span class="fx">1C = 1A × 1s</span> (الشحنة التي تمر إذا سار تيار 1 أمبير لثانية واحدة). وفي الرسم أسفل: <b>الأميتر يوصل على التوالي</b> ليpass منه التيار، و<b>الفولتميتر على التوازي</b> عبر طرفي المقاومة — غلطة توصيل = صفر قراءة بالتجربة العملية.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القوانين المستخرجة</span>
+      <div class="lawbox">
+        <div class="law">V = I × R &nbsp;•&nbsp; I = V/R &nbsp;•&nbsp; R = V/I &nbsp;(بثبات درجة الحرارة)</div>
+        <div class="law">1 C = 1 A × 1 s &nbsp;•&nbsp; Q<sub>e</sub> = 1.6 × 10<sup>-19</sup> C</div>
+        <div class="law">tan α = V / I = R</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 06</div>
+      <span class="chip chip-law">نظرية</span>
+      <div class="card-title">علاقة الشحنة بعدد الإلكترونات Q = Q<sub>e</sub> × N</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_06.jpg" alt="علاقة الشحنة">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — «المحاضرة: نظرية (الأوم)» + دائرة ببطارية ومقياس 1A</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>شحنة إلكترون واحد: <span class="fx">Q<sub>e</sub> = 1.6 × 10<sup>-19</sup> C</span>، فالشحنة الكلية = شحنة الإلكترون × عددهم: <span class="fx">Q = Q<sub>e</sub> × N</span> ومنها <span class="fx">N = Q / Q<sub>e</sub></span>. مثال السبورة: تيار 1A لثانية واحدة → <span class="fx">Q = 1 C</span> → عدد الإلكترونات <span class="fx">N = 1 / 1.6×10<sup>-19</sup> = 6.25 × 10<sup>18</sup> إلكترون</span>. رقم ضخم — ولهذا نتعامل بالكولوم مش بعدّ الإلكترونات.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 07</div>
+      <span class="chip chip-law">نظرية</span>
+      <div class="card-title">العوامل المؤثرة في قيمة المقاومة R</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_07a.jpg" alt="العوامل المؤثرة في المقاومة - الجزء الأول">
+      <img src="images-web/img_07b.jpg" alt="العوامل المؤثرة في المقاومة - الجزء الثاني" style="margin-top:8px;">
+      <div class="photo-cap">ورقة بخط اليد — سؤال «ما العوامل المؤثرة في قيمة المقاومة؟» (صورة طويلة مقسومة)</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح</span>
+      <p>الإجابة النموذجية التي يريدها المصحح: <b>(1) نوع مادة الموصل</b> (المقاومية ρ — نحاس أقل من حديد)، <b>(2) طول الموصل</b> — كل ما طال زادت المقاومة، <b>(3) مساحة المقطع</b> — كل ما عرض زادت قلّت، <b>(4) درجة الحرارة</b> — للمعادن كل ما سخنت زادت. تُجمع كلها بقانون:</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القانون</span>
+      <div class="lawbox"><div class="law">R = ρ · L / A</div><div class="law-note">ρ مقاومية المادة (Ω·m) — L الطول — A مساحة المقطع</div></div>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 08</div>
+      <span class="chip chip-board">تنبيه أمانة</span>
+      <div class="card-title">لقطة متداخلة — لا تعتمد عليها</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_08a.jpg" alt="صورة متداخلة - جزء أول">
+      <img src="images-web/img_08b.jpg" alt="صورة متداخلة - جزء ثاني" style="margin-top:8px;">
+      <div class="photo-cap">الصورة الأصلية — خط يد متداخل، قراءتها غير موثوقة بالكامل</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">بصراحة معك</span>
+      <p>هذه الصورة <b>ضبابية ومتداخلة الخط</b> (فحصناها بقراءتين مركّبتين). الواضح فيها فقط: تكرار <span class="fx">Q = Q<sub>e</sub> × N</span> ورسم دائرة فيها R وL وC مع رمز ω (مواضيع AC — خارج نطاق نصف الفصل الأول). نصيحتي: <b>لا تضيّع وقتك عليها</b> — كل محتواها الموثوق مغطى في الصور 05–07.</p>
+    </div>
+    <div class="drill"><b>تدريب 3 —</b> (أ) تيار 2A يمر 5 دقائق: كم الكولوم؟ وكم عدد الإلكترونات؟ (ب) سلك طوله تضاعف ومساحته تضاعفت أيضاً — ماذا يحدث لمقاومته؟</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li>(أ) <span class="fx">Q = I·t = 2 × 300 = 600 C</span> ← <span class="fx">N = 600 / 1.6×10<sup>-19</sup> = 3.75 × 10<sup>21</sup> إلكترون</span></li>
+        <li>(ب) <span class="fx">R = ρL/A</span>: L تضاعفت (×2) وA تضاعفت (×2) ← الناتج <b>لا يتغير</b>: <span class="fx">R' = ρ(2L)/(2A) = R</span></li>
+      </ul>
+      <span class="final">600C — N=3.75×10²¹ — المقاومة ثابتة</span>
+    </div>
+  </div>
+
+  <!-- ============ ف4 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">4</div>
+      <div class="ch-titles">
+        <div class="ch-kick">⭐ الدكتور قال عنها حرفياً: «غالباً ما يكون سؤال امتحاني»</div>
+        <div class="ch-title">مسألة السخان — تيار البدء ومعامل الحرارة (4 صور لنفس الحل)</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">الصور 09 و10 و12 و13 كلها <b>لنفس السبورة من زوايا متتالية</b> — وهذا بحد ذاته رسالة: الدكتور صوّرها أربع مرات لأنها مهمة. المنطق: عند التشغيل يكون الملف بارداً فمقاومته صغيرة، فيسحب تياراً أكبر بكثير من تيار التشغيل الطبيعي.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 09</div>
+      <span class="chip chip-solved">مثال محلول كامل</span>
+      <span class="chip chip-exam">⭐ سؤال امتحاني</span>
+      <div class="card-title">السخان: P=100W، V=220V — أوجد تيار البدء I₀</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_09.jpg" alt="مسألة السخان">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — الحل الكامل بمقياس حرارة 2000° على الملف</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">المعطيات كما كتبها الدكتور</span>
+      <div class="lawbox">
+        <div class="law">P = 100 W &nbsp;•&nbsp; V = 220 V &nbsp;•&nbsp; T₁ = 2000 °C &nbsp;•&nbsp; T₀ = 15 °C &nbsp;•&nbsp; α = 5 × 10<sup>-3</sup> /K</div>
+      </div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل — خطوة خطوة كما على السبورة</span>
+      <ul class="steps">
+        <li><b>الخطوة 1 — مقاومة الملف وهو حامٍ (R₁):</b> من قانون القدرة <span class="fx">P = V²/R</span> نعكسه: <span class="fx">R₁ = V²/P = 220×220/100 = 484 Ω</span>. هذه مقاومة الملف عند 2000°.</li>
+        <li><b>الخطوة 2 — ننزل للمقاومة الباردة (R₀):</b> علاقة التغير الخطي مع الحرارة: <span class="fx">R₁ = R₀(1 + α·ΔT)</span> حيث <span class="fx">ΔT = 2000 − 15 = 1885</span>. نعوّض: <span class="fx">484 = R₀(1 + 5×10<sup>-3</sup> × 1885)</span> ← <span class="fx">484 = R₀ × 10.425</span> ← <span class="fx">R₀ ≈ 46.4 Ω</span> بالحساب الدقيق (والدكتور كتب على السبورة <b>44.32 Ω</b> — راجع التنبيه تحت).</li>
+        <li><b>الخطوة 3 — تيار البدء:</b> <span class="fx">I₀ = V/R₀ = 220 / R₀</span> — على السبورة: <span class="fx">220/44.32 = 4.96 A</span> (وبالقيمة الدقيقة 46.4 يصير ≈ 4.74A).</li>
+      </ul>
+      <p>الفكرة الفيزيائية: تيار البدء أكبر من تيار التشغيل الطبيعي <span class="fx">(I₁ = 100/220 ≈ 0.45A)</span> بعشرات المرات لأن الملف بارد ومقاومته ضعيفة — لهذا تنطفئ الأنوار لحظة تشغيل السخان!</p>
+    </div>
+    <div class="trap"><b>تنبيه أمانة علمية (مهم):</b> القسمة الدقيقة تعطي <span class="fx">R₀ = 484/10.425 ≈ 46.4 Ω</span>، بينما المكتوب على السبورة <b>44.32</b>. في الامتحان: <b>اتبع طريقة الدكتور واكتب خطواتك كاملة</b> — الدرجة على الطريقة. وإذا ظهرت نفس المسألة بنفس الأرقام، استخدم قيم الدكتور كما هي (44.32 ← 4.96A) حتى تتطابق مع مفتاح التصحيح، واذكر قانونك بوضوح.</div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 10</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">نفس الحل بقائمة معطيات ✓ + شكل دائرة التسخين</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_10.jpg" alt="مسألة السخان - لقطة 2">
+      <div class="photo-cap">الصورة الأصلية — معطيات بعلامات ✓ وعنوان «ثانياً: إيجاد التيار عند بداية التشغيل»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>تعرض <b>قائمة المعطيات منظمة بعلامات ✓</b> (P=100W، V=220V، T₁=2000°، α=5×10⁻³/K، T₀=15°) وصيغة بديلة مكافئة: <span class="fx">R₁ = R₀ + α(T₁−T₀)</span>. لاحظ في رسم الدائرة ملف تسخين حلزوني ودرجة حرارة قرب الملف — هذا هو الشكل المتوقع في ورقة السؤال.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 12</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">«ثانياً: دائرة كهربائية بسيطة» — نفس الحل من زاوية ثالثة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_12.jpg" alt="مسألة السخان - لقطة 3">
+      <div class="photo-cap">الصورة الأصلية — النتيجة R₀ = 44.32 داخل مربع</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>لا جديد — لكنها أفضل لقطة تُظهر <b>ترتيب الحل النهائي</b>: أول R₁ من القدرة، ثم R₀ من علاقة الحرارة، ثم I₀ من قانون أوم. احفظ هذا الترتيب: <b>قدرة ← حرارة ← أوم</b>.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 13</div>
+      <span class="chip chip-exam">⭐ الأهم</span>
+      <div class="card-title">اللقطة التي كتب فيها الدكتور: «غالباً ما يكون سؤال امتحاني»</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_13.jpg" alt="مسألة السخان - لقطة الامتحان">
+      <div class="photo-cap">الصورة الأصلية — عبارة الدكتور الحرفية + I₀ = 4.96A مربوطة بعلامة الصح</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">لماذا هذه اللقطة خاصّة؟</span>
+      <p>لأن فيها كلمات الدكتور الحرفية: «غالباً ما يكون سؤال امتحاني» و«احسب التيار الابتدائي للمقاومة» — أي أن نمط السؤال جاهز عندك: يعطونك P وV وT₁ وT₀ وα ويطلبون I₀ أو R₀. مارس التدريب تحت حتى تحلها في أقل من 3 دقائق.</p>
+    </div>
+    <div class="drill"><b>تدريب 4 (مطابق لنمط الدكتور بأرقام جديدة) —</b> سخان P=200W على جهد V=220V، مقاومة ملفه عند T₁=1500°C، ودرجة الحرارة الابتدائية T₀=25°C، ومعامل الحرارة α=4×10⁻³/K. أوجد: R₁ ثم R₀ ثم تيار البدء I₀.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">R₁ = V²/P = 220²/200 = 242 Ω</span></li>
+        <li><span class="fx">ΔT = 1500 − 25 = 1475</span> ← <span class="fx">242 = R₀(1 + 4×10<sup>-3</sup>×1475) = R₀ × 6.9</span> ← <span class="fx">R₀ ≈ 35.07 Ω</span></li>
+        <li><span class="fx">I₀ = 220 / 35.07 ≈ 6.27 A</span></li>
+      </ul>
+      <span class="final">R₁=242Ω — R₀≈35.07Ω — I₀≈6.27A</span>
+    </div>
+  </div>
+
+  <!-- ============ ف5 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">5</div>
+      <div class="ch-titles">
+        <div class="ch-kick">التوصيل الأول</div>
+        <div class="ch-title">التوالي وقسمة الجهد</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">ثلاث صور (11، 15، 16) تُبنى كالتالي: صورة الاشتقاق، ثم المثال العددي نفسه مرة بملاحظات الدكتور ومرة بعنوان «مثال على الدوائر المتوالية». القانون الذهبي: <span class="fx">V₁ = E·R₁/(R₁+R₂)</span>.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 11</div>
+      <span class="chip chip-law">اشتقاق</span>
+      <div class="card-title">اشتقاق المقاومة المكافئة وقانون قسمة الجهد</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_11.jpg" alt="اشتقاق التوالي">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — ثلاث دوائر: الأصل + العامة + المكافئ</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>الدكتور يبدأ بملاحظة حكيمة: «توزيع فرق الجهد على كل مقاومة ومجموعها = المصدر، والتيار ثابت». القوانين تُشتق هكذا: التيار واحد في كل نقطة <span class="fx">I_T = I₁ = I₂ = I₃</span> (طريق واحد فقط)، ثم KVL: <span class="fx">E = V₁+V₂+V₃</span>، نعوّض كل جهد بقانون أوم: <span class="fx">I·R_eq = I·R₁ + I·R₂ + I·R₃</span> نقسم على I: <b><span class="fx">R_eq = R₁+R₂+R₃</span></b>.</p>
+      <p>وقسمة الجهد: جهد أي مقاومة = نسبتها من المجموع × المصدر: <span class="fx">V₁ = [E/(R₁+R₂)]·R₁</span> — أي <b><span class="fx">V₁ = E·R₁/(R₁+R₂)</span></b> (المؤطر بالسبورة). لاحظ: <b>المقاومة الأكبر تأخذ جهداً أكبر</b>.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القوانين المستخرجة</span>
+      <div class="lawbox">
+        <div class="law">I_T = I₁ = I₂ = I₃ &nbsp;•&nbsp; E = V₁ + V₂ + V₃</div>
+        <div class="law">R<sub>eq</sub> = R₁ + R₂ + R₃ &nbsp;•&nbsp; V₁ = E · R₁/(R₁+R₂)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 15</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">مثال قسمة الجهد: E=30V مع R₁=5Ω وR₂=10Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_15.jpg" alt="مثال قسمة الجهد">
+      <div class="photo-cap">الصورة الأصلية — «نذكر القاعدة العامة: دائرة مقسم الجهد»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل كما على السبورة</span>
+      <ul class="steps">
+        <li><span class="fx">R_eq = 5 + 10 = 15 Ω</span></li>
+        <li><span class="fx">I = 30/15 = 2 A</span></li>
+        <li><span class="fx">V₁ = 2×5 = 10 V</span> — أو مباشرة بقسمة الجهد: <span class="fx">V₁ = 30×5/15 = 10 V</span> ✓ (الطريقتان نفس النتيجة)</li>
+        <li><span class="fx">V₂ = 30 − 10 = 20 V</span> (التحقق: 10+20=30 ✓)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 16</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">«مثال على الدوائر المتوالية» — نفس المثال بصياغة الدكتور</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_16.jpg" alt="مثال التوالي">
+      <div class="photo-cap">الصورة الأصلية — «مكونات دائرة كهربائية بسيطة، المصدر = بطارية»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نفس الحسابات (I=2A، V₁=10V، V₂=20V) لكن مع <b>تسمية المكونات</b>: المصدر=بطارية، والمقاومات توالياً، وثلاث دوائر مرسومة (الأصلية، العامة، المكافئة). هذه الصورة مفيدة لسؤال «اشرح/ارسم» بالامتحان النظري.</p>
+    </div>
+    <div class="drill"><b>تدريب 5 —</b> مصدر E=45V متصل توالياً مع R₁=15Ω وR₂=30Ω. أوجد I وV₁ وV₂ بطريقتين (أوم ثم قسمة الجهد مباشرة).</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">R_eq = 15+30 = 45 Ω</span> ← <span class="fx">I = 45/45 = 1 A</span></li>
+        <li><span class="fx">V₁ = 1×15 = 15 V</span> — <span class="fx">V₂ = 1×30 = 30 V</span></li>
+        <li>قسمة الجهد مباشرة: <span class="fx">V₁ = 45×15/45 = 15 V</span> ✓ — <span class="fx">V₂ = 45×30/45 = 30 V</span> ✓</li>
+      </ul>
+      <span class="final">I=1A — V₁=15V — V₂=30V (R₂ الأكبر أخذ ضعف جهد R₁)</span>
+    </div>
+  </div>
+
+  <!-- ============ ف6 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">6</div>
+      <div class="ch-titles">
+        <div class="ch-kick">التوصيل الثاني — 7 صور</div>
+        <div class="ch-title">التوازي وقسمة التيار</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">أكثر موضوع مُصوَّر بعد المسألة الكبرى: 7 صور (14، 17–22). المثال المركزي يتكرر 4 مرات: <b>R₁=3Ω، R₂=6Ω، R₃=2Ω توازياً ← R_eq=1Ω</b>، ثم اشتقاق قسمة التيار بثلاث لقطات.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 14</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">«ثلاث مقاومات على التوازي» — 3Ω و6Ω و2Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_14.jpg" alt="ثلاث مقاومات توازي">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — الحل + الاشتقاق + الدائرة المكافئة</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>في التوازي الجهد موحد على كل الفروع، والتيار يتوزع: <span class="fx">I = I₁+I₂+I₃</span> (KCL). نعوّض <span class="fx">I₁=E/R₁</span>... إلخ ونقسم على E: <b><span class="fx">1/R_eq = 1/R₁ + 1/R₂ + 1/R₃</span></b>. التطبيق: <span class="fx">1/R_eq = 1/3 + 1/6 + 1/2 = (2+1+3)/6 = 6/6 = 1</span> ← <b><span class="fx">R_eq = 1 Ω</span></b>. لاحظ حيلة توحيد المقامات (القواسم 3، 6، 2 → المقام المشترك 6). والنتيجة منطقية: المكافئ (1Ω) <b>أصغر من أصغر مقاومة</b> (2Ω) — قاعدة تحقق ذهبية لأي توازي.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القوانين المستخرجة</span>
+      <div class="lawbox">
+        <div class="law">I = I₁ + I₂ + I₃ &nbsp;•&nbsp; 1/R<sub>eq</sub> = 1/R₁ + 1/R₂ + 1/R₃</div>
+        <div class="law">مقاومتان فقط: R<sub>eq</sub> = R₁·R₂ / (R₁+R₂)</div>
+        <div class="law">n مقاومة متساوية R: R<sub>eq</sub> = R / n</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 17</div>
+      <span class="chip chip-solved">تمرين الدكتور</span>
+      <div class="card-title">«تمرين لغرض التدريب» — نفس المثال مع قانون المقاومتين</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_17.jpg" alt="تمرين التوازي">
+      <div class="photo-cap">الصورة الأصلية — عنوان الدكتور الحرفي «تمرين لغرض التدريب»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نفس النتيجة R_eq=1Ω، وتضيف القانون الخاص بمقاومتين: <span class="fx">R_eq = R₁R₂/(R₁+R₂)</span> (حاصل الضرب على المجموع) — اختصره بذهنك: «الضرب فوق، الجمع تحت». مع رسم توازي مقاومتين ودائرة مكافئة.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 19</div>
+      <span class="chip chip-solved">مثال إضافي</span>
+      <div class="card-title">«قانون أوم للدوائر» + مثال ثلاث مقاومات متساوية 9Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_19.jpg" alt="قانون أوم للدوائر">
+      <div class="photo-cap">الصورة الأصلية — نفس مثال التوازي + مثال التوصيل المختلط بين A و B</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>مثال ثانٍ سريع: ثلاث مقاومات متساوية 9Ω بين نقطتين A و B: <span class="fx">R_eq = 9/3 = 3 Ω</span> (قانون n متساوية). هذه أسهل نقاط الامتحان إذا حفظت القاعدة. الرسم بين A وB مهم لأن نفس الفكرة تدخل المسألة الكبرى (ف7).</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 21</div>
+      <span class="chip chip-board">صفحة المذكرات</span>
+      <div class="card-title">«مثال لمقاومات متوازية (الإجابة)» — نسخة المذكرات FLEX</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_21a.jpg" alt="صفحة المذكرات - جزء أول">
+      <img src="images-web/img_21b.jpg" alt="صفحة المذكرات - جزء ثاني" style="margin-top:8px;">
+      <div class="photo-cap">صفحة دفتر FLEX — «الدوائر الكهربائية — مذكرات - محاضرة» (مقسومة لجزأين)</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نسخة المذكرات لنفس الحل (R_eq=1Ω) بعنوان رسمي «مثال لمقاومات متوازية (الإجابة)» — تؤكد أن هذا المثال <b>مثال مرجعي في المادة</b> وليس خربشة سبورة. الجزء السفلي بخط سريع عن توصيل منزلق (ريوستة) — تفصيل تجربة عملية.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 18</div>
+      <span class="chip chip-law">اشتقاق</span>
+      <div class="card-title">اشتقاق قانون قسمة التيار</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_18.jpg" alt="اشتقاق قسمة التيار">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — اشتقاق I₁ = I·R₂/(R₁+R₂)</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>نبدأ من <span class="fx">I₁ = E/R₁</span> (لأن الجهد على الفرعين موحد). نعوّض <span class="fx">E = I·R_eq</span> حيث <span class="fx">R_eq = R₁R₂/(R₁+R₂)</span>: تصير <span class="fx">I₁ = I·R₁R₂/[(R₁+R₂)·R₁]</span> — تقصر R₁ وتبقى:</p>
+      <p style="text-align:center"><b><span class="fx">I₁ = I · R₂/(R₁+R₂)</span></b></p>
+      <p><b>انتبه للعكس الشهير:</b> تيار أي فرع = التيار الكلي × <b>مقاومة الفرع الآخر</b> على مجموعهما! التيار يمشي من الطريق الأسهل — فرع أقل مقاومة يسرق تياراً أكبر. وللدائرة المركبة (R₁ توالي مع R₂∥R₃): <span class="fx">I₁ = I·(R₂∥R₃)/(R₁ + R₂∥R₃)</span> — حوّل التوازي لقيمة واحدة أولاً ثم قسّم.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القوانين المستخرجة</span>
+      <div class="lawbox">
+        <div class="law">I₁ = I · R₂/(R₁+R₂) &nbsp;•&nbsp; I₂ = I · R₁/(R₁+R₂)</div>
+        <div class="law">دائرة مركبة: I₁ = I · (R₂∥R₃) / (R₁ + R₂∥R₃)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 20</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">صيغ قسمة التيار للدائرة المركبة — بسط الدكتور محاط بدائرة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_20.jpg" alt="صيغ قسمة التيار المركبة">
+      <div class="photo-cap">الصورة الأصلية — البسط (R₂∥R₃) محاط بإطار يدوي للتنبيه عليه</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نفس الصيغ بصياغة أوفى مع <b>حصر الدكتور على البسط</b>: <span class="fx">I₂ = I₁·(R₁∥R₃)/(R₁∥R₃+R₂)</span>. القاعدة العامة: البسط دائماً = <b>مكافئ الفروع الأخرى</b> (كل شي عدا فرعك)، والمقام = البسط + مقاومة فرعك.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 22</div>
+      <span class="chip chip-law">ملخص مذكرة</span>
+      <div class="card-title">«قسمة التيار Current Division» — القاعدتان في صفحة واحدة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_22a.jpg" alt="قسمة التيار - جزء أول">
+      <img src="images-web/img_22b.jpg" alt="قسمة التيار - جزء ثاني" style="margin-top:8px;">
+      <div class="photo-cap">صفحة المذكرات — القاعدة البسيطة (مثال هذا) والمركبة (مركب هذا) كما سمّاها الدكتور</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>صفحة تلخيص نظيفة بالعناوين: القاعدة <b>البسيطة</b> (مقاومتان متوازيتان) والقاعدة <b>المركبة</b> (فرع توالي قبل التوازي). استخدمها كورقة مراجعة سريعة قبل الامتحان مباشرة.</p>
+    </div>
+    <div class="drill"><b>تدريب 6 —</b> (أ) ثلاث مقاومات 4Ω و6Ω و12Ω توازياً: أوجد R_eq. (ب) إذا دخل تيار كلي I_T=6A إلى التوازي (4Ω∥12Ω): كم يمر في كل فرع؟</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li>(أ) <span class="fx">1/R_eq = 1/4 + 1/6 + 1/12 = (3+2+1)/12 = 6/12 = 1/2</span> ← <span class="fx">R_eq = 2 Ω</span></li>
+        <li>(ب) <span class="fx">I(4Ω) = 6 × 12/16 = 4.5 A</span> — <span class="fx">I(12Ω) = 6 × 4/16 = 1.5 A</span></li>
+        <li>تحقق: <span class="fx">4.5+1.5 = 6 A ✓</span> والجهود متساوية: <span class="fx">4.5×4 = 18V = 1.5×12 ✓</span></li>
+      </ul>
+      <span class="final">R_eq=2Ω — I(4Ω)=4.5A — I(12Ω)=1.5A</span>
+    </div>
+  </div>
+
+  <!-- ============ ف7 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">7</div>
+      <div class="ch-titles">
+        <div class="ch-kick">⭐⭐ أهم مسألة بالدفتر كله — 10 صور من الدكتور</div>
+        <div class="ch-title">المسألة الكبرى: دائرة مصدرين 20V و 10V — التيار + V<sub>xy</sub> + القدرة</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">صور 23–29 و31 و33 كلها لنفس الدائرة (مصدران متعاكسان وشبكة مقاومات): يعطيك الدكتور السؤال بأجزائه الثلاثة: <b>① أوجد التيار ② أوجد V<sub>xy</sub> ③ أوجد القدرة المتبددة</b> — ويحلها عبر عشر لقطات. هذه هي المسألة التي يجب أن تحلها بنظرك المغلق.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 23</div>
+      <span class="chip chip-law">رسم + سؤال</span>
+      <div class="card-title">رسم الدائرة الكاملة والأسئلة الثلاثة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_23.jpg" alt="رسم الدائرة الكبرى">
+      <div class="photo-cap">الصورة الأصلية — الدائرة: 20V يسار، 10V أعلى معاكس، مقاومات 7، 2، 3، 8، 5، 6، 1 Ω</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">فهم الدائرة (اقرأ بتركيز)</span>
+      <ul class="steps">
+        <li>مصدر <b>20V</b> يسار (له مقاومة داخلية <b>1Ω</b>)، ومصدر <b>10V</b> أعلى <b>بقطبية معاكسة</b> (لهذا نطرحه).</li>
+        <li>بين عقدة X وy: مقاومة <b>7Ω</b>. مع المصدر 10V فرع فيه <b>2Ω</b>.</li>
+        <li>ثم تفرع: <b>8Ω</b> موازياً مع (<b>3Ω + 5Ω</b> توالياً = 8Ω).</li>
+        <li>أسفل: <b>6Ω</b> بين A وB، وأميتر A في الفرع السفلي.</li>
+        <li>الأسئلة: ① إيجاد التيار ② V<sub>xy</sub> ③ القدرة المتبددة.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 24</div>
+      <span class="chip chip-solved">الجزء ①</span>
+      <div class="card-title">إيجاد التيار: الانكماش ثم KVL ثم قسمة التيار</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_24.jpg" alt="إيجاد التيار">
+      <div class="photo-cap">الصورة الأصلية — «(١) إيجاد التيار» مع ملاحظة الدكتور «كويس دكترة شيرين»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل الكامل — خطوة خطوة</span>
+      <ul class="steps">
+        <li><b>انكماش (تبسيط):</b> <span class="fx">8 ∥ 8 = 4 Ω</span> ← <span class="fx">R_eq = 4 + 9 + 6 + 1 = 20 Ω</span> (الرقم 9 = مجموع 7+2).</li>
+        <li><b>التيار الكلي بقانون كيرشوف:</b> <span class="fx">I_T = ΣE/R_eq = (20 − 10)/20 = 0.5 A</span> — نطرح لأن المصدرين متعاكسان.</li>
+        <li><b>قسمة التيار عند التفرع:</b> <span class="fx">I₁ = I_T × 8/16 = 0.5 × ½ = 0.25 A</span> في كل فرع من الفرعين (8Ω و 8Ω) — والفرعان متساويان فالقسمة نصفين.</li>
+      </ul>
+      <span class="final">R_eq = 20Ω — I_T = 0.5A — I₁ = I₂ = 0.25A</span>
+    </div>
+    <div class="trap"><b>تنبيه مهم:</b> على السبورة (الصورتان 23 و27) مكتوب مرة <span class="fx">R_eq = 26Ω</span> — هذا <b>خطأ كتابي</b>؛ الحساب الصحيح 4+9+6+1 = <b>20Ω</b> وهو المستخدم فعلياً في كل الخطوات اللاحقة (0.5 = 10/20). لا يرتبكك ذلك في الامتحان.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 25</div>
+      <span class="chip chip-solved">الجزء ②</span>
+      <div class="card-title">V<sub>xy</sub> بطريقتين — التحقق المزدوج الذي يحبّه المصحح</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_25.jpg" alt="حساب Vxy">
+      <div class="photo-cap">الصورة الأصلية — طريقة المسار المباشر وطريقة KVL للحلقة الكبرى</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الطريقة 1 — المسار المباشر من x إلى y</span>
+      <p>امشِ من x إلى y واجمع: هبوط على (7+2)=9Ω بتيار 0.5A، ثم صعود على المصدر 10V: <span class="fx">V_xy = 0.5×9 + 10 = 4.5 + 10 = 14.5 V</span></p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الطريقة 2 — KVL من المصدر 20V</span>
+      <p>ابدأ من 20V واطرح الهبوطات: <span class="fx">20 − 0.5×7 − 0.25×8 = 20 − 3.5 − 2 = 14.5 V</span> ✓ تطابق الطريقتين = الحل صحيح قطعاً.</p>
+      <span class="final">V<sub>xy</sub> = 14.5 V بطريقتين</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 28</div>
+      <span class="chip chip-solved">الجزء ③</span>
+      <span class="chip chip-law">قوانين</span>
+      <div class="card-title">القدرة المتبددة P = I²R + قواعد الإشارة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_28.jpg" alt="القدرة المتبددة">
+      <div class="photo-cap">الصورة الأصلية — «القدرة المستنزفة» + إطاران I²·R و V×I</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح والحل</span>
+      <p>قانونا القدرة المعتمدان على السبورة: <span class="fx">P = I²·R</span> و <span class="fx">P = V×I</span>. المطلوب القدرة المستنزفة في مقطع XAB — أي مقاومة 7Ω بتيارها الكلي 0.5A: <span class="fx">P_XAB = (0.5)² × 7 = 0.25 × 7 = 1.75 W</span>.</p>
+      <p>وتضيف اللقطة قواعد الإشارة التي تسأل عنها الدكتور نظرياً: عكس اتجاه التيار ← <b>تُعكس إشارة القدرة</b> (مصدر يشحن بدل ما يبدّد)، وعكس قطبية الجهد ← عكس الإشارة أيضاً. اذكرها بسطر واحد في حلّك تكسب نقطة التميّز.</p>
+      <span class="final">P_XAB = 1.75 W</span>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 26</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">الملخص الشامل — كل الحل مرسوم على الدائرة نفسها</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_26.jpg" alt="ملخص المسألة الكبرى">
+      <div class="photo-cap">الصورة الأصلية — أفضل لقطة للدائرة بكامل تسمياتها</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>هذه <b>أوضح لقطة للدائرة</b>: كل مقاومة وقيمتها، والتيار 0.5A عبر 7Ω و0.25A عبر 8Ω، مع الحسابات الجانبية (14.5V مؤطرة). اعتمدها كـ«خريطة» ترجع لها أثناء الحفظ.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 27</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">«قسمة التيار + الانكماش» — وهنا ظهر خطأ الـ26Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_27.jpg" alt="قسمة التيار والانكماش">
+      <div class="photo-cap">الصورة الأصلية — تبسيط الدائرة بأرقام 1، 2، 3، 4 بالترتيب</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>تعرض خطوات «الانكماش» مرقمة (توازي ثم جمع توالي) وهي نفسها في تدريبنا، ويظهر فيها خطأ الكتابة 26Ω بينما الحساب الفعلي استمر بـ20Ω. خذ منها منهجية الترقيم: <b>1) التوازي 2) الجمع 3) KVL 4) القسمة</b>.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 29</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">نسخة المراجعة + مصادر الدكتور المعلنة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_29.jpg" alt="نسخة المراجعة">
+      <div class="photo-cap">الصورة الأصلية — فولتميتر V و «عند إغلاق المفتاح» و «الدائرة المكافئة»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نفس النتائج (0.5A، 14.5V) مع فولتميتر و«تجربة ربط كيرشوف» و«بوربوينت» و«كتاب أسئلة» — <b>مصادر الدكتور المعلنة</b>. ملاحظة «عند إغلاق المفتاح» تذكّرك أن بعض الأسئلة تضيف مفتاح S: أغلقه أي واصل الحساب عادي، وافتحه أي افصل الفرع.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 31</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">تأكيد V<sub>xy</sub>=14.5V من زاوية ثانية</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_31.jpg" alt="تأكيد Vxy">
+      <div class="photo-cap">الصورة الأصلية — «لحساب فرق الجهد نستخدم قانون...» مع صندوق XAB</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>إعادة لنفس حساب V<sub>xy</sub> بالطريقتين مع عبارة «عقدة تقسيم التيارات» — تسمية العقدة التي يتفرع عندها التيار. إن سُئلت عن تعريف العقدة: <b>نقطة التقاء ثلاثة فروع أو أكثر</b>.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 33</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">القدرة I²R مرة أخرى مع تفاصيل الدائرة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_33.jpg" alt="القدرة I2R">
+      <div class="photo-cap">الصورة الأصلية — P=(0.5)²×7 مع مقاومة 1Ω محاطة بدائرة</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>تكرار حساب القدرة 1.75W مع إبراز <b>المقاومة الداخلية 1Ω</b> (المحاطة بدائرة) — وهي جزء من R_eq إجمالاً. تكرار الدكتور لنفس الخطوة = تلميح مزدوج أنها بند امتحاني مستقل.</p>
+    </div>
+    <div class="drill"><b>تدريب 7 (نفس الدائرة، المصدر الأيسر صار 40V) —</b> أوجد R_eq ثم I_T ثم I₁ ثم V<sub>xy</sub> ثم P(7Ω).</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">R_eq = (8∥8) + 9 + 6 + 1 = 4 + 16 = 20 Ω</span> (كما هي)</li>
+        <li><span class="fx">I_T = (40 − 10)/20 = 1.5 A</span></li>
+        <li><span class="fx">I₁ = 1.5 × 8/16 = 0.75 A</span> لكل فرع توازي</li>
+        <li><span class="fx">V_xy = 1.5×9 + 10 = 23.5 V</span> — تحقق: <span class="fx">40 − 1.5×7 − 0.75×8 = 40 − 10.5 − 6 = 23.5 ✓</span></li>
+        <li><span class="fx">P(7Ω) = (1.5)² × 7 = 15.75 W</span></li>
+      </ul>
+      <span class="final">I_T=1.5A — I₁=0.75A — V<sub>xy</sub>=23.5V — P=15.75W</span>
+    </div>
+  </div>
+
+  <!-- ============ ف8 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">8</div>
+      <div class="ch-titles">
+        <div class="ch-kick">عائلة مسألة ثانية كاملة</div>
+        <div class="ch-title">المصدران 25V و 5V مع المقاومة الداخلية 1.5Ω</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">أربع صور (30، 32، 34، 35) لدائرة فيها <b>بطارية تُشحن</b> — وهنا تظهر قراءة الفولتميتر على شحن/تفريغ، وقراءة الأميتر بقسمة التيار. أفكار تجربة عملية محبوبة بالامتحانات.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 30</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">بداية المسألة: R_eq = 10Ω و I_T = 2A</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_30.jpg" alt="مسألة المصدرين 25V و5V">
+      <div class="photo-cap">الصورة الأصلية — 25V و5V، مقاومات 6، 2، 3، 9، 18، ومقاومة داخلية 1.5Ω×2</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل كما على السبورة</span>
+      <ul class="steps">
+        <li>توازي أعلى اليمين: <span class="fx">9 × 18/27 = 6 Ω</span></li>
+        <li>جمع المسار: <span class="fx">R_eq = 6 + 1.5 + 1.5 + ... = 10 Ω</span> (كما كتبها الدكتور — الرقم النهائي المعتمد)</li>
+        <li><span class="fx">I_T = ΣE/R_eq = (25 − 5)/10 = 2 A</span> — المصدران متعاكسان فنطرح.</li>
+      </ul>
+      <span class="final">R_eq = 10Ω — I_T = 2A</span>
+    </div>
+    <div class="trap"><b>تنبيه:</b> في إحدى اللقطات يظهر مقام 16 أو R_eq بغير الاتساق — <b>القيم المعتمدة في كل الحلول اللاحقة هي 10Ω و2A</b>، اعتمدهما.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 34</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <span class="chip chip-exam">⭐ فكرة الشحن والتفريغ</span>
+      <div class="card-title">«إيجاد قراءة الفولتميتر» — V = V_B + I·r</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_34.jpg" alt="قراءة الفولتميتر">
+      <div class="photo-cap">الصورة الأصلية — V = 5 + 2×1.5 = 8V وحالات الشحن/التفريغ</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل — قاعدة الشحن والتفريغ</span>
+      <p>البطارية 5V بمقاومة داخلية 1.5Ω والتيار يدخلها <b>بعكس قطبيتها</b> (تُشحن): جدها الطرفي = قوتها الدافعة + هبوط المقاومة الداخلية: <span class="fx">V = V_B + I·r = 5 + 2×1.5 = 8 V</span>.</p>
+      <p>القاعدة النظرية المكتوبة بالسبورة: عند <b>التفريغ</b> (تغذي الدائرة): <span class="fx">V_B &gt; V</span> و <span class="fx">V_B = V + I·r</span>. وعند <b>الشحن</b>: <span class="fx">V &gt; V_B</span> و <span class="fx">V = V_B + I·r</span>. وتضيف الدكتورة وحدات القدرة: واط، كيلوواط، <b>حصان</b> (1hp ≈ 746W).</p>
+      <span class="final">قراءة الفولتميتر = 8V (حالة شحن)</span>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 35</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">قراءة الأميتر بقسمة التيار المركب</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_35.jpg" alt="قراءة الأميتر">
+      <div class="photo-cap">الصورة الأصلية — (6×2)/8 = 1.5 ثم I(A) = 2×3/4.5</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة</span>
+      <ul class="steps">
+        <li>توازي 6Ω مع 2Ω: <span class="fx">R = (6×2)/8 = 1.5 Ω</span></li>
+        <li>أميتر على فرع 3Ω: قسّم التيار الكلي 2A على الفرعين: <span class="fx">I(A) = 2 × 3/(1.5+3) = 6/4.5 ≈ 1.33 A</span> — لاحظ البسط مقاومة <b>الفرع الآخر</b> (1.5Ω) وقسمنا على المجموع.</li>
+      </ul>
+      <span class="final">I(A) = 6/4.5 ≈ 1.33A</span>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 32</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">نفس المسألة بالدائرة المكافئة المصغرة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_32.jpg" alt="الدائرة المكافئة المصغرة">
+      <div class="photo-cap">الصورة الأصلية — رسم مصغر: 25V مع 1.5 و6 و1 و5V و1.5 توالياً</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>تعرض <b>الدائرة بعد الانكماش</b>: مصدر 25V، مقاومتان داخليتان 1.5Ω، المكافئ 6Ω، وبقية المسار حتى 5V. الرسم المصغّر هذا هو ما تحفظه لتحل المسألة بسرعة في الامتحان.</p>
+    </div>
+    <div class="drill"><b>تدريب 8 —</b> مصدر 36V يشحن بطارية 6V بمقاومة داخلية r=1Ω لكل منهما، والتوازي الخارجي 6Ω∥12Ω. أوجد R_eq و I_T وقراءة فولتميتر على البطارية.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">6∥12 = 72/18 = 4 Ω</span> ← <span class="fx">R_eq = 4 + 1 + 1 = 6 Ω</span></li>
+        <li><span class="fx">I_T = (36 − 6)/6 = 5 A</span></li>
+        <li>البطارية تُشحن: <span class="fx">V = V_B + I·r = 6 + 5×1 = 11 V</span></li>
+      </ul>
+      <span class="final">R_eq=6Ω — I_T=5A — الفولتميتر=11V</span>
+    </div>
+  </div>
+
+  <!-- ============ ف9 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">9</div>
+      <div class="ch-titles">
+        <div class="ch-kick">القانونان الأول والثاني — أساس كل تحليل</div>
+        <div class="ch-title">قوانين كيرشوف KVL و KCL وتحليل المسارات</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">صورة 43 تُجهّز منظومة ثلاث معادلات من دائرة 28V و10V — وهي نفس منظومة المسألة التي يعود إليها الدكتور في ثيفنين والتراكب. احفظ طريقة بناء المعادلات الثلاث: <b>KVL لحلقتين + KCL لعقدة</b>.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 43</div>
+      <span class="chip chip-law">منظومة معادلات</span>
+      <div class="card-title">بناء المعادلات الثلاث لدائرة 28V/10V (6Ω، 3Ω، 2Ω)</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_43.jpg" alt="قوانين كيرشوف">
+      <div class="photo-cap">الصورة الأصلية — ثلاثة فروع: 28V+6Ω، 2Ω مشتركة، 10V+3Ω + تعليمات الآلة Mode→5→2</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>الدائرة: ثلاثة فروع متوازية بين عقدتين — فرع أيسر فيه <b>28V مع 6Ω</b>، فرع أوسط <b>2Ω</b> مشترك، فرع أيمن <b>10V مع 3Ω</b>. نسمّي تيار الحلقة اليسرى I₁ واليمنى I₂ والتيار المار في 2Ω هو I₃ = I₁+I₂.</p>
+      <ul class="steps">
+        <li><b>الحلقة I (KVL):</b> <span class="fx">−28 + 6I₁ + 2I₃ = 0</span> ← <b><span class="fx">6I₁ + 2I₃ = 28</span></b></li>
+        <li><b>الحلقة II (KVL):</b> <span class="fx">−10 + 3I₂ + 2I₃ = 0</span> ← <b><span class="fx">3I₂ + 2I₃ = 10</span></b></li>
+        <li><b>العقدة (KCL):</b> <span class="fx">I₁ + I₂ = I₃</span> ← <b><span class="fx">I₁ + I₂ − I₃ = 0</span></b></li>
+        <li>الآلة الحاسبة (كما كتب الدكتور): <b>Mode → 5 → 2</b> لحل منظومة 3 معادلات.</li>
+      </ul>
+      <p>حل المنظومة فعلياً يعطي: <span class="fx">I₁ ≈ 3.33A</span> و<span class="fx">I₂ ≈ 0.67A</span> و<span class="fx">I₃ = 4A</span> — لاحظ أن تيار 2Ω يساوي 4A، وهو نفس ما يعطيه ثيفنين نظرياً (16/4=4A — انظر ف10). <b>طريقتان تؤكدان بعضهما</b> — هذا بالضبط ما يعجب المصحح.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">القوانين</span>
+      <div class="lawbox">
+        <div class="law">KCL: Σ I (داخلة) = Σ I (خارجة) عند أي عقدة</div>
+        <div class="law">KVL: Σ V = 0 حول أي حلقة مغلقة</div>
+      </div>
+    </div>
+    <div class="drill"><b>تدريب 9 —</b> نفس البنية: مصدر 12V مع 3Ω (يسار)، 3Ω مشتركة (وسط)، مصدر 6V مع 3Ω (يمين). ابنِ المعادلات الثلاث وحلّها.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">3I₁ + 3I₃ = 12</span> — <span class="fx">3I₂ + 3I₃ = 6</span> — <span class="fx">I₃ = I₁ + I₂</span></li>
+        <li>بالتعويض: <span class="fx">2I₁ + I₂ = 4</span> و <span class="fx">I₁ + 2I₂ = 2</span> ← <span class="fx">I₁ = 2A، I₂ = 0A، I₃ = 2A</span></li>
+        <li>تحقق: <span class="fx">3×2 + 3×2 = 12 ✓</span> و <span class="fx">0 + 3×2 = 6 ✓</span> — التيار I₂=0 صفر! (المصدران متوازنان جهدياً على 3Ω)</li>
+      </ul>
+      <span class="final">I₁=2A — I₂=0A — I₃=2A</span>
+    </div>
+  </div>
+
+  <!-- ============ ف10 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">10</div>
+      <div class="ch-titles">
+        <div class="ch-kick">أشهر نظرية بالامتحانات</div>
+        <div class="ch-title">نظرية ثيفنين Thevenin — 6 صور</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">الفكرة: أي دائرة معقدة، من نقطتي الحمل، تعادل <b>مصدر V<sub>th</sub> توالياً مع R<sub>th</sub></b>. ثلاث خطوات مقدسة: أزل الحمل واحسب V<sub>th</sub> ← قصر المصادر واحسب R<sub>th</sub> ← <span class="fx">I = V<sub>th</sub>/(R<sub>th</sub>+R<sub>L</sub>)</span>.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 52</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">مثال 40V/20V: R<sub>th</sub> ثم I<sub>o</sub> ثم V<sub>th</sub></div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_52a.jpg" alt="ثيفنين - الجزء الأول">
+      <img src="images-web/img_52b.jpg" alt="ثيفنين - الجزء الثاني" style="margin-top:8px;">
+      <div class="photo-cap">صفحة حل طالب — «دوائر كهربائية ١ — محاضرات القوانين الأساسية» (مقسومة)</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة</span>
+      <ul class="steps">
+        <li><b>R<sub>th</sub>:</b> نزيل الحمل 30Ω ونقصر المصادر: المسار يبقى <span class="fx">10 + 20 = 30 Ω</span></li>
+        <li><b>I<sub>o</sub>:</b> تيار الحلقة بعد إزالة الحمل: <span class="fx">I<sub>o</sub> = (40−20)/(30+10) = 20/40 = 0.5 A</span></li>
+        <li><b>V<sub>th</sub> بـKVL:</b> <span class="fx">V<sub>th</sub> − 40 + I<sub>o</sub>×10 + I<sub>o</sub>×20 = 0</span> ← <span class="fx">V<sub>th</sub> = 40 − 5 − 10 = 25 V</span></li>
+      </ul>
+      <span class="final">R_th=30Ω — I_o=0.5A — V_th=25V</span>
+    </div>
+    <div class="trap"><b>تنبيه من المذكرة نفسها:</b> «لا نستطيع تطبيق قسمة الجهد على R<sub>th</sub>» — لأن R<sub>th</sub> تُحسب بدائرة مُقسّرة المصادر وليس فيها جهد يعقّم عليها. V<sub>th</sub> تُحسب بفتح الدائرة دائماً.</div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 54</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">إكمال المثال: تيار الحمل + التحقق بطريقة العقد</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_54.jpg" alt="ثيفنين + تحقق بالعقد">
+      <div class="photo-cap">الصورة الأصلية — R_th=(30×10)/40=7.5Ω و I₃=0.66A مع تحقق عقدة g</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل والتحقق</span>
+      <ul class="steps">
+        <li>عند طرفي الحمل (بعد تبسيط 10+20=30Ω موازية 10Ω): <span class="fx">R<sub>th</sub> = (30×10)/40 = 7.5 Ω</span></li>
+        <li>تيار الحمل 30Ω: <span class="fx">I₃ = V<sub>th</sub>/(R<sub>th</sub>+30) = 25/37.5 = 0.66 A</span> — وجهد الحمل <span class="fx">V = 0.66×30 ≈ 20 V</span> (جهد عقدة وليس مصدراً فعلياً).</li>
+        <li><b>التحقق بالعقد:</b> <span class="fx">I₂ = (0−20)/10 = −2A</span> و <span class="fx">I₁ = (40−20)/30 = 0.66A</span> — عقدة g: <span class="fx">40 − 0.66×10 ≈ 33.3 → 33.3 − 13.3 = 20V ✓</span> «استطعنا إثبات ذلك» كما كُتب على الورقة.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 44</div>
+      <span class="chip chip-solved">سؤال امتحاني</span>
+      <span class="chip chip-exam">⭐</span>
+      <div class="card-title">ثيفنين لإيجاد تيار مقاومة 2Ω (دائرة 28V/10V)</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_44.jpg" alt="ثيفنين لمقاومة 2Ω">
+      <div class="photo-cap">الصورة الأصلية — «اجد التيار المار في 2 أوم» + دائرة الثيفنين النهائية</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة</span>
+      <ul class="steps">
+        <li><b>أزل 2Ω</b> (الحمل) — تبقى حلقة واحدة: <span class="fx">I = (28−10)/(6+3) = 18/9 = 2 A</span></li>
+        <li><b>V<sub>th</sub> بـKVL:</b> <span class="fx">V<sub>th</sub> − 28 + 6×2 = 0</span> ← <span class="fx">V<sub>th</sub> = 28 − 12 = 16 V</span></li>
+        <li><b>R<sub>th</sub>:</b> نقصر المصدرين: <span class="fx">R<sub>th</sub> = 6∥3 = 18/9 = 2 Ω</span></li>
+        <li><b>الدائرة المكافئة:</b> 16V توالياً مع 2Ω ثم الحمل 2Ω: نظرياً <span class="fx">I = 16/4 = 4A</span> — والسبورة كتبت <b>3.93A</b> (نتيجة التراكب بقيم مقرّبة — انظر ف13، الصورة 46 حيث 2.28+1.65=3.93A).</li>
+      </ul>
+      <span class="final">V_th=16V — R_th=2Ω — I(2Ω)≈4A (السبورة: 3.93A بالتقريب)</span>
+    </div>
+    <div class="tip"><b>نصيحتي:</b> في الامتحان اكتب 16/(2+2) = 4A إن كانت قيمك كما مرسومة. الدكتور نفسه عند حساب التراكب بالتقريبات وصل 3.93 — لو ظهر السؤال، أظهر خطواتك كاملة ولا تقرب بكثرة، التقريب يضيع الدقة.</div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 45</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">«السؤال رقم 2 — باستخدام نظرية ثيفنين»</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_45.jpg" alt="ثيفنين سؤال 2">
+      <div class="photo-cap">الصورة الأصلية — نفس الحل بعنوان السؤال الثاني</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نفس النتائج (I=2A، V<sub>th</sub>=16V، الإجابة 3.93A) مع معادلة الحلقة الأولى <span class="fx">6Ĩ₁ + 2Ĩ₃ = 28</span> — تؤكد أن ثيفنين هنا امتداد لمنظومة كيرشوف نفسها (ف9).</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 41</div>
+      <span class="chip chip-solved">مثال الدكتور الثاني</span>
+      <div class="card-title">«مثال ثاني» — V<sub>th</sub>=7V و R<sub>th</sub>≈53Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_41.jpg" alt="ثيفنين مثال ثاني">
+      <div class="photo-cap">الصورة الأصلية — Vth داخل مربع و Rth = 20∥80 + 50∥56</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح</span>
+      <ul class="steps">
+        <li>تيارات الفروع عند فتح الحمل: <span class="fx">I₁ = 20/200 = 0.1A</span> و <span class="fx">I₂ = 10/100 = 0.1A</span></li>
+        <li>KVL حول الحلقة: <span class="fx">V<sub>th</sub> + 15 − 8 = 6</span> ← <span class="fx">V<sub>th</sub> = −7</span> والمعتمد <b>7V</b> بالإشارة المناسبة للقطبية.</li>
+        <li>قصر المصادر: <span class="fx">R<sub>th</sub> = 20∥80 + 50∥56 ≈ 16 + 26.5 = 53 Ω</span></li>
+        <li>مع حمل 100Ω: <span class="fx">I = 7/(53+100) = 7/153 ≈ 0.046 A ≈ 46mA</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 42</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">«سؤال ثاني» — نفس المثال بحمل 100Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_42.jpg" alt="ثيفنين سؤال ثاني">
+      <div class="photo-cap">الصورة الأصلية — Rth = 20∥80 + 50∥156 و I = 7/153</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نفس المثال بصياغة «سؤال ثاني» مع حمل 100Ω. <b>ملاحظة وضوح:</b> أرقام هذه اللقطة بخط يد يصعب التمييز فيه أحياناً (5 أم 50؟ 56 أم 156؟) — <b>الطريقة الثلاثية</b> (فتح ← قصر ← قسمة) هي المطلوب منك إتقانها، وهي واضحة 100%.</p>
+    </div>
+    <div class="drill"><b>تدريب 10 —</b> مصدر 18V توالياً مع 6Ω ثم عقدة، ومن العقدة 12Ω للأرضي، والحمل 6Ω موصول بين العقدة والأرضي. أوجد V<sub>th</sub> وR<sub>th</sub> وتيار الحمل وجهد طرفيه.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li>أزل الحمل: جهد العقدة = قسمة جهد: <span class="fx">V<sub>th</sub> = 18 × 12/18 = 12 V</span></li>
+        <li>قصر المصدر: <span class="fx">R<sub>th</sub> = 6∥12 = 72/18 = 4 Ω</span></li>
+        <li><span class="fx">I = 12/(4+6) = 1.2 A</span> ← <span class="fx">V<sub>L</sub> = 1.2×6 = 7.2 V</span></li>
+      </ul>
+      <span class="final">V_th=12V — R_th=4Ω — I=1.2A — V_L=7.2V</span>
+    </div>
+  </div>
+
+  <!-- ============ ف11 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">11</div>
+      <div class="ch-titles">
+        <div class="ch-kick">توأم ثيفنين</div>
+        <div class="ch-title">نظرية نورتن Norton</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">صورة واحدة (47) لكنها كاملة: نورتن = <b>مصدر تيار I<sub>N</sub> توازياً مع R<sub>N</sub></b>. العلاقة مع ثيفنين: <span class="fx">R<sub>N</sub> = R<sub>th</sub></span> و <span class="fx">I<sub>N</sub> = V<sub>th</sub>/R<sub>N</sub></span>.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 47</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <span class="chip chip-law">نظرية</span>
+      <div class="card-title">نورتن: مصدر تيار 1A مع 20Ω و80Ω و60Ω وحمل 50Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_47.jpg" alt="نظرية نورتن">
+      <div class="photo-cap">الصورة الأصلية من الدكتور — I_N = 0.2A و R_N = 50Ω</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة</span>
+      <ul class="steps">
+        <li><b>I<sub>N</sub></b> (تيار القصر عند طرفي الحمل): يتوزع التيار 1A بين 20Ω و80Ω: <span class="fx">I<sub>N</sub> = (1×20)/100 = 0.2 A</span> — قسمة التيار (البسط الفرع الآخر!).</li>
+        <li><b>R<sub>N</sub></b> (نفتح مصدر التيار): <span class="fx">R<sub>N</sub> = 50 Ω</span> كما حسبها الدكتور من بنية الدائرة.</li>
+        <li><b>تيار الحمل:</b> <span class="fx">I = I<sub>N</sub>·R<sub>N</sub>/(R<sub>L</sub>+R<sub>N</sub>) = 0.2×50/(50+50) = 0.1 A</span></li>
+      </ul>
+      <span class="final">I_N=0.2A — R_N=50Ω — I_L=0.1A</span>
+    </div>
+    <div class="drill"><b>تدريب 11 —</b> مصدر جهد 20V توالياً مع 5Ω ثم 20Ω توازي، والحمل 4Ω. حوّل لنورتن: أوجد I<sub>N</sub> وR<sub>N</sub> وتيار الحمل.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">I<sub>N</sub> = تيار القصر = 20/5 = 4 A</span> (عند قصر الحمل تُقصَّر 20Ω معه فتبقى 5Ω فقط)</li>
+        <li><span class="fx">R<sub>N</sub> = 5∥20 = 100/25 = 4 Ω</span></li>
+        <li><span class="fx">I<sub>L</sub> = 4 × 4/(4+4) = 2 A</span></li>
+      </ul>
+      <span class="final">I_N=4A — R_N=4Ω — I_L=2A</span>
+    </div>
+  </div>
+
+  <!-- ============ ف12 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">12</div>
+      <div class="ch-titles">
+        <div class="ch-kick">أسرع نظرية وأقصرها</div>
+        <div class="ch-title">نظرية ميلمان Millman</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">صورة 51: عندما تتوازى عدة فروع كل فرع فيه مصدر مع مقاومة — تنهار الدائرة كلها إلى <b>مصدر واحد E<sub>eq</sub> مع R<sub>eq</sub></b> بصيغتين فقط.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 51</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <span class="chip chip-law">نظرية</span>
+      <div class="card-title">ميلمان: E<sub>eq</sub> و R<sub>eq</sub> بمثالين</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_51.jpg" alt="نظرية ميلمان">
+      <div class="photo-cap">الصورة الأصلية — «نظرية ميلمان» بمثال الفرعين والمثال الثاني بثلاثة فروع</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الصيغتان</span>
+      <div class="lawbox">
+        <div class="law">E<sub>eq</sub> = (E₁/R₁ ± E₂/R₂ ± E₃/R₃ ...) / (1/R₁ + 1/R₂ + 1/R₃ ...)</div>
+        <div class="law">R<sub>eq</sub> = 1 / (1/R₁ + 1/R₂ + 1/R₃ ...)</div>
+      </div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">المثال الأول (فرعان)</span>
+      <p>10V مع 100Ω و15V مع 50Ω <b>بعكس القطبية</b>: <span class="fx">E<sub>eq</sub> = (10/100 − 15/50)/(1/100 + 1/50) = (0.1 − 0.3)/0.03 = −6.67 V</span> (الإشارة السالبة تعني القطبية معاكسة للافتراض) و <span class="fx">R<sub>eq</sub> = 1/0.03 = 33.33 Ω</span>.</p>
+      <p class="mini-note">ملاحظة أمانة: على السبورة كُتب بعدها I=15mA — الحساب الدقيق يعطي 6.67/(33.33+10) ≈ 154mA. المهم إتقان الصيغتين والتدقيق بالإشارات.</p>
+    </div>
+    <div class="sec">
+      <span class="sec-label">المثال الثاني (ثلاثة فروع) — كما كتبه الدكتور</span>
+      <p><span class="fx">E<sub>eq</sub> = (10/10 + 20/20 + 30/30)/(1/10 + 1/20 + 1/30)</span> و <span class="fx">R<sub>eq</sub> = 1/(1/10+1/20+1/30)</span> — نفس الصيغ بثلاثة فروع: 10V/10Ω، 20V/20Ω، 30V/30Ω.</p>
+    </div>
+    <div class="drill"><b>تدريب 12 —</b> ثلاثة فروع متوازية: 20V مع 10Ω، 40V مع 20Ω، 60V مع 60Ω (نفس الاتجاه). أوجد E<sub>eq</sub> وR<sub>eq</sub>، ثم تيار حمل 24Ω.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">البسط: 20/10 + 40/20 + 60/60 = 2 + 2 + 1 = 5</span></li>
+        <li><span class="fx">المقام: 0.1 + 0.05 + 1/60 = 1/6</span> ← <span class="fx">E<sub>eq</sub> = 5 ÷ (1/6) = 30 V</span></li>
+        <li><span class="fx">R<sub>eq</sub> = 6 Ω</span> ← <span class="fx">I = 30/(6+24) = 1 A</span></li>
+      </ul>
+      <span class="final">E_eq=30V — R_eq=6Ω — I=1A</span>
+    </div>
+  </div>
+
+  <!-- ============ ف13 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">13</div>
+      <div class="ch-titles">
+        <div class="ch-kick">عدة مصادر معاً؟ اعزل واحداً واقصر الباقي</div>
+        <div class="ch-title">نظرية التراكب Superposition</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">ثلاث صور (36، 37، 46): مثال الدكتور 6V/12V بلقطتين، ثم تطبيق التراكب على دائرة 28V/10V الشهيرة — وهو المثال الذي يفسّر رقم 3.93A في ثيفنين.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 36</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <span class="chip chip-law">نظرية</span>
+      <div class="card-title">التراكب: مصدران 6V و12V — ثلاث دوائر مرسومة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_36.jpg" alt="نظرية التراكب">
+      <div class="photo-cap">الصورة الأصلية — الدائرة الأصلية + حالة 6V وحدها + حالة 12V وحدها</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة</span>
+      <ul class="steps">
+        <li><b>الحالة 1 — 6V وحده (نقصر 12V):</b> المسار: 0.5+2.5 توالياً ثم توازي مع 6Ω ثم مع فرع 2+1: <span class="fx">R_eq = 3∥6 = 2</span> ← <span class="fx">2 + 2.5 + 0.5 = 5 Ω</span> ← <span class="fx">I′ = 6/5 = 1.2 A</span></li>
+        <li>قسمة التيار: <span class="fx">I₁′ = 1.2×3/9 = 0.4 A</span> (فرع 6Ω) و <span class="fx">I₂′ = 1.2×6/9 = 0.8 A</span></li>
+        <li><b>الحالة 2 — 12V وحده (نقصر 6V):</b> <span class="fx">I″₂ = 12/5 = 2.4 A</span> — والقسمة: <span class="fx">0.8A</span> و <span class="fx">1.6A</span></li>
+        <li><b>الجمع الجبري حسب الاتجاهات:</b> تيار 6Ω = <span class="fx">0.4 + 0.8 = 1.2 A</span> — وفرع آخر: <span class="fx">1.6 − 0.4 = 1.2 A</span> بالاتجاه المعاكس (لذا ظهر الرقم (1.6−1.2) محاطاً بدائرة على السبورة).</li>
+      </ul>
+      <span class="final">تيار 6Ω = 1.2A</span>
+    </div>
+    <div class="tip"><b>القاعدة الذهبية للتراكب:</b> عند عزل مصدر — <b>مصدر الجهد يُقصر</b> (سلك)، و<b>مصدر التيار يُفتح</b> (فراغ). والنتائج تُجمع <b>جبرياً</b> (بإشاراتها حسب الاتجاه).</div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 37</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">نفس مثال التراكب من زاوية أوضح</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_37.jpg" alt="التراكب لقطة 2">
+      <div class="photo-cap">الصورة الأصلية — «سبق إيجادها» + الدوائر الثلاث</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>نفس الحسابات كاملة بوضوح أكبر — استخدمها للتحقق من أي رقم لم تقرأه في 36. ملاحظة الدكتور «(سبق إيجادها)» تعني أن القيمة استُخدمت في خطوة سابقة — انتبه لسلسلة الاستخدام.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 46</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <span class="chip chip-exam">⭐ يفسّر رقم 3.93</span>
+      <div class="card-title">التراكب على دائرة 28V/10V — أصل رقم 3.93A</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_46.jpg" alt="التراكب على 28V/10V">
+      <div class="photo-cap">الصورة الأصلية — «مثال 3.93: أوجد التيار المار بسلك 2Ω بثلاث طرق»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة</span>
+      <ul class="steps">
+        <li><b>حالة 28V وحده (قصر 10V):</b> <span class="fx">R_eq = (3∥2) + 6 = 1.2 + 6 = 7.2 Ω</span> ← <span class="fx">I′ = 28/7.2 = 3.89 A</span> ← قسمة: <span class="fx">I₁′ = 3.89×3/5 ≈ 2.28 A</span></li>
+        <li><b>حالة 10V وحده (قصر 28V):</b> <span class="fx">R_eq = (6∥2) + 3 = 1.5 + 3 = 4.5 Ω</span> ← <span class="fx">I″ = 10/4.5 = 2.22 A</span> ← قسمة: <span class="fx">I₁″ = 2.22×6/8 ≈ 1.65 A</span></li>
+        <li><b>الجمع (نفس الاتجاه عبر 2Ω):</b> <span class="fx">I(2Ω) = 2.28 + 1.65 = 3.93 A</span> — <b>هنا ولد الرقم 3.93A</b> المكتوب في ثيفنين (الصورتان 44 و45)!</li>
+      </ul>
+      <span class="final">I(2Ω) = 2.28 + 1.65 = 3.93A — والقيمة الدقيقة بالقسمة المباشرة 4A</span>
+    </div>
+  </div>
+
+  <div class="drill"><b>تدريب 13 —</b> دائرة ثلاثية: مصدر 12V توالياً مع 3Ω (فرع أيسر)، 6Ω فرع أوسط، مصدر 24V مع 3Ω (فرع أيمن). أوجد تيار 6Ω بالتراكب.</div>
+  <div class="answer">
+    <span class="sec-label teal">الحل</span>
+    <ul class="steps">
+      <li><b>حالة 12V (قصر 24V):</b> <span class="fx">R_eq = 3 + (6∥3) = 3 + 2 = 5 Ω</span> ← <span class="fx">I′ = 12/5 = 2.4 A</span> ← قسمة: <span class="fx">I(6Ω)′ = 2.4×3/9 = 0.8 A</span></li>
+      <li><b>حالة 24V (قصر 12V):</b> <span class="fx">R_eq = 3 + (6∥3) = 5 Ω</span> ← <span class="fx">I″ = 24/5 = 4.8 A</span> ← قسمة: <span class="fx">I(6Ω)″ = 4.8×3/9 = 1.6 A</span></li>
+      <li>كلا التيارين يمران بـ6Ω بنفس الاتجاه: <span class="fx">I = 0.8 + 1.6 = 2.4 A</span></li>
+    </ul>
+    <span class="final">تيار 6Ω = 2.4A</span>
+  </div>
+
+  <!-- ============ ف14 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">14</div>
+      <div class="ch-titles">
+        <div class="ch-kick">طريقة العقد — جهد كل عقدة مجهول واحد</div>
+        <div class="ch-title">تحليل العقد والعقدة الفائقة Supernode</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">ثلاث صور (55، 56، 57): صيغة الموصلية <span class="fx">G·V = I<sub>sc</sub></span> ثم تطبيقها على دائرة بمصادر ثلاثة — والنتيجة الجميلة: عقدة جهدها 6V وتيار فرع يساوي صفراً.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 55</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">عقدة واحدة: V₁=6V و I₁=1A و I₂=−1A و I₃=0</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_55.jpg" alt="تحليل العقد">
+      <div class="photo-cap">الصورة الأصلية — «النقطة المرجعية أسفل» + ثلاثة فروع بمصادر 8V و4V و6V</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الشرح الكامل</span>
+      <p>النقطة المرجعية (الأرضي) أسفل — جهدها 0. العقدة ① تتفرع منها ثلاث فروع: [8V+2Ω]، [4V+2Ω]، [6V+3Ω]. نكتب KCL بصيغة الموصلية:</p>
+      <p style="text-align:center"><b><span class="fx">(1/2 + 1/2 + 1/3)·V₁ = 8/2 + 4/2 + 6/3</span></b></p>
+      <p><span class="fx">1.333·V₁ = 8</span> ← <b><span class="fx">V₁ = 6 V</span></b>. ثم تيارات الفروع (كل تيار = فرق الجهود ÷ المقاومة):</p>
+      <ul class="steps">
+        <li><span class="fx">V₁ = −2I₁ + 8 ← 6 = −2I₁ + 8 ← I₁ = 1 A</span></li>
+        <li><span class="fx">V₁ = −2I₂ + 4 ← 6 = −2I₂ + 4 ← I₂ = −1 A</span> (سالبة = الاتجاه معاكس لافتراضنا)</li>
+        <li><span class="fx">V₁ = −3I₃ + 6 ← 6 = −3I₃ + 6 ← I₃ = 0</span> — «وجدنا أن التيار يساوي صفر» كما كتب الدكتور!</li>
+      </ul>
+      <span class="final">V₁=6V — I₁=1A — I₂=−1A — I₃=0A (تحقق: 1−1+0=0 ✓)</span>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 56</div>
+      <span class="chip chip-law">قوانين</span>
+      <div class="card-title">صيغة الموصلية G·V = I<sub>sc</sub> — تعريف معاملات المصفوفة</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_56.jpg" alt="صيغة الموصلية">
+      <div class="photo-cap">الصورة الأصلية — G₁₁V₁ + G₁₂V₂ + ... = I_sc1 بالتعريفات</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">التعريفات كما كتبها الدكتور</span>
+      <ul class="steps">
+        <li><b>G₁₁ (القطر الرئيسي):</b> مجموع موصلية العناصر المتصلة بالعقدة 1 فقط (الموصلية = 1/المقاومة).</li>
+        <li><b>G₁₂ و G₂₁:</b> الموصلية المشتركة بين العقدتين — <b>تُكتب بإشارة سالبة</b>.</li>
+        <li><b>I<sub>sc1</sub>:</b> مجموع التيارات الداخلة للعقدة 1 من المصادر.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 57</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">تهيئة المعادلات لنفس دائرة المثال</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_57.jpg" alt="تهيئة معادلات العقد">
+      <div class="photo-cap">الصورة الأصلية — «مثال: سنستخدم G·V = معادلات العقد − 1»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>تهيئة نفس دائرة الصورة 55 قبل الحل: G₁₁ مجموع الموصلات، G₁₂ سالبة، «القيم المطلوبة نأخذها بالتعويض». وهي تلقّنك <b>ترتيب كتابة المعادلة قبل الحساب</b> — وهو ما تُمنح عليه درجة الطريقة.</p>
+    </div>
+    <div class="tip"><b>العقدة الفائقة:</b> عندما يكون مصدر جهد بين عقدتين غير مرجعيتين (لا يمكن تحديد تيار المفصل بينهما)، ندمج العقدتين في «عقدة فائقة» ونكتب معادلة KCL للاثنين معاً + معادلة علاقة الجهد بينهما. في مثالنا مصدر 6V يفرض فرقاً ثابتاً بين عقدتين — لهذا بعض التيارات حُسبت مباشرة من مصادر.</div>
+    <div class="drill"><b>تدريب 14 —</b> عقدة ① بثلاثة فروع نحو المرجع: [12V+2Ω]، [6V+2Ω]، [3V+3Ω]. أوجد V₁ وتيارات الفروع الثلاثة.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">(1/2 + 1/2 + 1/3)V₁ = 12/2 + 6/2 + 3/3</span> ← <span class="fx">(4/3)V₁ = 6 + 3 + 1 = 10</span></li>
+        <li><span class="fx">V₁ = 10 × 3/4 = 7.5 V</span></li>
+        <li><span class="fx">I₁ = (12−7.5)/2 = 2.25 A</span> — <span class="fx">I₂ = (6−7.5)/2 = −0.75 A</span> — <span class="fx">I₃ = (3−7.5)/3 = −1.5 A</span></li>
+        <li>تحقق KCL: <span class="fx">2.25 − 0.75 − 1.5 = 0 ✓</span></li>
+      </ul>
+      <span class="final">V₁=7.5V — I₁=2.25A — I₂=−0.75A — I₃=−1.5A</span>
+    </div>
+  </div>
+
+  <!-- ============ ف15 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">15</div>
+      <div class="ch-titles">
+        <div class="ch-kick">عندما يكون النظام كبيراً</div>
+        <div class="ch-title">قاعدة كرامر Cramer — حل المنظومات بالمحددات</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">ثلاث صور (58، 59، 60): مثال مكتمل 2×2، ومثالان 3×3. كرامر = بديل الآلة الحاسبة: <span class="fx">I₁ = Δ₁/Δ</span> — استخدمها لتفحص إجابة الآلة، أو إذا نسيت خطوات الآلة.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 59</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">كرامر 2×2: المنظومة الكاملة بالحل</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_59.jpg" alt="قاعدة كرامر">
+      <div class="photo-cap">الصورة الأصلية — Δ=85 و Δ₁=220 و Δ₂=−5 مع علامات الضرب التبادلي X</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة كما على السبورة</span>
+      <ul class="steps">
+        <li>المنظومة: <span class="fx">10I₁ + 15I₂ = 25</span> و <span class="fx">5I₁ + 16I₂ = 12</span></li>
+        <li><span class="fx">Δ = 10×16 − 15×5 = 160 − 75 = 85</span></li>
+        <li><span class="fx">Δ₁ = 25×16 − 15×12 = 400 − 180 = 220</span> (بدّل عمود I₁ بعمود النواتج)</li>
+        <li><span class="fx">Δ₂ = 10×12 − 25×5 = 120 − 125 = −5</span> (بدّل عمود I₂)</li>
+        <li><span class="fx">I₁ = 220/85 ≈ 2.59 A</span> و <span class="fx">I₂ = −5/85 ≈ −0.06 A</span></li>
+      </ul>
+      <span class="final">Δ=85 — I₁≈2.59A — I₂≈−0.06A</span>
+    </div>
+    <div class="tip"><b>لماذا I₂ سالبة؟</b> ليست غلطة! الإشارة تعني أن اتجاه التيار الفعلي معاكس للافتراض عند كتابة المعادلات — اذكرها بالحل تكسب نقطة الفهم.</div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 58</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">كرامر 3×3 — ساروس و Δ = −118</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_58.jpg" alt="كرامر 3×3">
+      <div class="photo-cap">الصورة الأصلية — مصفوفة 3×3 بأقطار ساروس المرسومة</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>منظومة ثلاثية: <span class="fx">2I₁+3I₂+6I₃=18</span>، <span class="fx">−4I₁+5I₂+I₃=10</span>، <span class="fx">2I₂−3I₃=12</span> — وحُسب المحدد الرئيسي بقاعدة <b>ساروس</b> (الأقطار الموجبة ناقص السالبة): <span class="fx">Δ = −118</span> كما كُتب. الخطوة التالية (Δ₁) لم تكتمل على السبورة — لكنك لا تحتاجها: بكرامر 3×3 استعن بالآلة مباشرة (Mode 5-1).</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 60</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">كرامر 3×3 ثانية — منظومة 8/10/12</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_60.jpg" alt="كرامر 3×3 ثانية">
+      <div class="photo-cap">الصورة الأصلية — Δ₁ و Δ₂ مُهيّآن بلم تحسبا + كلمة «بديل»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>منظومة <span class="fx">2I₁+3I₂+6I₃=8</span>، <span class="fx">−4I₁+5I₂+I₃=10</span>، <span class="fx">2I₂+3I₃=12</span> مع تهيئة Δ₁ وΔ₂. كلمة «بديل» أسفل الورقة = تذكير الدكتور أن كرامر <b>بديل</b> عن الآلة وليس إلزامياً. <b>نصيحة مركزة:</b> بالامتحان استخدم الآلة (أسرع)، وكرامر للتحقق السريع في 2×2 فقط.</p>
+    </div>
+    <div class="drill"><b>تدريب 15 —</b> حل بكرامر: <span class="fx">10I₁ + 5I₂ = 25</span> و <span class="fx">4I₁ + 8I₂ = 16</span>.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">Δ = 10×8 − 5×4 = 80 − 20 = 60</span></li>
+        <li><span class="fx">Δ₁ = 25×8 − 5×16 = 200 − 80 = 120</span></li>
+        <li><span class="fx">Δ₂ = 10×16 − 25×4 = 160 − 100 = 60</span></li>
+        <li><span class="fx">I₁ = 120/60 = 2 A</span> و <span class="fx">I₂ = 60/60 = 1 A</span></li>
+      </ul>
+      <span class="final">I₁=2A — I₂=1A</span>
+    </div>
+  </div>
+
+  <!-- ============ ف16 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">16</div>
+      <div class="ch-titles">
+        <div class="ch-kick">مزيج يحير الطلاب — ويحبّه الدكتور</div>
+        <div class="ch-title">مصدر تيار + مصدر جهد معاً</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">ثلاث صور (38، 39، 40): مصدر تيار 1A ومصدر جهد 9V في دائرة واحدة — الحل: عامل كل مصدر على حدة أو استخدم R_eq وقسمة التيار بذكاء.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 39</div>
+      <span class="chip chip-solved">مثال محلول</span>
+      <div class="card-title">دائرة 9V و1A مع 300Ω و600Ω و200Ω</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_39.jpg" alt="مصدر تيار وجهد">
+      <div class="photo-cap">الصورة الأصلية — R_eq=450Ω و I_T=0.02A و 515mA</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة كما على السبورة</span>
+      <ul class="steps">
+        <li><span class="fx">R_eq = (200∥600) + 300 = 150 + 300 = 450 Ω</span></li>
+        <li><b>حالة مصدر الجهد 9V:</b> <span class="fx">I_T = 9/450 = 0.02 A = 20 mA</span> — ثم قسمة تيار بين 200Ω و600Ω: <span class="fx">I(200) = 0.02 × 600/800 = 0.015 A = 15 mA</span></li>
+        <li><b>حالة مصدر التيار 1A:</b> يقسم بين فرع 200Ω وفرع (300∥600=200Ω) — <b>الفرعان متساويان!</b> فكل واحد يأخذ <span class="fx">0.5 A</span></li>
+        <li><b>الجمع الجبري في مقاومة 200Ω:</b> <span class="fx">15 mA + 500 mA = 515 mA</span> (كما جمعها الدكتور على السبورة).</li>
+      </ul>
+      <span class="final">R_eq=450Ω — I_T=20mA — I(200)=515mA</span>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 38</div>
+      <span class="chip chip-board">لقطة التمهيد</span>
+      <div class="card-title">رسم الدائرة قبل الحل</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_38a.jpg" alt="رسم دائرة المصدرين - جزء أول">
+      <img src="images-web/img_38b.jpg" alt="رسم دائرة المصدرين - جزء ثاني" style="margin-top:8px;">
+      <div class="photo-cap">الصورة الأصلية — مصدر تيار 1A والقيم 300 و600 و200 (مقسومة)</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>هذه لقطة <b>السؤال فقط</b> قبل كتابة الحل — فيها الشبكة كما ستُعطى لك: 1A يسقي الفروع، و300Ω مع مصدر 9V. تمرّن على قراءة الرسم قبل الحل: حدد العقد أولاً.</p>
+    </div>
+  </div>
+
+  <div class="card compact">
+    <div class="card-head">
+      <div class="img-badge">الصورة 40</div>
+      <span class="chip chip-board">لقطة إضافية</span>
+      <div class="card-title">نفس الحل من زاوية ثانية</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_40.jpg" alt="مصدر تيار وجهد - لقطة 2">
+      <div class="photo-cap">الصورة الأصلية — نفس القيم 0.015+0.02 و515mA و0.5A</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">ماذا تضيف؟</span>
+      <p>تكرار لنفس الحسابات يؤكد النتائج (R_eq=450Ω، I_T=0.02A، 515mA). الرسمة الوسطى فيها تلحي على فكرة <b>تحويل المصادر</b> (نحو ثيفنين/نورتون) — تذكّر: مصدر جهد يتحول لنورتن بقسمة V على المقاومة التوالية.</p>
+    </div>
+    <div class="drill"><b>تدريب 16 —</b> مصدر 12V توالياً مع 360Ω، ثم توازي 400Ω و600Ω. أوجد R_eq وI_T والتيار في كل مقاومة توازٍ.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">400∥600 = 240000/1000 = 240 Ω</span> ← <span class="fx">R_eq = 240 + 360 = 600 Ω</span></li>
+        <li><span class="fx">I_T = 12/600 = 0.02 A = 20 mA</span></li>
+        <li><span class="fx">I(400) = 20 × 600/1000 = 12 mA</span> — <span class="fx">I(600) = 20 × 400/1000 = 8 mA</span> (تحقق: 12+8=20 ✓)</li>
+      </ul>
+      <span class="final">R_eq=600Ω — I_T=20mA — 12mA و 8mA</span>
+    </div>
+  </div>
+
+  <!-- ============ ف17 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">17</div>
+      <div class="ch-titles">
+        <div class="ch-kick">عندما لا يكون التوالي/التوازي كافياً</div>
+        <div class="ch-title">تحويل دلتا ↔ نجمة + جسر ويتستون</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">صورتان (49، 50): الصيغ الست لتحويل Δ↔Y، ثم تطبيقها ضمن «واجب منزلي» على جسر قياس فيه جلفانومتر 50Ω — مع فكرة أن الجسر المتوازن يُبسط بدون تحويل.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 50</div>
+      <span class="chip chip-law">قوانين</span>
+      <div class="card-title">الصيغ الكاملة للتحويل دلتا → نجمة والعكس</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_50.jpg" alt="تحويل دلتا نجمة">
+      <div class="photo-cap">الصورة الأصلية — «التحويل من دلتا → نجمة (Δ ← Y)» بالصيغ الست</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الصيغ الست</span>
+      <div class="lawbox">
+        <div class="law">Δ → Y: R₁ = R<sub>A</sub>·R<sub>C</sub>/Σ &nbsp;•&nbsp; R₂ = R<sub>B</sub>·R<sub>C</sub>/Σ &nbsp;•&nbsp; R₃ = R<sub>A</sub>·R<sub>B</sub>/Σ</div>
+        <div class="law">حيث Σ = R<sub>A</sub> + R<sub>B</sub> + R<sub>C</sub></div>
+        <div class="law">Y → Δ: R<sub>A</sub> = (R₁R₂ + R₁R₃ + R₂R₃)/R₂</div>
+        <div class="law">R<sub>B</sub> = (R₁R₂ + R₁R₃ + R₂R₃)/R₁ &nbsp;•&nbsp; R<sub>C</sub> = (R₁R₂ + R₁R₃ + R₂R₃)/R₃</div>
+      </div>
+      <p class="mini-note">حيلة حفظ: Δ→Y: البسط ضرب المقاومتين المجاورتين والمقام المجموع. Y→Δ: البسط مجموع حواصل الضرب الزوجية والمقام المقاومة المقابلة. Δ متساوية R ← Y كلها R/3.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 49</div>
+      <span class="chip chip-solved">واجب منزلي محلول</span>
+      <div class="card-title">جسر القياس: 8V — V<sub>BD</sub>=1.25V — I<sub>G</sub>=25mA</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_49.jpg" alt="واجب الجسر">
+      <div class="photo-cap">الصورة الأصلية — «واجب منزلي» بجسر 6Ω و10Ω و15Ω و5Ω و10Ω وR_G=50Ω</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة كما على السبورة</span>
+      <ul class="steps">
+        <li>ذراعان: (10+10)=20Ω و (15+5)=20Ω — توازي بينهما: <span class="fx">20∥20 = 10 Ω</span></li>
+        <li>مع 6Ω التوالية: <span class="fx">R_eq = 10 + 6 = 16 Ω</span></li>
+        <li><span class="fx">I_T = 8/16 = 0.5 A</span> — يتوزع بالتساوي: <span class="fx">0.25 A</span> لكل ذراع (لأنهما متساويان).</li>
+        <li><b>KVL بين B وD:</b> <span class="fx">V<sub>BD</sub> − 0.25×15 + 0.25×10 = 0</span> ← <span class="fx">V<sub>BD</sub> = 3.75 − 2.5 = 1.25 V</span></li>
+        <li>تيار الجلفانومتر: <span class="fx">I<sub>G</sub> = V<sub>BD</sub>/R<sub>G</sub> = 1.25/50 = 0.025 A = 25 mA</span></li>
+      </ul>
+      <span class="final">R_eq=16Ω — I_T=0.5A — V_BD=1.25V — I_G=25mA</span>
+    </div>
+    <div class="drill"><b>تدريب 17 —</b> (أ) دلتا مقاوماتها 6Ω و6Ω و6Ω: حوّلها نجمة. (ب) جسر: مصدر 8V، ذراعان (6+6)=12Ω و(9+3)=12Ω، مع 4Ω توالية، وجلفانومتر 50Ω بين منتصفي الذراعين — أوجد I_T وV<sub>BD</sub> وI<sub>G</sub>.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li>(أ) دلتا متساوية ← نجمة متساوية: <span class="fx">R_Y = 6/3 = 2 Ω</span> لكل مقاومة.</li>
+        <li>(ب) <span class="fx">12∥12 = 6 Ω</span> ← <span class="fx">R_eq = 6+4 = 10 Ω</span> ← <span class="fx">I_T = 8/10 = 0.8 A</span> ← <span class="fx">0.4A</span> لكل ذراع</li>
+        <li><span class="fx">V<sub>BD</sub> = 0.4×9 − 0.4×6 = 3.6 − 2.4 = 1.2 V</span> ← <span class="fx">I<sub>G</sub> = 1.2/50 = 24 mA</span></li>
+      </ul>
+      <span class="final">Y=2Ω لكل — I_T=0.8A — V_BD=1.2V — I_G=24mA</span>
+    </div>
+  </div>
+
+  <!-- ============ ف18 ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">18</div>
+      <div class="ch-titles">
+        <div class="ch-kick">عينة شكل امتحان حقيقي + حلّه</div>
+        <div class="ch-title">ورقة الامتحان النموذجية والمقاومة الداخلية للمولد</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">الصورة 48 ورقة امتحان/واجب رسمية (جامعة الأنبار — كلية الهندسة) بسؤالين كاملين، والصورة 53 هي الحل النموذجي لسؤالها الثاني. هذه أقرب عينة لشكل ورقة امتحانك.</p>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 48</div>
+      <span class="chip chip-exam">ورقة امتحان</span>
+      <div class="card-title">ورقة الواجب: دائرة متشابكة + القوة الدافعة والمقاومة الداخلية</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">فهم السؤالين</span>
+      <p><b>س1 — دائرة متشابكة:</b> مصدران 20V و40V بمقاومات 20Ω و10Ω و10Ω و30Ω وعقد مرمزة a–k. المطلوب: (1) تيار كل مقاومة (2) الفرق بين نقطتين V<sub>ag</sub>. <b>الاستراتيجية:</b> بسّط بالتوازي/التوالي → I_T → قسمة تيار → ثم V<sub>ag</sub> بجمع الجهود على أي مسار من a إلى g (نفس أسلوب V<sub>xy</sub> في ف7).</p>
+      <p><b>س2 — المولد:</b> أميتر 1.6A وفولتميتر 3.08V عند إغلاق المفتاح. المطلوب: القوة الدافعة ε والمقاومة الداخلية r والمقاومة الخارجية R — والحل كامل في الصورة التالية.</p>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_48a.jpg" alt="ورقة الامتحان - جزء أول">
+      <img src="images-web/img_48b.jpg" alt="ورقة الامتحان - جزء ثاني" style="margin-top:8px;">
+      <div class="photo-cap">الصورة الأصلية — ورقة رسمية بترويسة جامعة ونظام تسليم PDF (مقسومة لجزأين)</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head">
+      <div class="img-badge">الصورة 53</div>
+      <span class="chip chip-solved">الحل النموذجي</span>
+      <span class="chip chip-exam">⭐</span>
+      <div class="card-title">الحل: V = ε − I·r — المقاومة الداخلية والخارجية</div>
+    </div>
+    <div class="photo-block">
+      <img src="images-web/img_53.jpg" alt="حل المقاومة الداخلية">
+      <div class="photo-cap">الصورة الأصلية — الحل بخط اليد: «بهذا نكون وجدنا المطلوب»</div>
+    </div>
+    <div class="sec">
+      <span class="sec-label">الحل خطوة خطوة</span>
+      <ul class="steps">
+        <li>القانون الأساسي للمولد (تفريغ): <b><span class="fx">V = ε − I·r</span></b> — جهد الأطراف أقل من القوة الدافعة بهبوط داخلي.</li>
+        <li>من الورقة: الفرق <span class="fx">ε − V = 0.11 V</span> ← <span class="fx">r = (ε − V)/I = 0.11/1.6 ≈ 0.068 Ω</span></li>
+        <li>المقاومة الخارجية: <span class="fx">R = V/I = 3.08/1.6 = 1.925 Ω</span></li>
+        <li>التحقق: <span class="fx">ε = V + I·r = 3.08 + 0.11 = 3.19 V</span> — متسق تماماً.</li>
+      </ul>
+      <span class="final">r ≈ 0.068Ω — R = 1.925Ω — ε ≈ 3.19V</span>
+    </div>
+    <div class="drill"><b>تدريب 18 —</b> مولد يغذي مقاومة خارجية: قراءة الفولتميتر 4.8V والأميتر 2A، وفرق القوة الدافعة عن جهد الأطراف 0.2V. أوجد r وR وε.</div>
+    <div class="answer">
+      <span class="sec-label teal">الحل</span>
+      <ul class="steps">
+        <li><span class="fx">r = (ε−V)/I = 0.2/2 = 0.1 Ω</span></li>
+        <li><span class="fx">R = V/I = 4.8/2 = 2.4 Ω</span></li>
+        <li><span class="fx">ε = V + I·r = 4.8 + 0.2 = 5 V</span></li>
+      </ul>
+      <span class="final">r=0.1Ω — R=2.4Ω — ε=5V</span>
+    </div>
+  </div>
+
+  <!-- ============ ف19: الملاحق ============ -->
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">19</div>
+      <div class="ch-titles">
+        <div class="ch-kick">الملاحق الذهبية</div>
+        <div class="ch-title">ورقة القوانين + الأخطاء المكلفة + خطة الليالي الأخيرة</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+    <p class="ch-intro">هذا القسم هو ما تفتحه في ليلة الامتحان بعد ما تكون خلصت كل الفصول.</p>
+  </div>
+
+  <div class="gold-wrap">
+    <div class="gold-grid">
+      <div class="gold-col">
+        <h4>الأساسيات</h4>
+        <div class="law">V = I·R (بثبات الحرارة)</div>
+        <div class="law">P = V·I = I²R = V²/R</div>
+        <div class="law">E = P·t — 1kWh = 3600kJ</div>
+        <div class="law">Q = I·t — Q = Q<sub>e</sub>·N — Q<sub>e</sub>=1.6×10<sup>-19</sup>C</div>
+        <div class="law">R = ρL/A</div>
+        <div class="law">R₁ = R₀(1 + α·ΔT)</div>
+      </div>
+      <div class="gold-col">
+        <h4>التوصيلات</h4>
+        <div class="law">توالي: R<sub>eq</sub> = ΣR — التيار واحد</div>
+        <div class="law">توازي: 1/R<sub>eq</sub> = Σ1/R — الجهد واحد</div>
+        <div class="law">مقاومتان: R₁R₂/(R₁+R₂) — n متساوية: R/n</div>
+        <div class="law">قسمة جهد: V₁ = E·R₁/ΣR</div>
+        <div class="law">قسمة تيار: I₁ = I·R₂/(R₁+R₂)</div>
+        <div class="law">Δ↔Y: ضرب متجاور/المجموع — والمقلوب</div>
+      </div>
+      <div class="gold-col">
+        <h4>كيرشوف والطرق النظامية</h4>
+        <div class="law">KCL: ΣI داخلة = ΣI خارجة</div>
+        <div class="law">KVL: ΣV = 0 للحلقة</div>
+        <div class="law">I_T = ΣE/R<sub>eq</sub> (اطرح المصادر المعاكسة)</div>
+        <div class="law">عقد: ΣG<sub>متصل</sub>·V − ΣG<sub>مشترك</sub>·V = I<sub>sc</sub></div>
+        <div class="law">كرامر: I = Δᵢ/Δ</div>
+        <div class="law">الآلة: Mode 5 → 2 (أو 1)</div>
+      </div>
+      <div class="gold-col">
+        <h4>النظريات الأربع</h4>
+        <div class="law">ثيفنين: I = V<sub>th</sub>/(R<sub>th</sub>+R<sub>L</sub>)</div>
+        <div class="law">R<sub>th</sub>: قصر المصادر — V<sub>th</sub>: فتح عند الحمل</div>
+        <div class="law">نورتن: I<sub>N</sub>=تيار القصر — R<sub>N</sub>=R<sub>th</sub></div>
+        <div class="law">I<sub>L</sub> = I<sub>N</sub>·R<sub>N</sub>/(R<sub>N</sub>+R<sub>L</sub>)</div>
+        <div class="law">ميلمان: E<sub>eq</sub>=Σ(E/R)/Σ(1/R) — R<sub>eq</sub>=1/Σ(1/R)</div>
+        <div class="law">تراكب: جهد←قصر — تيار←فتح — جمع جبري</div>
+      </div>
+      <div class="gold-col">
+        <h4>المولد والقياس</h4>
+        <div class="law">تفريغ: V = ε − I·r (V &lt; ε)</div>
+        <div class="law">شحن: V = ε + I·r (V &gt; ε)</div>
+        <div class="law">أميتر توالي — فولتميتر توازي</div>
+        <div class="law">الشغل: W = F·d — J = N·m = W·s</div>
+        <div class="law">1 cal = 4.18J — kWh ≈ 860kcal</div>
+        <div class="law">حصان: 1hp ≈ 746W</div>
+      </div>
+      <div class="gold-col">
+        <h4>نتائج جاهزة من صور الدكتور</h4>
+        <div class="law">السخان: 484Ω ← R₀ ← 4.96A ⭐</div>
+        <div class="law">المسألة الكبرى: 20Ω/0.5A/14.5V/1.75W ⭐</div>
+        <div class="law">25V-5V: 10Ω/2A/8V/1.33A</div>
+        <div class="law">28V-10V: V<sub>th</sub>=16V — R<sub>th</sub>=2Ω — I≈4A</div>
+        <div class="law">تراكب 28-10: 2.28+1.65=3.93A</div>
+        <div class="law">نورتن: 0.2A/50Ω/0.1A — ميلمان: −6.67V/33.33Ω</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">!</div>
+      <div class="ch-titles">
+        <div class="ch-kick">من أخطاء حقيقية ظهرت في صور الدكتور نفسها</div>
+        <div class="ch-title">8 أخطاء تكلّفك درجات — تجنّبها</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+  </div>
+
+  <div class="trap"><b>1) خطأ الـ26 مقابل 20:</b> في المسألة الكبرى كُتب R_eq=26 بينما الصحيح 4+9+6+1=20Ω. تحقق دائماً من جمعك: كرّر الجمع مرتين قبل المتابعة.</div>
+  <div class="trap"><b>2) نسخ طرح المصادر المعاكسة:</b> مصدران متقاestran؟ I_T = ΣE/R_eq بطرحهما (20−10 و 25−5). إذا نسيت الطرح يطلع تيارك مضاعف تقريباً.</div>
+  <div class="trap"><b>3) البسط في قسمة التيار:</b> I(الفرع الأول) = I_T × <b>مقاومة الفرع الآخر</b>/المجموع — وليس مقاومة الفرع نفسه! أكثر غلطة متكررة بالمادة.</div>
+  <div class="trap"><b>4) قواعد الشحن والتفريغ:</b> تفريغ: V = ε − I·r. شحن: V = ε + I·r. لو عكست الإشارة تطلع قراءة فولتميتر غلط كلها.</div>
+  <div class="trap"><b>5) البادئات:</b> 50µA ليست 50mA! وحّد الوحدات قبل أي جمع. أغلب الأصفار المفقودة بالامتحان من هنا.</div>
+  <div class="trap"><b>6) قسمة الجهد على R<sub>th</sub>:</b> ممنوعة — R<sub>th</sub> تُحسب بدائرة قُصّرت مصادرها. V<sub>th</sub> تُحسب بفتح الدائرة فقط.</div>
+  <div class="trap"><b>7) عدم التحقق بطريقتين:</b> V<sub>xy</sub>=14.5V أُثبتت بطريقتين على السبورة. اجعل عادتك: مسار مباشر + KVL — التطابق يضمن الدرجة ويكشف الغلط فوراً.</div>
+  <div class="trap"><b>8) التقريب المبكر:</b> رقم 3.93A على السبورة جاء من تقريب 2.28+1.65 بينما الحساب الدقيق 4A. قرّب في النتيجة النهائية فقط، واحتفظ بدقة 3 خانات أثناء الحل.</div>
+
+  <div class="chapter-header">
+    <div class="ch-band">
+      <div class="ch-medal">≡</div>
+      <div class="ch-titles">
+        <div class="ch-kick">نافذة نصفي: 1 – 5 / 11</div>
+        <div class="ch-title">خطة الليالي الأخيرة</div>
+      </div>
+    </div>
+    <div class="ch-line"></div>
+  </div>
+
+  <div class="howto">
+    <h3>الليل 1 — الأساس + المسألة الامتحانية</h3>
+    <p>ف1–ف4: البادئات، الطاقة، أوم، و<b>مسألة السخان</b> (حلها 3 مرات حتى تحلها بلا ورقة). ثم ف5–ف6: التوالي والتوازي وقسمة الجهد والتيار + تدريباتها.</p>
+  </div>
+  <div class="howto">
+    <h3>الليل 2 — قلب المادة</h3>
+    <p>ف7: المسألة الكبرى كاملة (تيار + V<sub>xy</sub> + قدرة) — حل التدريب 7 بنفسك كاملاً. ثم ف8 (المصدرين والفولتميتر) وف9 (كيرشوف والمنظومة الثلاثية).</p>
+  </div>
+  <div class="howto">
+    <h3>الليل 3 — النظريات الأربع</h3>
+    <p>ثيفنين (3 خطوات مقدسة) ← نورتن ← ميلمان ← التراكب. حل تدريب 10 و11 و12 و13. لاحظ كيف يلتقي كل شيء عند رقم 3.93/4A.</p>
+  </div>
+  <div class="howto">
+    <h3>الليل 4 — الطرق النظامية + الملاحق</h3>
+    <p>ف14–ف17: العقد والكرامر ومصدر التيار والجسر. ثم ورقة القوانين الذهبية والأخطاء الثمانية. جرب حل ورقة الامتحان (ف18) سؤالها الأول بنفسك.</p>
+  </div>
+  <div class="howto">
+    <h3>ليلة الامتحان</h3>
+    <p>ورقة القوانين الذهبية فقط + النتائج الجاهزة من صور الدكتور + تنام بدري. الثقة جاية من إنك حلّت بيدك — مو من إنك قريت مرتين.</p>
+  </div>
+
+  <div class="trap" style="border-right-color:var(--teal); background:var(--teal-bg); border-color:var(--teal-line); margin-top:16px;">
+    <b style="color:var(--teal)">قبل ما تسلّم الورقة بالامتحان — راجعة بـ 60 ثانية:</b>
+    حوّلت كل الوحدات؟ • المصادر المعاكسة طرحتها؟ • قسمة التيار بسطها الفرع الآخر؟ • النتيجة منطقية (توازي أصغر من أصغر مقاومة)؟ • الحل مكتوب بخط واضح والقانون اسمه قبل تعويضه؟ — خمس إجابات «نعم» = درجة كاملة بإذن الله.
+  </div>
+  <div class="tip">
+    <b>تذكير أخير:</b> هذه النافذة (1–5/11) فيها نصفي الدوائر — وواجب الإنجليزي 3A موعد تسليمه النهائي الثلاثاء 3/11 الساعة 10 مساءً والحل جاهز عندك بالمستودع. رتّب يومك: إنجليزي أول (نص ساعة تسليمه)، ثم ذاكر هذا الدفتر فصلاً كل جلسة.
+  </div>
+
+</div>
+
+<!-- ==================== الخاتمة ==================== -->
+<div class="ending">
+  <div class="frame"></div>
+  <div class="big">كل صورة خضتها هنا<br>جاية من <span class="hl">سبورة امتحانك</span>.</div>
+  <p>ستون صورة، تسعة عشر فصلاً، عشرون تدريباً بحل كامل — وكلها مدارة على نافذة نصفي (1–5/11). ملفك القديم الشامل (dawaer_comprehensive_guide) يظل مرجعاً إضافياً للشرائح، أما الامتحان فهذا الدفتر هو الخط المباشر.</p>
+  <div class="sig">
+    <b>محمد عادل محمد العقيلي — 202610414</b>
+    <span>جامعة خضوري • الدوائر الكهربائية 3081071 • بالتوفيق أنت وصاحبك 🤝</span>
+  </div>
+</div>
+
+</body>
+</html>
